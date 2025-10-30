@@ -1,638 +1,491 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mikuba TV – Portail Officiel | Kolwezi, Lualaba 📺</title>
-    <meta name="description" content="Mikuba TV : La voix du Lualaba. Retrouvez le direct, les dernières actualités et le programme TV de votre chaîne locale à Kolwezi." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mairie de Kolwezi - Portail Officiel | Proximité, Transparence, Projets</title>
     
-    <meta property="og:title" content="Mikuba TV" />
-    <meta property="og:description" content="Information, culture et innovation audiovisuelle au Lualaba." />
+    <meta name="description" content="Portail officiel de la Mairie de Kolwezi. Retrouvez les services municipaux, les actualités et les projets de développement de la ville." />
+    <meta property="og:title" content="Mairie de Kolwezi – Portail Officiel" />
+    <meta property="og:description" content="Proximité, Transparence, Projets. Votre ville en ligne." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.mikubatv.cd" />
+    <meta property="og:url" content="https://www.mairie-kolwezi.cd" />
+    <meta property="og:image" content="https://www.mairie-kolwezi.cd/social-share.jpg" /> <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
     <style>
-        /* CSS Custom Properties (Variables) pour une maintenance aisée */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
         :root {
-            --color-dark: #0f172a; /* Bleu nuit sombre (plus moderne que le noir pur) */
-            --color-accent: #fcd34d; /* Jaune/Or doux (plus premium) */
-            --color-live: #ef4444; /* Rouge vif pour l'alerte 'Live' */
-            --color-primary-text: #1f2937;
-            --color-bg-light: #f9fafb;
-            --color-white: #ffffff;
-            --transition-duration: 0.3s;
+            --color-primary: #1e3a8a; /* blue-900 */
+            --color-secondary: #fcd34d; /* yellow-400 */
         }
-
-        /* Réinitialisation et base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
+        
         body {
-            background-color: var(--color-bg-light);
-            color: var(--color-primary-text);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            max-width: 1280px; /* Légèrement plus large pour les grands écrans */
-            margin: 0 auto;
-            padding: 0 1.5rem; /* Padding accru */
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9;
         }
         
-        /* En-têtes de section stylisés (Système de Design) */
-        .section-heading {
-            text-align: center;
-            margin-bottom: 4rem;
-            color: var(--color-dark);
-            font-size: 2.5rem;
-            font-weight: 800;
-            position: relative;
+        /* Styles personnalisés pour améliorer l'aspect des liens (Meilleure lisibilité) */
+        .dropdown-item-hover {
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+        .dropdown-item-hover:hover {
+            background-color: #e5e7eb; /* gray-100 */
+            color: #1f2937; /* gray-800 */
         }
         
-        .section-heading::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--color-accent);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        /* ===== HEADER / NAVBAR ===== */
-        header {
-            background-color: var(--color-dark);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--color-accent);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .menu {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .menu a {
-            color: var(--color-white);
-            font-weight: 500;
-            padding: 5px 0;
-            transition: color var(--transition-duration);
-            position: relative;
-            display: block;
-        }
-
-        .menu a:hover, .menu a.active {
-            color: var(--color-accent);
-        }
-        
-        /* Indicateur actif sous le lien */
-        .menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background-color: var(--color-accent);
-            transition: width var(--transition-duration) ease-out;
-        }
-
-        .menu a:hover::after, .menu a.active::after {
-            width: 100%;
-        }
-
-        /* Style spécifique pour le lien LIVE */
-        .menu li:last-of-type a {
-            color: var(--color-live);
-            font-weight: 700;
-            padding: 5px 10px;
-            border: 1px solid var(--color-live);
-            border-radius: 4px;
-        }
-
-        .menu li:last-of-type a:hover {
-            background-color: rgba(239, 68, 68, 0.1);
-        }
-        
-        /* Mega Menu - Amélioration de la lisibilité et de l'ombre */
-        .mega-menu {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 100%;
-            width: 100vw;
-            max-width: 1280px;
-            background: rgba(15, 23, 42, 0.98); /* Utilisation de la variable dark */
+        /* Styles pour le carrousel textuel (Optimisé pour la transition) */
+        .text-carousel-item {
             display: none;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            padding: 2rem 1.5rem;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
-            border-top: 3px solid var(--color-accent);
-        }
-        
-        .menu > li:hover > .mega-menu {
-            display: grid;
-        }
-
-        .mega-column h4 {
-            margin-bottom: 1rem;
-            color: var(--color-accent);
-            border-bottom: 1px solid #374151; /* Ligne de séparation subtile */
-            padding-bottom: 0.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 1rem;
-        }
-
-        .mega-column ul li a {
-            color: #d1d5db; /* Texte gris clair */
-            padding: 0.4rem 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: color var(--transition-duration), padding-left var(--transition-duration);
-        }
-
-        .mega-column ul li a:hover {
-            color: var(--color-white);
-            padding-left: 5px;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translate(-50%, -10px); }
-            to { opacity: 1; transform: translate(-50%, 0); }
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            height: 85vh; /* Légèrement ajusté */
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa') center/cover no-repeat fixed;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--color-white);
+            opacity: 0;
+            position: absolute; 
+            width: 90%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
-            flex-direction: column;
-            padding: 0 1.5rem;
+            transition: opacity 0.5s ease-in-out;
+            padding: 1rem; /* Assurer un padding même pour les items masqués */
+        }
+        .text-carousel-item.active {
+            display: block;
+            opacity: 1;
         }
 
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.9);
-            margin-bottom: 0.5rem;
-        }
-
-        .hero p {
-            font-size: 1.6rem;
-            color: var(--color-accent);
-            font-weight: 300;
-            margin-bottom: 2rem;
-        }
-
-        .btn-live {
-            background-color: var(--color-live);
-            color: var(--color-white);
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all var(--transition-duration);
-            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-live:hover {
-            background-color: #cc0000;
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.6);
-        }
-
-        /* ===== SECTION ACTUALITÉS & PROGRAMME TV (Cartes) ===== */
-        section {
-            padding: 6rem 0; /* Padding accru */
-        }
-
-        .news-grid, .programme-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Cartes encore plus larges */
-            gap: 2rem;
-        }
-
-        .news-card {
-            background-color: var(--color-white);
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
-            cursor: pointer;
-            border-top: 5px solid var(--color-accent); /* Ajout d'une bordure supérieure distinctive */
-        }
-
-        .news-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        }
-
-        .news-card img {
-            width: 100%;
-            height: 220px; /* Hauteur accrue */
-            object-fit: cover;
-        }
-
-        .news-card-content {
-            padding: 1.5rem;
-        }
-
-        .news-card-content h3 {
-            color: var(--color-dark);
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        .news-card-content p {
-            color: #555;
-            font-size: 1rem;
-            line-height: 1.6;
+        /* Hauteur des carrousels (Standardisé) */
+        .text-carousel-container {
+            height: 24rem; /* h-96 */
+            max-height: 400px;
         }
         
-        .read-more {
-            display: inline-block;
-            margin-top: 10px;
-            color: var(--color-accent);
-            font-weight: 600;
-            transition: color var(--transition-duration);
+        /* Style pour les sections (Uniformité) */
+        .section-heading-icon {
+            color: var(--color-secondary);
         }
-        
-        .read-more:hover {
-            color: var(--color-dark);
+        .section-heading-border {
+            border-bottom: 2px solid var(--color-secondary);
         }
-
-        /* Style de la section Programme TV */
-        #programme {
-            background-color: #f1f5f9; /* Couleur de fond différente pour la rupture */
-        }
-
-        .programme-item {
-            background-color: var(--color-white);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            border-left: 5px solid var(--color-dark);
-        }
-
-        .time {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-accent);
-            flex-shrink: 0;
-        }
-
-        .details h4 {
-            font-size: 1.2rem;
-            color: var(--color-dark);
-            margin-bottom: 0.2rem;
-        }
-
-        .details p {
-            color: #555;
-            font-size: 0.95rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--color-dark);
-            color: #94a3b8;
-            padding: 2.5rem 0;
-            font-size: 0.95rem;
-        }
-        
-        footer .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        footer a {
-            color: var(--color-accent);
-        }
-        
-        /* Responsive amélioré */
-        @media (max-width: 1024px) {
-            .mega-menu {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 900px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            .hero p {
-                font-size: 1.4rem;
-            }
-            .mega-menu {
-                grid-template-columns: 1fr;
-            }
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .btn-live {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-            .programme-item {
-                flex-direction: column;
-                align-items: flex-start;
-                text-align: left;
-            }
+        .section-card-border-top {
+            border-top: 4px solid var(--color-primary);
         }
     </style>
 </head>
 
-<body>
-    <header>
-        <div class="container">
-            <nav class="navbar" role="navigation" aria-label="Menu principal">
-                <a href="#" class="logo">Mikuba TV</a>
-                <div class="burger" id="burger" role="button" aria-controls="menu" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-blue-900 text-white shadow sticky top-0 z-50" role="navigation" aria-label="Menu principal de la Mairie">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center py-4">
+            <a href="index.html" class="flex items-center text-2xl font-bold space-x-2" aria-label="Accueil du Portail de la Mairie de Kolwezi">
+                <i class="fa-solid fa-landmark text-yellow-400"></i>
+                <span>Mairie de **Kolwezi**</span>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 font-medium" role="menubar">
+                <li><a href="index.html" class="flex items-center hover:text-yellow-400 transition duration-150" role="menuitem"><i class="fa-solid fa-house mr-1"></i> Accueil</a></li>
+                <li class="relative" role="none"><button data-dropdown-toggle="menuServices" class="flex items-center hover:text-yellow-400 transition duration-150" role="menuitem" aria-expanded="false" aria-controls="menuServices"><i class="fa-solid fa-gear mr-1"></i> Services<i class="fa-solid fa-chevron-down ml-2 text-xs"></i></button><div id="menuServices" class="hidden absolute z-10 mt-2 bg-white text-gray-800 shadow-xl rounded-lg w-64 ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="menuServices-button"><ul class="py-2">
+                    <li><a href="etat_civil.html" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-id-card mr-2"></i> État civil</a></li>
+                    <li><a href="urbanisme.html" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-city mr-2"></i> Urbanisme & Permis</a></li>
+                    <li><a href="sante_publique.html" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-hospital mr-2"></i> Santé publique</a></li>
+                    <li><a href="securite_police.html" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-shield-halved mr-2"></i> Sécurité & Police</a></li>
+                    <li><a href="environnement.html" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-recycle mr-2"></i> Environnement & Propreté</a></li>
+                    <li class="relative group" role="none">
+                        <a href="finances.html" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                            <span><i class="fa-solid fa-sack-dollar mr-2"></i> Finances</span>
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </a>
+                        <div class="hidden group-hover:block absolute left-full top-0 bg-white text-gray-800 shadow-xl rounded-lg w-56 ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical">
+                            <ul class="py-2">
+                                <li><a href="impots_taxes.html" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-money-bill mr-2"></i> Impôts & Taxes locales</a></li>
+                                <li><a href="budget_municipal.html" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-chart-line mr-2"></i> Budget municipal</a></li>
+                                <li><a href="recette_depense.html" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-coins mr-2"></i> Recettes & Dépenses</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul></div></li>
+                <li class="relative" role="none"><button data-dropdown-toggle="menuProjets" class="flex items-center hover:text-yellow-400 transition duration-150" role="menuitem" aria-expanded="false" aria-controls="menuProjets"><i class="fa-solid fa-building mr-1"></i> Projets<i class="fa-solid fa-chevron-down ml-2 text-xs"></i></button><div id="menuProjets" class="hidden absolute z-10 mt-2 bg-white text-gray-800 shadow-xl rounded-lg w-60 ring-1 ring-black ring-opacity-5" role="menu"><ul class="py-2"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-road mr-2"></i> Infrastructures routières</a></li><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-bolt mr-2"></i> Énergie & Éclairage</a></li><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-tree mr-2"></i> Espaces verts</a></li><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-school mr-2"></i> Infrastructures scolaires</a></li></ul></div></li>
+                <li class="relative" role="none"><button data-dropdown-toggle="menuActu" class="flex items-center hover:text-yellow-400 transition duration-150" role="menuitem" aria-expanded="false" aria-controls="menuActu"><i class="fa-solid fa-newspaper mr-1"></i> Actualités<i class="fa-solid fa-chevron-down ml-2 text-xs"></i></button><div id="menuActu" class="hidden absolute z-10 mt-2 bg-white text-gray-800 shadow-xl rounded-lg w-56 ring-1 ring-black ring-opacity-5" role="menu"><ul class="py-2"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-bullhorn mr-2"></i> Communiqués officiels</a></li><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-file-alt mr-2"></i> Rapports publics</a></li><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-book-open mr-2"></i> Publications</a></li></ul></div></li>
+                <li class="relative" role="none"><button data-dropdown-toggle="menuEvents" class="flex items-center hover:text-yellow-400 transition duration-150" role="menuitem" aria-expanded="false" aria-controls="menuEvents"><i class="fa-solid fa-calendar-days mr-1"></i> Événements<i class="fa-solid fa-chevron-down ml-2 text-xs"></i></button><div id="menuEvents" class="hidden absolute z-10 mt-2 bg-white text-gray-800 shadow-xl rounded-lg w-56 ring-1 ring-black ring-opacity-5" role="menu"><ul class="py-2"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-flag mr-2"></i> Cérémonies officielles</a></li><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-masks-theater mr-2"></i> Fêtes locales</a></li><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-users mr-2"></i> Rencontres citoyennes</a></li></ul></div></li>
+                <li class="relative" role="none"><button data-dropdown-toggle="menuAbout" class="flex items-center hover:text-yellow-400 transition duration-150" role="menuitem" aria-expanded="false" aria-controls="menuAbout"><i class="fa-solid fa-circle-info mr-1"></i> À propos<i class="fa-solid fa-chevron-down ml-2 text-xs"></i></button><div id="menuAbout" class="hidden absolute z-10 mt-2 bg-white text-gray-800 shadow-xl rounded-lg w-56 ring-1 ring-black ring-opacity-5" role="menu"><ul class="py-2"><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-landmark-dome mr-2"></i> Histoire de la ville</a></li><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-sitemap mr-2"></i> Organisation municipale</a></li><li><a href="#" class="block px-4 py-2 hover:bg-gray-100 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-envelope mr-2"></i> Contact</a></li></ul></div></li>
+            </ul>
+        </div>
+        </nav>
+
+    <main class="max-w-7xl mx-auto py-12 px-6 space-y-16">
+        
+        <section id="mot-du-maire-photos" class="grid lg:grid-cols-2 gap-8 bg-white p-6 rounded-xl shadow-2xl border-t-4 border-yellow-400" role="region" aria-labelledby="mot-du-maire-heading">
+            
+            <div>
+                <h2 id="mot-du-maire-heading" class="text-3xl font-extrabold text-blue-900 mb-4 border-b pb-2 flex items-center">
+                    <i class="fa-solid fa-camera text-yellow-500 mr-3 section-heading-icon"></i> Le Maire en Images
+                </h2>
+                <div id="carousel-maire-images" class="relative w-full" data-carousel="slide" data-carousel-sync="#carousel-maire-text" data-carousel-interval="7000">
+                    <div class="relative h-96 overflow-hidden rounded-lg shadow-lg">
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="jcq4.jpeg" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Photo du Maire lors d'un événement" loading="lazy">
+                        </div>
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="jcq1.jpeg" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Maire en discussion avec des citoyens" loading="lazy">
+                        </div>
+                        </div>
+                    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev aria-label="Image précédente">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-900/30 group-hover:bg-blue-900/50 transition duration-150"><svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/></svg><span class="sr-only">Previous</span></span>
+                    </button>
+                    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next aria-label="Image suivante">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-900/30 group-hover:bg-blue-900/50 transition duration-150"><svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg><span class="sr-only">Next</span></span>
+                    </button>
+                    <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2" data-carousel-indicators>
+                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-blue-500" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-blue-500" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-blue-500" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-blue-500" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                    </div>
                 </div>
-                
-                <ul class="menu" id="menu">
-                    <li><a href="#" class="active">Accueil</a></li>
+            </div>
 
-                    <li id="menu-apropos">
-                        <a href="#" aria-expanded="false">À propos <i class="fas fa-caret-down"></i></a>
-                        <div class="mega-menu" aria-hidden="true">
-                            <div class="mega-column">
-                                <h4>Identité</h4>
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-landmark"></i> Historique</a></li>
-                                    <li><a href="#"><i class="fas fa-bullseye"></i> Mission & Vision</a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i> Valeurs</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-column">
-                                <h4>Équipe</h4>
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-microphone"></i> Journalistes</a></li>
-                                    <li><a href="#"><i class="fas fa-camera"></i> Techniciens</a></li>
-                                    <li><a href="#"><i class="fas fa-user-tie"></i> Direction</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-column">
-                                <h4>Charte & Qualité</h4>
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-scroll"></i> Charte éditoriale</a></li>
-                                    <li><a href="#"><i class="fas fa-certificate"></i> Distinctions</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-column">
-                                <h4>Réseaux</h4>
-                                <ul>
-                                    <li><a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> YouTube</a></li>
-                                    <li><a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a></li>
-                                    <li><a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i> X (Twitter)</a></li>
-                                </ul>
-                            </div>
+            <div>
+                <h2 class="text-3xl font-extrabold text-blue-900 mb-4 border-b pb-2 flex items-center">
+                    <i class="fa-solid fa-microphone-alt text-blue-600 mr-3"></i> Mot du Maire
+                </h2>
+                <div id="carousel-maire-text" class="relative w-full text-carousel-container bg-gray-50 rounded-lg p-6 shadow-inner flex items-center justify-center overflow-hidden" aria-live="polite">
+                    
+                    <div class="text-carousel-item active p-4" data-index="0">
+                        <p class="text-lg text-gray-700 mb-3 leading-relaxed font-medium">
+                            Chers concitoyens de Kolwezi, c'est avec une grande fierté que je vous accueille sur notre nouveau portail numérique. Cet outil est le reflet de notre engagement pour une **transparence** totale et une **administration de proximité**.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed italic">
+                            Nous œuvrons chaque jour pour améliorer nos infrastructures et stimuler notre économie locale. Votre participation et vos suggestions sont essentielles pour bâtir la Kolwezi moderne que nous méritons tous.
+                        </p>
+                        <p class="text-right mt-2">
+                            <span class="block text-lg font-semibold text-gray-800">Me Jacques MASENGO KINDELE</span>
+                            <span class="block text-sm text-gray-800">Maire de Kolwezi</span>
+                        </p>
+                    </div>
+
+                    <div class="text-carousel-item p-4" data-index="1">
+                        <p class="text-lg text-gray-700 mb-3 leading-relaxed font-medium">
+                            La bonne gouvernance et l'inclusion sont au cœur de ma vision. Chaque décision prise vise à garantir un environnement sain et sécurisé, où les opportunités sont équitablement réparties pour nos jeunes.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed italic">
+                            Je vous invite à consulter régulièrement les sections Projets et Actualités pour suivre l'avancement des chantiers qui transforment notre ville. Ensemble, relevons les défis et célébrons nos succès.
+                        </p>
+                        <p class="text-right mt-2">
+                            <span class="block text-lg font-semibold text-gray-800">Me Jacques MASENGO KINDELE</span>
+                            <span class="block text-sm text-gray-800">Maire de Kolwezi</span>
+                        </p>
+                    </div>
+
+                    <div class="text-carousel-item p-4" data-index="2">
+                        <p class="text-lg text-gray-700 mb-3 leading-relaxed font-medium">
+                            L'ère numérique nous offre de nouvelles façons de communiquer. Notre objectif est de simplifier vos démarches administratives, de l'état civil aux permis d'urbanisme, en favorisant l'accès aux services en ligne.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed italic">
+                            Votre bien-être est notre priorité absolue. Nous mettons tout en œuvre pour renforcer la santé publique et garantir une éducation de qualité dans toute l'étendue de la commune.
+                        </p>
+                        <p class="text-right mt-2">
+                            <span class="block text-lg font-semibold text-gray-800">Me Jacques MASENGO KINDELE</span>
+                            <span class="block text-sm text-gray-800">Maire de Kolwezi</span>
+                        </p>
+                    </div>
+                    
+                    <div class="text-carousel-item p-4" data-index="3">
+                        <p class="text-lg text-gray-700 mb-3 leading-relaxed font-medium">
+                            Kolwezi est une ville d'avenir, bâtie sur le courage et la détermination de ses habitants. Nous sommes fiers de notre héritage et résolument tournés vers un futur de **prospérité collective**.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed italic">
+                            Que ce site devienne votre plateforme de référence pour tout savoir sur la vie municipale. Au plaisir de vous rencontrer et d'échanger pour le progrès de Kolwezi.
+                        </p>
+                        <p class="text-right mt-2">
+                            <span class="block text-lg font-semibold text-gray-800">Me Jacques MASENGO KINDELE</span>
+                            <span class="block text-sm text-gray-800">Maire de Kolwezi</span>
+                        </p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gray-300">
+
+        <section id="kolwezi-en-detail" class="grid lg:grid-cols-2 gap-8 bg-white p-6 rounded-xl shadow-2xl border-t-4 border-blue-600" role="region" aria-labelledby="kolwezi-detail-heading">
+            
+            <div>
+                <h2 id="kolwezi-detail-heading" class="text-3xl font-extrabold text-blue-900 mb-4 border-b pb-2 flex items-center">
+                    <i class="fa-solid fa-city text-blue-600 mr-3 section-heading-icon"></i> Kolwezi : Notre Ville en Images
+                </h2>
+                <div id="carousel-ville-images" class="relative w-full" data-carousel="slide" data-carousel-sync="#carousel-ville-text" data-carousel-interval="7000">
+                    <div class="relative h-96 overflow-hidden rounded-lg shadow-lg">
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="kzi1.png" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Vue panoramique de Kolwezi, la ville minière au cœur du Lualaba." loading="lazy">
                         </div>
-                    </li>
-
-                    <li id="menu-programmes">
-                        <a href="#programme" aria-expanded="false">Programmes <i class="fas fa-caret-down"></i></a>
-                        <div class="mega-menu" style="grid-template-columns: repeat(2, 1fr);" aria-hidden="true">
-                            <div class="mega-column">
-                                <h4>Catégories</h4>
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-chart-line"></i> Infos & Actu</a></li>
-                                    <li><a href="#"><i class="fas fa-users"></i> Société & Culture</a></li>
-                                    <li><a href="#"><i class="fas fa-futbol"></i> Sport</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-column">
-                                <h4>Émissions phares</h4>
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-newspaper"></i> Journal de Kolwezi</a></li>
-                                    <li><a href="#"><i class="fas fa-comments"></i> Débat du Lualaba</a></li>
-                                    <li><a href="#"><i class="fas fa-book-open"></i> Mikuba Magazine</a></li>
-                                </ul>
-                            </div>
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="kzi2.png" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Une rue commerçante animée de Kolwezi, reflétant l'activité économique." loading="lazy">
                         </div>
-                    </li>
+                        </div>
+                    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev aria-label="Image précédente">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-900/30 group-hover:bg-blue-900/50 transition duration-150"><svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/></svg><span class="sr-only">Previous</span></span>
+                    </button>
+                    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next aria-label="Image suivante">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-900/30 group-hover:bg-blue-900/50 transition duration-150"><svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg><span class="sr-only">Next</span></span>
+                    </button>
+                    <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2" data-carousel-indicators>
+                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-blue-500" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-blue-500" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-blue-500" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-blue-500" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-blue-500" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+                    </div>
+                </div>
+            </div>
 
-                    <li><a href="#actualites">Actualités</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#" class="btn-live-menu"><i class="fas fa-signal"></i> Live</a></li>
+            <div>
+                <h2 class="text-3xl font-extrabold text-blue-900 mb-4 border-b pb-2 flex items-center">
+                    <i class="fa-solid fa-info-circle text-yellow-500 mr-3 section-heading-icon"></i> Découvrez Kolwezi
+                </h2>
+                <div id="carousel-ville-text" class="relative w-full text-carousel-container bg-gray-50 rounded-lg p-6 shadow-inner flex items-center justify-center overflow-hidden" aria-live="polite">
+                    
+                    <div class="text-carousel-item active p-4" data-index="0">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Kolwezi, Capitale du Lualaba</h3>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-2">
+                            Vue imprenable de Kolwezi, la ville minière au cœur du Lualaba. Son dynamisme urbain en fait une métropole en pleine croissance.
+                        </p>
+                        <p class="text-gray-600 italic text-sm">
+                            Le développement des infrastructures est notre priorité pour une ville plus connectée et moderne.
+                        </p>
+                    </div>
+
+                    <div class="text-carousel-item p-4" data-index="1">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Le Cœur Battant de la Ville</h3>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-2">
+                            Nos rues animées témoignent de l'effervescence et de la vitalité. Un mélange harmonieux de modernité et de tradition qui invite à l'exploration.
+                        </p>
+                        <p class="text-gray-600 italic text-sm">
+                            Le commerce local est soutenu par la Mairie pour créer plus d'emplois et de richesse.
+                        </p>
+                    </div>
+
+                    <div class="text-carousel-item p-4" data-index="2">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Marchés et Communautés</h3>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-2">
+                            Plongez au cœur de nos marchés vibrants, véritables lieux de rencontre et d'échange, où la culture et l'hospitalité s'expriment.
+                        </p>
+                        <p class="text-gray-600 italic text-sm">
+                            Des efforts sont faits pour la salubrité et la sécurité de tous les espaces publics.
+                        </p>
+                    </div>
+                    <div class="text-carousel-item p-4" data-index="3">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Vers un Avenir Meilleur</h3>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-2">
+                            Admirez nos nouvelles infrastructures, symboles de l'engagement de la Mairie pour un développement durable.
+                        </p>
+                        <p class="text-gray-600 italic text-sm">
+                            Chaque projet est un pas de plus vers une meilleure qualité de vie pour tous les Kolweziens.
+                        </p>
+                    </div>
+                    <div class="text-carousel-item p-4" data-index="4">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Vie de Quartier Sereine</h3>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-2">
+                            Découvrez la tranquillité de nos quartiers résidentiels, où la communauté et le bien-être sont au premier plan.
+                        </p>
+                        <p class="text-gray-600 italic text-sm">
+                            La Mairie s'investit pour garantir un environnement agréable et sûr pour toutes les familles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gray-300">
+
+        <section id="actualites-lualaba" class="bg-white p-6 md:p-10 rounded-xl shadow-2xl border-t-4 border-red-500" role="region" aria-labelledby="actu-heading">
+            <h2 id="actu-heading" class="text-3xl font-extrabold text-blue-900 text-center mb-8 border-b-2 border-red-500 pb-2 flex items-center justify-center section-heading-border">
+                <i class="fa-solid fa-bullhorn text-red-600 mr-3 section-heading-icon"></i> Les Dernières **Actualités** du Lualaba
+            </h2>
+            <p class="text-center text-gray-600 mb-10">Informations importantes, décrets provinciaux et événements majeurs dans la province du Lualaba.</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-yellow-700 hover:shadow-xl transition duration-300 section-card-border-top">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-handshake mr-2 text-yellow-600"></i> Nouvelle loi sur l'investissement</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Le Gouvernorat a promulgué une nouvelle législation visant à faciliter l'établissement et la protection des investissements étrangers dans le secteur minier et agricole.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm transition" aria-label="Lire le décret sur la nouvelle loi d'investissement">
+                        Lire le décret
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-blue-700 hover:shadow-xl transition duration-300 section-card-border-top">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-road mr-2 text-blue-600"></i> Réhabilitation de l'axe Kolwezi-Dilolo</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Les travaux de grande envergure pour la réhabilitation de l'axe routier stratégique reliant Kolwezi à la frontière angolaise progressent conformément au calendrier établi.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm transition" aria-label="Voir le rapport d'étape de la réhabilitation routière">
+                        Voir le rapport d'étape
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-green-700 hover:shadow-xl transition duration-300 section-card-border-top">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-hospital mr-2 text-green-600"></i> Inauguration d'un Hôpital Général</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Cérémonie d'inauguration du nouvel Hôpital Général de Référence, financé par la province, renforçant l'accès aux soins de qualité pour la population.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm transition" aria-label="Voir la galerie de l'inauguration de l'hôpital">
+                        Galerie de l'événement
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="#" class="inline-block px-6 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-lg hover:bg-red-700 transition duration-300" role="button">Toutes les Actualités du Lualaba &rarr;</a>
+            </div>
+        </section>
+
+        <hr class="border-gray-300">
+
+        <section id="projets-phares" class="bg-white p-6 md:p-10 rounded-xl shadow-2xl border-t-4 border-red-500" role="region" aria-labelledby="projets-heading">
+            <h2 id="projets-heading" class="text-3xl font-extrabold text-blue-900 text-center mb-8 border-b-2 border-red-500 pb-2 flex items-center justify-center section-heading-border">
+                <i class="fa-solid fa-hammer text-red-600 mr-3 section-heading-icon"></i> Nos **Projets d'Avenir** de Kolwezi
+            </h2>
+            <p class="text-center text-gray-600 mb-10">Découvrez les initiatives clés qui façonnent l'avenir de notre ville.</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-blue-700 hover:shadow-xl transition duration-300 section-card-border-top">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-road mr-2 text-blue-600"></i> Rénovation Urbaine</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Programme de réhabilitation des axes routiers principaux et de l'éclairage public pour améliorer la mobilité et la sécurité nocturne.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm transition" aria-label="Détails du projet de Rénovation Urbaine">
+                        Détails du projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-green-700 hover:shadow-xl transition duration-300 section-card-border-top">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-hand-holding-water mr-2 text-green-600"></i> Accès à l'Eau Potable</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Construction de nouvelles stations de pompage et d'un réseau de distribution moderne pour garantir un accès universel à l'eau potable.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm transition" aria-label="Détails du projet d'accès à l'Eau Potable">
+                        Détails du projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-yellow-700 hover:shadow-xl transition duration-300 section-card-border-top">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-graduation-cap mr-2 text-yellow-600"></i> Éducation pour Tous</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Lancement du programme de construction et de modernisation de plusieurs écoles primaires et secondaires dans les quartiers périphériques de la ville.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm transition" aria-label="Détails du projet Éducation pour Tous">
+                        Détails du projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="#" class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300" role="button">Voir tous les Projets &rarr;</a>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-blue-900 text-white mt-16 pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 border-b border-blue-700 pb-8">
+            
+            <div class="space-y-4">
+                <a href="#" class="flex items-center text-2xl font-bold space-x-2">
+                    <i class="fa-solid fa-landmark text-yellow-400"></i>
+                    <span>Mairie de **Kolwezi**</span>
+                </a>
+                <p class="text-sm text-gray-300">
+                    Au service des Kolweziens. Pour une administration moderne, transparente et proche de ses citoyens.
+                </p>
+                <div class="flex space-x-4 text-lg">
+                    <a href="#" class="hover:text-yellow-400 transition" aria-label="Page Facebook de la Mairie"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-yellow-400 transition" aria-label="Compte X (Twitter) de la Mairie"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-yellow-400 transition" aria-label="Chaîne Youtube de la Mairie"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-yellow-400">Services</h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="#" class="hover:text-yellow-400 transition"><i class="fa-solid fa-id-card mr-2"></i> État civil</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition"><i class="fa-solid fa-city mr-2"></i> Permis d'Urbanisme</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition"><i class="fa-solid fa-sack-dollar mr-2"></i> Taxes Locales</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition"><i class="fa-solid fa-hospital mr-2"></i> Santé Publique</a></li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero" aria-label="Présentation et accès au direct">
-        <h1>MIKUBA TV</h1>
-        <p>Le Reflet du Lualaba : Information, Culture, Proximité</p>
-        <a href="#" class="btn-live" role="button" aria-label="Accéder au flux en direct">
-            <i class="fas fa-tv"></i> REGARDER EN DIRECT
-        </a>
-    </section>
-
-    <section id="programme" role="region" aria-labelledby="programme-heading">
-        <div class="container">
-            <h2 class="section-heading" id="programme-heading">📅 Programme TV du Jour</h2>
-            <div class="programme-grid">
-                <div class="programme-item">
-                    <div class="time">06:00</div>
-                    <div class="details">
-                        <h4>Réveil Matinal Lualaba</h4>
-                        <p>Le flash info et la revue de presse. (Durée: 60min)</p>
-                    </div>
-                </div>
-                <div class="programme-item">
-                    <div class="time">07:00</div>
-                    <div class="details">
-                        <h4>Kolwezi Matin (Live)</h4>
-                        <p>Talk-show matinal avec invités politiques et sociétaux. (Durée: 90min)</p>
-                    </div>
-                </div>
-                <div class="programme-item">
-                    <div class="time">13:00</div>
-                    <div class="details">
-                        <h4>Journal du Midi</h4>
-                        <p>Toutes les nouvelles locales et provinciales. (Durée: 30min)</p>
-                    </div>
-                </div>
-                <div class="programme-item">
-                    <div class="time">20:00</div>
-                    <div class="details">
-                        <h4>Débat du Lualaba</h4>
-                        <p>Analyse approfondie de l'actualité avec des experts. (Durée: 60min)</p>
-                    </div>
-                </div>
-                </div>
-        </div>
-    </section>
-
-    <section id="actualites" role="region" aria-labelledby="news-heading">
-        <div class="container">
-            <h2 class="section-heading" id="news-heading">📰 Dernières Actualités</h2>
-            <div class="news-grid" id="newsGrid">
-                <p class="no-news" id="loading-message">Chargement des actualités...</p>
             </div>
-        </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Mikuba TV. Tous droits réservés.</p>
-                <nav aria-label="Liens légaux et techniques">
-                    <a href="#">Politique de Confidentialité</a> | 
-                    <a href="#">Mentions Légales</a> | 
-                    <a href="mailto:gamaliel.kalambo@email.com">Contact Développeur</a>
-                </nav>
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-yellow-400">À Propos</h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="#" class="hover:text-yellow-400 transition"><i class="fa-solid fa-landmark-dome mr-2"></i> Histoire de la Ville</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition"><i class="fa-solid fa-file-alt mr-2"></i> Rapports Publics</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition"><i class="fa-solid fa-sitemap mr-2"></i> Organigramme</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition"><i class="fa-solid fa-envelope mr-2"></i> Nous Contacter</a></li>
+                </ul>
             </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-yellow-400">Contact</h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><i class="fa-solid fa-map-marker-alt mr-2"></i> Avenue de la Mairie, Kolwezi, Lualaba</li>
+                    <li><i class="fa-solid fa-phone mr-2"></i> <a href="tel:+243810000000" class="hover:text-yellow-400 transition">+243 810 000 000</a></li>
+                    <li><i class="fa-solid fa-envelope mr-2"></i> <a href="mailto:contact@mairie-kolwezi.cd" class="hover:text-yellow-400 transition">contact@mairie-kolwezi.cd</a></li>
+                    <li><i class="fa-solid fa-clock mr-2"></i> Lun-Ven: 8h00 - 16h00</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 pt-4 text-center text-sm text-gray-500">
+            &copy; 2025 Mairie de Kolwezi. Tous droits réservés. <a href="#" class="text-yellow-400 hover:text-white transition">Mentions Légales</a> | Développé par **[Votre Nom]**.
         </div>
     </footer>
 
-    <script type="module">
-        // 1. Menu Responsive (Ajout de l'accessibilité ARIA)
-        const burger = document.getElementById('burger');
-        const menu = document.getElementById('menu');
-        
-        const toggleMenu = () => {
-            const isExpanded = menu.classList.toggle('show');
-            burger.querySelector('i').classList.toggle('fa-bars');
-            burger.querySelector('i').classList.toggle('fa-times');
-            burger.setAttribute('aria-expanded', isExpanded);
-            menu.querySelectorAll('.mega-menu').forEach(mm => mm.setAttribute('aria-hidden', !isExpanded));
-        };
-
-        burger.addEventListener('click', toggleMenu);
-        
-        // Cacher le menu après le clic sur un lien non-méga-menu (mobile UX)
-        menu.querySelectorAll('a').forEach(link => {
-             link.addEventListener('click', () => {
-                 // Ne cache que si la fenêtre est petite ET que le lien n'est pas dans un mega-menu parent direct.
-                 if (window.innerWidth <= 900 && !link.closest('.mega-menu') && link.parentElement.id === '') {
-                     toggleMenu();
-                 }
-             });
-        });
-
-        // 2. Intégration Firebase (Logique optimisée)
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
-
-        // IMPORTANT : Dans un environnement réel, ces clés seraient dans un fichier .env ou un service de secrets.
-        const firebaseConfig = {
-            apiKey: "AIzaSyAL0bhwfdSfA_O5eJI2_T9qZmkR3fCShTg",
-            authDomain: "projet-mikuba.firebaseapp.com",
-            projectId: "projet-mikuba",
-            storageBucket: "projet-mikuba.firebasestorage.app",
-            messagingSenderId: "551330061877",
-            appId: "1:551330061877:web:4368662f8f97f7d85e1b7c"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        async function chargerActualites() {
-            const newsGrid = document.getElementById('newsGrid');
-            const loadingMessage = document.getElementById('loading-message');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
             
-            if (loadingMessage) loadingMessage.style.display = 'block';
-
-            try {
-                const querySnapshot = await getDocs(collection(db, "actualites"));
-                let htmlContent = '';
-                let newsCount = 0;
+            /**
+             * Fonction de synchronisation des carrousels de texte avec les carrousels d'images Flowbite.
+             * @param {string} imageCarouselId - L'ID de la div du carrousel d'images Flowbite (ex: 'carousel-maire-images').
+             * @param {string} textCarouselId - L'ID de la div conteneur du carrousel de texte (ex: 'carousel-maire-text').
+             */
+            function syncCarousels(imageCarouselId, textCarouselId) {
+                const imageCarouselElement = document.getElementById(imageCarouselId);
+                const textContainer = document.getElementById(textCarouselId);
                 
-                querySnapshot.forEach((doc) => {
-                    const data = doc.data();
-                    const imageUrl = data.image || 'https://via.placeholder.com/400x220?text=Mikuba+TV+Actu';
-                    
-                    htmlContent += `
-                        <article class="news-card" tabindex="0" onclick="window.location.href='/actualite/${doc.id}'">
-                            <img src="${imageUrl}" alt="Illustration de l'article : ${data.titre}">
-                            <div class="news-card-content">
-                                <h3>${data.titre}</h3>
-                                <p>${data.contenu ? data.contenu.substring(0, 120) : 'Aucun aperçu disponible'}...</p>
-                                <span class="read-more">Lire l'article <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </article>`;
-                    newsCount++;
-                });
-
-                if (loadingMessage) loadingMessage.remove();
-
-                if (newsCount > 0) {
-                    newsGrid.innerHTML = htmlContent;
-                } else {
-                    newsGrid.innerHTML = '<p class="no-news">😔 Aucune actualité n\'est disponible pour le moment.</p>';
+                if (!imageCarouselElement || !textContainer) {
+                    console.warn(`Un des carrousels pour ${imageCarouselId}/${textCarouselId} n'a pas été trouvé.`);
+                    return;
                 }
 
-            } catch (error) {
-                console.error("Erreur Firestore : ", error);
-                if (loadingMessage) loadingMessage.remove();
-                newsGrid.innerHTML = '<p class="no-news">Une erreur s\'est produite. Le service d\'actualités est temporairement indisponible.</p>';
-            }
-        }
+                const textItems = textContainer.querySelectorAll('.text-carousel-item');
+                
+                // Observer les changements d'attributs de Flowbite sur le carrousel d'images
+                const observer = new MutationObserver((mutationsList, observer) => {
+                    for (const mutation of mutationsList) {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'data-carousel-active-item') {
+                            const newActiveIndex = parseInt(imageCarouselElement.getAttribute('data-carousel-active-item'), 10);
+                            
+                            // Mettre à jour les classes pour le carrousel de texte
+                            textItems.forEach((item, index) => {
+                                item.classList.remove('active');
+                                if (index === newActiveIndex) {
+                                    item.classList.add('active');
+                                }
+                            });
+                        }
+                    }
+                });
 
-        document.addEventListener('DOMContentLoaded', chargerActualites);
+                // Configuration de l'observateur: surveiller uniquement l'attribut 'data-carousel-active-item'
+                observer.observe(imageCarouselElement, { attributes: true, attributeFilter: ['data-carousel-active-item'] });
+
+                // Initialisation: s'assurer que le premier élément est actif au chargement
+                const initialActiveIndex = parseInt(imageCarouselElement.getAttribute('data-carousel-active-item') || 0, 10);
+                textItems.forEach((item, index) => {
+                    item.classList.remove('active');
+                    if (index === initialActiveIndex) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+
+            // Lancer la synchronisation pour les deux paires de carrousels
+            syncCarousels('carousel-maire-images', 'carousel-maire-text');
+            syncCarousels('carousel-ville-images', 'carousel-ville-text');
+        });
     </script>
 </body>
 </html>
