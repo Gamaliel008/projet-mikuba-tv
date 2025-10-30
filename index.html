@@ -4,22 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mikuba TV – Portail Officiel | Kolwezi, Lualaba 📺</title>
-
+    <meta name="description" content="Mikuba TV : La voix du Lualaba. Retrouvez le direct, les dernières actualités et le programme TV de votre chaîne locale à Kolwezi." />
+    
+    <meta property="og:title" content="Mikuba TV" />
+    <meta property="og:description" content="Information, culture et innovation audiovisuelle au Lualaba." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.mikubatv.cd" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
-        /* Variables CSS pour les couleurs thématiques */
+        /* CSS Custom Properties (Variables) pour une maintenance aisée */
         :root {
-            --color-dark: #0b0b0c; /* Noir très sombre */
-            --color-accent: #ffcc00; /* Jaune/Or (Couleur du logo) */
-            --color-primary-text: #222;
-            --color-light: #fff;
-            --color-bg-light: #f8f9fa;
+            --color-dark: #0f172a; /* Bleu nuit sombre (plus moderne que le noir pur) */
+            --color-accent: #fcd34d; /* Jaune/Or doux (plus premium) */
+            --color-live: #ef4444; /* Rouge vif pour l'alerte 'Live' */
+            --color-primary-text: #1f2937;
+            --color-bg-light: #f9fafb;
+            --color-white: #ffffff;
+            --transition-duration: 0.3s;
         }
 
+        /* Réinitialisation et base */
         * {
             margin: 0;
             padding: 0;
@@ -33,197 +42,27 @@
             color: var(--color-primary-text);
         }
 
-        /* Conteneur principal pour centrer le contenu */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
         .container {
-            max-width: 1200px;
+            max-width: 1280px; /* Légèrement plus large pour les grands écrans */
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 1.5rem; /* Padding accru */
         }
         
-        /* ===== HEADER / NAVBAR ===== */
-        header {
-            background-color: var(--color-dark);
-            position: sticky;
-            top: 0;
-            z-index: 1000; /* Augmenté légèrement */
-            box-shadow: 0 3px 15px rgba(0,0,0,0.5);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0; /* Padding ajusté pour le container */
-        }
-
-        .logo {
-            font-size: 2rem; /* Plus grand */
-            font-weight: 900;
-            color: var(--color-accent);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .menu {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem; /* Plus d'espace */
-        }
-
-        .menu li {
-            position: relative;
-        }
-
-        .menu a {
-            color: var(--color-light);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 5px 0;
-            position: relative;
-        }
-        
-        /* Effet de survol sur la navigation */
-        .menu a:hover, .menu a.active {
-            color: var(--color-accent);
-        }
-        
-        .menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background-color: var(--color-accent);
-            transition: width 0.3s ease-out;
-        }
-
-        .menu a:hover::after, .menu a.active::after {
-            width: 100%;
-        }
-
-
-        /* ===== MEGA MENU AMÉLIORÉ ===== */
-        .mega-menu {
-            position: absolute;
-            left: 50%; /* Centrage du mega-menu */
-            transform: translateX(-50%);
-            top: 100%;
-            width: 100vw;
-            max-width: 1200px; /* Limiter la largeur maximale */
-            background: rgba(17, 17, 17, 0.95); /* Semi-transparent */
-            color: var(--color-light);
-            display: none;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            padding: 2rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.7);
-            border-top: 3px solid var(--color-accent);
-        }
-
-        .menu > li:hover > .mega-menu { /* Ciblage plus précis */
-            display: grid;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        .mega-column h4 {
-            margin-bottom: 1rem;
-            color: var(--color-accent);
-            border-bottom: 1px solid #333;
-            padding-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .mega-column ul {
-            list-style: none;
-        }
-
-        .mega-column ul li a {
-            display: block; /* Pour améliorer la zone de clic */
-            padding: 0.3rem 0;
-            color: #ccc;
-        }
-        
-        .mega-column ul li a:hover {
-            color: var(--color-light);
-            padding-left: 5px;
-            transition: all 0.2s;
-        }
-        
-        /* Règle spécifique pour le lien LIVE dans le menu principal */
-        .menu li:last-of-type a { 
-             color: #ff0000;
-             font-weight: 700;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translate(-50%, -10px); }
-            to { opacity: 1; transform: translate(-50%, 0); }
-        }
-
-        /* ===== HERO SECTION AMÉLIORÉ ===== */
-        .hero {
-            height: 80vh; /* Ajustement */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa') center/cover no-repeat fixed; /* Image fixée pour effet parallax */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            flex-direction: column;
-            padding: 0 1rem;
-        }
-
-        .hero h1 {
-            font-size: 4rem; /* Plus d'impact */
-            font-weight: 900;
-            text-shadow: 0 0 15px rgba(0,0,0,1);
-        }
-
-        .hero p {
-            margin-top: 1.5rem;
-            font-size: 1.4rem;
-            color: var(--color-accent);
-            font-weight: 300;
-        }
-
-        .btn-live {
-            margin-top: 2rem;
-            background-color: #ff0000; /* Rouge vif pour LIVE */
-            color: var(--color-light);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
-            text-transform: uppercase;
-        }
-
-        .btn-live:hover {
-            background-color: #cc0000;
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.6);
-        }
-
-        /* ===== SECTION ACTUALITÉS AMÉLIORÉE ===== */
-        .actualites {
-            padding: 4rem 0;
-            background-color: var(--color-bg-light);
-        }
-
+        /* En-têtes de section stylisés (Système de Design) */
         .section-heading {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             color: var(--color-dark);
             font-size: 2.5rem;
-            font-weight: 700;
+            font-weight: 800;
             position: relative;
         }
-
+        
         .section-heading::after {
             content: '';
             display: block;
@@ -234,29 +73,210 @@
             border-radius: 2px;
         }
 
-        .news-grid {
+        /* ===== HEADER / NAVBAR ===== */
+        header {
+            background-color: var(--color-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .menu a {
+            color: var(--color-white);
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color var(--transition-duration);
+            position: relative;
+            display: block;
+        }
+
+        .menu a:hover, .menu a.active {
+            color: var(--color-accent);
+        }
+        
+        /* Indicateur actif sous le lien */
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width var(--transition-duration) ease-out;
+        }
+
+        .menu a:hover::after, .menu a.active::after {
+            width: 100%;
+        }
+
+        /* Style spécifique pour le lien LIVE */
+        .menu li:last-of-type a {
+            color: var(--color-live);
+            font-weight: 700;
+            padding: 5px 10px;
+            border: 1px solid var(--color-live);
+            border-radius: 4px;
+        }
+
+        .menu li:last-of-type a:hover {
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+        
+        /* Mega Menu - Amélioration de la lisibilité et de l'ombre */
+        .mega-menu {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100%;
+            width: 100vw;
+            max-width: 1280px;
+            background: rgba(15, 23, 42, 0.98); /* Utilisation de la variable dark */
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            border-top: 3px solid var(--color-accent);
+        }
+        
+        .menu > li:hover > .mega-menu {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cartes plus larges */
+        }
+
+        .mega-column h4 {
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+            border-bottom: 1px solid #374151; /* Ligne de séparation subtile */
+            padding-bottom: 0.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+
+        .mega-column ul li a {
+            color: #d1d5db; /* Texte gris clair */
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color var(--transition-duration), padding-left var(--transition-duration);
+        }
+
+        .mega-column ul li a:hover {
+            color: var(--color-white);
+            padding-left: 5px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -10px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 85vh; /* Légèrement ajusté */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa') center/cover no-repeat fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-white);
+            text-align: center;
+            flex-direction: column;
+            padding: 0 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.9);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            color: var(--color-accent);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .btn-live {
+            background-color: var(--color-live);
+            color: var(--color-white);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all var(--transition-duration);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-live:hover {
+            background-color: #cc0000;
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.6);
+        }
+
+        /* ===== SECTION ACTUALITÉS & PROGRAMME TV (Cartes) ===== */
+        section {
+            padding: 6rem 0; /* Padding accru */
+        }
+
+        .news-grid, .programme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Cartes encore plus larges */
             gap: 2rem;
         }
 
         .news-card {
-            background-color: var(--color-light);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Ombre plus prononcée */
+            background-color: var(--color-white);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
             cursor: pointer;
+            border-top: 5px solid var(--color-accent); /* Ajout d'une bordure supérieure distinctive */
         }
 
         .news-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
         .news-card img {
             width: 100%;
-            height: 200px;
+            height: 220px; /* Hauteur accrue */
             object-fit: cover;
         }
 
@@ -266,115 +286,119 @@
 
         .news-card-content h3 {
             color: var(--color-dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
+            margin-bottom: 0.75rem;
         }
 
         .news-card-content p {
             color: #555;
             font-size: 1rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         
         .read-more {
             display: inline-block;
             margin-top: 10px;
             color: var(--color-accent);
-            font-weight: 500;
-            text-decoration: none;
+            font-weight: 600;
+            transition: color var(--transition-duration);
         }
         
-        /* Message en cas d'absence d'actualités */
-        .no-news {
-            text-align: center;
-            padding: 2rem;
-            font-size: 1.2rem;
-            color: #555;
+        .read-more:hover {
+            color: var(--color-dark);
         }
 
-        /* ===== FOOTER ===== */
+        /* Style de la section Programme TV */
+        #programme {
+            background-color: #f1f5f9; /* Couleur de fond différente pour la rupture */
+        }
+
+        .programme-item {
+            background-color: var(--color-white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-left: 5px solid var(--color-dark);
+        }
+
+        .time {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            flex-shrink: 0;
+        }
+
+        .details h4 {
+            font-size: 1.2rem;
+            color: var(--color-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .details p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
         footer {
             background-color: var(--color-dark);
-            color: #aaa;
-            text-align: center;
-            padding: 2rem 0;
+            color: #94a3b8;
+            padding: 2.5rem 0;
             font-size: 0.95rem;
         }
         
-        footer a {
-            color: var(--color-accent);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        footer a:hover {
-            color: var(--color-light);
+        footer .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        /* ===== RESPONSIVE AMÉLIORÉ ===== */
-        @media (max-width: 900px) {
-            .menu {
-                /* Cacher l'implémentation du Mega Menu par survol sur mobile */
-                display: none; 
-                flex-direction: column;
-                background-color: var(--color-dark);
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                padding-bottom: 1rem;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            }
-            .menu.show {
-                display: flex;
-            }
-            .menu li {
-                padding: 0.5rem 1rem;
-                text-align: center;
-            }
+        footer a {
+            color: var(--color-accent);
+        }
+        
+        /* Responsive amélioré */
+        @media (max-width: 1024px) {
             .mega-menu {
-                /* Supprimer l'effet de mega-menu sur mobile */
-                position: static;
-                transform: none;
-                width: auto;
-                background: #1e1e1e;
-                display: none !important; 
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 1rem;
-                margin: 1rem auto 0;
-                border-top: none;
+                grid-template-columns: repeat(2, 1fr);
             }
-            /* Révéler le sous-menu de façon simple */
-            .menu li:hover > .mega-menu {
-                 display: grid;
-            }
-            .burger {
-                display: block;
-                cursor: pointer;
-            }
+        }
+
+        @media (max-width: 900px) {
             .hero h1 {
                 font-size: 3rem;
             }
+            .hero p {
+                font-size: 1.4rem;
+            }
+            .mega-menu {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
         }
-
+        
         @media (max-width: 600px) {
-             .hero h1 {
-                font-size: 2rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
-             .hero p {
-                font-size: 1.2rem;
+            .btn-live {
+                padding: 1rem 2rem;
+                font-size: 1rem;
             }
-             .section-heading {
-                font-size: 2rem;
+            .programme-item {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
             }
-        }
-
-        .burger {
-            display: none;
-            font-size: 2rem;
-            color: var(--color-accent); /* Couleur accentuée pour le burger */
         }
     </style>
 </head>
@@ -382,93 +406,129 @@
 <body>
     <header>
         <div class="container">
-            <nav class="navbar">
+            <nav class="navbar" role="navigation" aria-label="Menu principal">
                 <a href="#" class="logo">Mikuba TV</a>
-                <div class="burger" id="burger"><i class="fas fa-bars"></i></div>
+                <div class="burger" id="burger" role="button" aria-controls="menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </div>
                 
                 <ul class="menu" id="menu">
                     <li><a href="#" class="active">Accueil</a></li>
 
                     <li id="menu-apropos">
-                        <a href="#">À propos <i class="fas fa-caret-down"></i></a>
-                        <div class="mega-menu">
+                        <a href="#" aria-expanded="false">À propos <i class="fas fa-caret-down"></i></a>
+                        <div class="mega-menu" aria-hidden="true">
                             <div class="mega-column">
                                 <h4>Identité</h4>
                                 <ul>
-                                    <li><a href="#">Historique</a></li>
-                                    <li><a href="#">Mission & Vision</a></li>
-                                    <li><a href="#">Valeurs</a></li>
+                                    <li><a href="#"><i class="fas fa-landmark"></i> Historique</a></li>
+                                    <li><a href="#"><i class="fas fa-bullseye"></i> Mission & Vision</a></li>
+                                    <li><a href="#"><i class="fas fa-heart"></i> Valeurs</a></li>
                                 </ul>
                             </div>
                             <div class="mega-column">
                                 <h4>Équipe</h4>
                                 <ul>
-                                    <li><a href="#">Journalistes</a></li>
-                                    <li><a href="#">Techniciens</a></li>
-                                    <li><a href="#">Animateurs</a></li>
+                                    <li><a href="#"><i class="fas fa-microphone"></i> Journalistes</a></li>
+                                    <li><a href="#"><i class="fas fa-camera"></i> Techniciens</a></li>
+                                    <li><a href="#"><i class="fas fa-user-tie"></i> Direction</a></li>
                                 </ul>
                             </div>
                             <div class="mega-column">
-                                <h4>Charte & Engagements</h4>
+                                <h4>Charte & Qualité</h4>
                                 <ul>
-                                    <li><a href="#">Charte éditoriale</a></li>
-                                    <li><a href="#">Distinctions</a></li>
+                                    <li><a href="#"><i class="fas fa-scroll"></i> Charte éditoriale</a></li>
+                                    <li><a href="#"><i class="fas fa-certificate"></i> Distinctions</a></li>
                                 </ul>
                             </div>
                             <div class="mega-column">
                                 <h4>Réseaux</h4>
                                 <ul>
-                                    <li><a href="#" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i> X (Twitter)</a></li>
+                                    <li><a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> YouTube</a></li>
+                                    <li><a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a></li>
+                                    <li><a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i> X (Twitter)</a></li>
                                 </ul>
                             </div>
                         </div>
                     </li>
 
                     <li id="menu-programmes">
-                        <a href="#">Programmes <i class="fas fa-caret-down"></i></a>
-                        <div class="mega-menu" style="grid-template-columns: repeat(2, 1fr);">
+                        <a href="#programme" aria-expanded="false">Programmes <i class="fas fa-caret-down"></i></a>
+                        <div class="mega-menu" style="grid-template-columns: repeat(2, 1fr);" aria-hidden="true">
                             <div class="mega-column">
                                 <h4>Catégories</h4>
                                 <ul>
-                                    <li><a href="#">Infos & Actu</a></li>
-                                    <li><a href="#">Société & Culture</a></li>
-                                    <li><a href="#">Sport</a></li>
-                                    <li><a href="#">Économie</a></li>
+                                    <li><a href="#"><i class="fas fa-chart-line"></i> Infos & Actu</a></li>
+                                    <li><a href="#"><i class="fas fa-users"></i> Société & Culture</a></li>
+                                    <li><a href="#"><i class="fas fa-futbol"></i> Sport</a></li>
                                 </ul>
                             </div>
                             <div class="mega-column">
                                 <h4>Émissions phares</h4>
                                 <ul>
-                                    <li><a href="#">Journal de Kolwezi</a></li>
-                                    <li><a href="#">Débat du Lualaba</a></li>
-                                    <li><a href="#">Mikuba Magazine</a></li>
-                                    <li><a href="#">Kolwezi Talents</a></li>
+                                    <li><a href="#"><i class="fas fa-newspaper"></i> Journal de Kolwezi</a></li>
+                                    <li><a href="#"><i class="fas fa-comments"></i> Débat du Lualaba</a></li>
+                                    <li><a href="#"><i class="fas fa-book-open"></i> Mikuba Magazine</a></li>
                                 </ul>
                             </div>
                         </div>
                     </li>
 
-                    <li><a href="#">Galerie</a></li>
-                    <li><a href="#" class="btn-live-menu"><i class="fas fa-circle-dot" style="color: red;"></i> Live</a></li>
+                    <li><a href="#actualites">Actualités</a></li>
                     <li><a href="#">Contact</a></li>
+                    <li><a href="#" class="btn-live-menu"><i class="fas fa-signal"></i> Live</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero" aria-label="Vidéo en direct et présentation de la chaîne">
-        <h1>Bienvenue sur Mikuba TV</h1>
-        <p>La voix du Lualaba – Information, culture et innovation audiovisuelle</p>
-        <a href="#" class="btn-live" aria-label="Regarder le flux en direct maintenant">
-            <i class="fas fa-tv"></i> Regarder en direct
+    <section class="hero" aria-label="Présentation et accès au direct">
+        <h1>MIKUBA TV</h1>
+        <p>Le Reflet du Lualaba : Information, Culture, Proximité</p>
+        <a href="#" class="btn-live" role="button" aria-label="Accéder au flux en direct">
+            <i class="fas fa-tv"></i> REGARDER EN DIRECT
         </a>
     </section>
 
-    <section class="actualites" id="actualites">
+    <section id="programme" role="region" aria-labelledby="programme-heading">
         <div class="container">
-            <h2 class="section-heading">📰 Dernières Actualités</h2>
+            <h2 class="section-heading" id="programme-heading">📅 Programme TV du Jour</h2>
+            <div class="programme-grid">
+                <div class="programme-item">
+                    <div class="time">06:00</div>
+                    <div class="details">
+                        <h4>Réveil Matinal Lualaba</h4>
+                        <p>Le flash info et la revue de presse. (Durée: 60min)</p>
+                    </div>
+                </div>
+                <div class="programme-item">
+                    <div class="time">07:00</div>
+                    <div class="details">
+                        <h4>Kolwezi Matin (Live)</h4>
+                        <p>Talk-show matinal avec invités politiques et sociétaux. (Durée: 90min)</p>
+                    </div>
+                </div>
+                <div class="programme-item">
+                    <div class="time">13:00</div>
+                    <div class="details">
+                        <h4>Journal du Midi</h4>
+                        <p>Toutes les nouvelles locales et provinciales. (Durée: 30min)</p>
+                    </div>
+                </div>
+                <div class="programme-item">
+                    <div class="time">20:00</div>
+                    <div class="details">
+                        <h4>Débat du Lualaba</h4>
+                        <p>Analyse approfondie de l'actualité avec des experts. (Durée: 60min)</p>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="actualites" role="region" aria-labelledby="news-heading">
+        <div class="container">
+            <h2 class="section-heading" id="news-heading">📰 Dernières Actualités</h2>
             <div class="news-grid" id="newsGrid">
                 <p class="no-news" id="loading-message">Chargement des actualités...</p>
             </div>
@@ -476,39 +536,48 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Mikuba TV – Tous droits réservés.</p>
-        <p>Développé par Gamaliel Kalambo | <a href="#">Politique de Confidentialité</a> | <a href="#">Mentions Légales</a></p>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Mikuba TV. Tous droits réservés.</p>
+                <nav aria-label="Liens légaux et techniques">
+                    <a href="#">Politique de Confidentialité</a> | 
+                    <a href="#">Mentions Légales</a> | 
+                    <a href="mailto:gamaliel.kalambo@email.com">Contact Développeur</a>
+                </nav>
+            </div>
+        </div>
     </footer>
 
     <script type="module">
-        // Menu responsive
+        // 1. Menu Responsive (Ajout de l'accessibilité ARIA)
         const burger = document.getElementById('burger');
         const menu = document.getElementById('menu');
         
-        burger.addEventListener('click', () => {
-            menu.classList.toggle('show');
-            // Changer l'icône du burger
+        const toggleMenu = () => {
+            const isExpanded = menu.classList.toggle('show');
             burger.querySelector('i').classList.toggle('fa-bars');
             burger.querySelector('i').classList.toggle('fa-times');
-        });
+            burger.setAttribute('aria-expanded', isExpanded);
+            menu.querySelectorAll('.mega-menu').forEach(mm => mm.setAttribute('aria-hidden', !isExpanded));
+        };
+
+        burger.addEventListener('click', toggleMenu);
         
-        // Cacher le menu après le clic sur un lien (sur mobile)
+        // Cacher le menu après le clic sur un lien non-méga-menu (mobile UX)
         menu.querySelectorAll('a').forEach(link => {
              link.addEventListener('click', () => {
-                 if (window.innerWidth <= 900 && !link.closest('.mega-menu')) {
-                     menu.classList.remove('show');
-                     burger.querySelector('i').classList.add('fa-bars');
-                     burger.querySelector('i').classList.remove('fa-times');
+                 // Ne cache que si la fenêtre est petite ET que le lien n'est pas dans un mega-menu parent direct.
+                 if (window.innerWidth <= 900 && !link.closest('.mega-menu') && link.parentElement.id === '') {
+                     toggleMenu();
                  }
              });
         });
 
-
-        // Firebase config
+        // 2. Intégration Firebase (Logique optimisée)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
         import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
-        // Configuration Firebase (Doit être dans un fichier .env pour la production!)
+        // IMPORTANT : Dans un environnement réel, ces clés seraient dans un fichier .env ou un service de secrets.
         const firebaseConfig = {
             apiKey: "AIzaSyAL0bhwfdSfA_O5eJI2_T9qZmkR3fCShTg",
             authDomain: "projet-mikuba.firebaseapp.com",
@@ -521,12 +590,10 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Récupération des actualités depuis Firestore (Meilleures pratiques)
         async function chargerActualites() {
             const newsGrid = document.getElementById('newsGrid');
             const loadingMessage = document.getElementById('loading-message');
             
-            // On s'assure que le message de chargement est visible au début
             if (loadingMessage) loadingMessage.style.display = 'block';
 
             try {
@@ -536,22 +603,20 @@
                 
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
-                    const imageUrl = data.image || 'https://via.placeholder.com/400x200?text=Image+Mikuba+TV';
+                    const imageUrl = data.image || 'https://via.placeholder.com/400x220?text=Mikuba+TV+Actu';
                     
-                    // Création de la carte avec une structure sémantique
                     htmlContent += `
-                        <article class="news-card" onclick="window.location.href='#${doc.id}'">
+                        <article class="news-card" tabindex="0" onclick="window.location.href='/actualite/${doc.id}'">
                             <img src="${imageUrl}" alt="Illustration de l'article : ${data.titre}">
                             <div class="news-card-content">
                                 <h3>${data.titre}</h3>
-                                <p>${data.contenu ? data.contenu.substring(0, 150) : 'Aucun contenu disponible'}...</p>
-                                <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                                <p>${data.contenu ? data.contenu.substring(0, 120) : 'Aucun aperçu disponible'}...</p>
+                                <span class="read-more">Lire l'article <i class="fas fa-arrow-right"></i></span>
                             </div>
                         </article>`;
                     newsCount++;
                 });
 
-                // Supprimer le message de chargement
                 if (loadingMessage) loadingMessage.remove();
 
                 if (newsCount > 0) {
@@ -561,13 +626,13 @@
                 }
 
             } catch (error) {
-                console.error("Erreur lors du chargement des actualités : ", error);
+                console.error("Erreur Firestore : ", error);
                 if (loadingMessage) loadingMessage.remove();
-                newsGrid.innerHTML = '<p class="no-news">Une erreur s\'est produite lors de la connexion. Veuillez réessayer plus tard.</p>';
+                newsGrid.innerHTML = '<p class="no-news">Une erreur s\'est produite. Le service d\'actualités est temporairement indisponible.</p>';
             }
         }
 
-        chargerActualites();
+        document.addEventListener('DOMContentLoaded', chargerActualites);
     </script>
 </body>
 </html>
