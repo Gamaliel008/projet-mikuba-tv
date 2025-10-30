@@ -1,301 +1,489 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mikuba TV – Portail Officiel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mikuba TV - La Voix du Lualaba à Kolwezi 📺</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Style global -->
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+    <style>
+        :root {
+            --color-primary: #a60202; /* Rouge dominant */
+            --color-secondary: #FFD700; /* Or/Jaune (accent) */
+            --color-dark: #0d0d0d;
+            --color-darker: #000000;
+            --color-light: white;
+            --color-text-subtle: #ccc;
+        }
 
-    body {
-      background-color: #f8f9fa;
-      color: #222;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    /* ----- HEADER ----- */
-    header {
-      background-color: #0b0b0c;
-      color: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-    }
+        body {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            /* Utilisation d'un dégradé subtil pour la couleur de fond du corps */
+            background-image: radial-gradient(circle at top left, #1a0000 0%, var(--color-dark) 60%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: relative;
-    }
+        /* Amélioration de la navigation */
+        header {
+            background: linear-gradient(90deg, var(--color-darker), var(--color-primary));
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #ffcc00;
-      text-transform: uppercase;
-    }
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: 900; /* Plus impactant */
+            color: var(--color-secondary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-    .menu {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px; /* Espace plus grand */
+        }
 
-    .menu li {
-      position: relative;
-      cursor: pointer;
-    }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--color-light);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        /* Soulignement animé pour les liens de navigation */
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-secondary);
+            transition: width 0.3s ease-out;
+        }
 
-    .menu a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-secondary);
+        }
 
-    .menu a:hover {
-      color: #ffcc00;
-    }
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
 
-    /* ----- MEGA MENU ----- */
-    .mega-menu {
-      position: absolute;
-      left: 0;
-      top: 100%;
-      width: 100vw;
-      background: #111;
-      color: #fff;
-      display: none;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      padding: 2rem;
-    }
+        /* Section Hero */
+        .hero {
+            height: 90vh; /* Augmenté pour être plus visuel */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://i.ytimg.com/vi/--2rSkqWRYQ/maxresdefault.jpg') center center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 0 5%;
+        }
 
-    .menu li:hover .mega-menu {
-      display: grid;
-      animation: fadeIn 0.3s ease-in-out;
-    }
+        .hero h2 {
+            font-size: 4rem; /* Plus grand */
+            font-weight: 900;
+            text-shadow: 3px 3px 8px #000;
+            color: var(--color-light);
+            line-height: 1.1;
+        }
 
-    .mega-column h4 {
-      margin-bottom: 1rem;
-      color: #ffcc00;
-    }
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 15px;
+            color: var(--color-secondary);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
 
-    .mega-column ul {
-      list-style: none;
-    }
+        .hero button {
+            background: var(--color-secondary);
+            color: var(--color-darker);
+            border: none;
+            padding: 15px 40px; /* Plus grand */
+            margin-top: 35px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            text-transform: uppercase;
+        }
 
-    .mega-column ul li {
-      margin-bottom: 0.5rem;
-    }
+        .hero button:hover {
+            background: #ffbb00;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+        }
 
-    .mega-column ul li a {
-      color: #ccc;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+        /* Contenu principal */
+        section {
+            padding: 80px 5%; /* Augmenter le padding */
+        }
 
-    .mega-column ul li a:hover {
-      color: #fff;
-    }
+        .section-heading {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--color-secondary);
+            text-align: center;
+            position: relative;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--color-primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* Section À propos */
+        .about {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .about p {
+            color: var(--color-text-subtle);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+            text-align-last: center;
+        }
 
-    /* ----- SECTION ACCUEIL ----- */
-    .hero {
-      height: 90vh;
-      background: url('https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa') center/cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-      flex-direction: column;
-    }
+        /* Section Émissions */
+        .program-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cartes plus grandes */
+            gap: 30px;
+            margin-top: 30px;
+        }
 
-    .hero h1 {
-      font-size: 3rem;
-      text-shadow: 0 0 10px rgba(0,0,0,0.8);
-    }
+        .program {
+            background: #181818; /* Fond plus clair */
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: left;
+            border: 1px solid #333; /* Bordure subtile */
+        }
 
-    .hero p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-    }
+        .program:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        }
 
-    .btn-live {
-      margin-top: 2rem;
-      background-color: #ffcc00;
-      color: #111;
-      padding: 0.8rem 1.5rem;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
+        .program img {
+            width: 100%;
+            height: 200px; /* Plus grand */
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .program:hover img {
+            transform: scale(1.05);
+        }
 
-    .btn-live:hover {
-      background-color: #e0b800;
-    }
+        .program-info {
+            padding: 20px;
+        }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .menu {
-        flex-direction: column;
-        background-color: #000;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        display: none;
-      }
-      .menu.show {
-        display: flex;
-      }
-      .mega-menu {
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
-      }
-      .burger {
-        display: block;
-        cursor: pointer;
-      }
-    }
+        .program h4 {
+            font-size: 1.3rem;
+            color: var(--color-light);
+            margin-bottom: 5px;
+        }
 
-    .burger {
-      display: none;
-      font-size: 1.8rem;
-      color: #fff;
-    }
+        .program .tag {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-light);
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+        
+        /* Section Contact */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            color: var(--color-light);
+        }
 
-  </style>
+        .contact-item i {
+            color: var(--color-secondary);
+            font-size: 1.8rem;
+        }
+        
+        .contact-item a {
+            color: var(--color-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-item a:hover {
+             color: var(--color-secondary);
+        }
+
+
+        /* Footer */
+        footer {
+            background: var(--color-darker);
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+            color: #888;
+            border-top: 1px solid #333;
+        }
+
+        footer a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero h2 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+            header .logo {
+                margin-bottom: 10px;
+            }
+            nav ul {
+                gap: 15px;
+                justify-content: center;
+            }
+            .hero {
+                 height: 70vh;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            .hero button {
+                padding: 10px 30px;
+            }
+            .section-heading {
+                font-size: 2rem;
+            }
+            section {
+                padding: 50px 5%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .contact-info {
+                gap: 30px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <header>
+        <div class="logo">Mikuba TV</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Accueil</a></li> 
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#programs">Émissions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <header>
-    <nav class="navbar">
-      <div class="logo">Mikuba TV</div>
-      <div class="burger" id="burger">☰</div>
-      <ul class="menu" id="menu">
-        <li><a href="#">Accueil</a></li>
+    <section class="hero" aria-label="Présentation de la chaîne">
+        <h2>La Télévision au Cœur du Lualaba</h2>
+        <p>Mikuba TV : Le Reflet de Kolwezi en Temps Réel</p>
+        <button id="live-button">
+             <i class="fas fa-play"></i> Regarder en direct 🔴
+        </button>
+    </section>
 
-        <li>
-          <a href="#">À propos</a>
-          <div class="mega-menu">
-            <div class="mega-column">
-              <h4>Identité</h4>
-              <ul>
-                <li><a href="#">Historique</a></li>
-                <li><a href="#">Mission & Vision</a></li>
-                <li><a href="#">Valeurs</a></li>
-              </ul>
+    <section id="about" class="about">
+        <h3 class="section-heading">À propos de Mikuba TV</h3>
+        <p>
+            Fondée au cœur de la province du **Lualaba** (RDC), **Mikuba TV** est plus qu'une simple chaîne : c'est la voix qui informe, éduque et divertit la communauté de Kolwezi et au-delà.
+        </p>
+        <p>
+            Notre engagement est d'offrir un **contenu de qualité**, valorisant la culture locale, les talents émergents et les débats civiques. Nous sommes fiers d'être le miroir des réalités et des aspirations de notre région.
+        </p>
+    </section>
+    
+    <hr> <section id="programs" class="programs">
+        <h3 class="section-heading">Nos Émissions Phares</h3>
+        <div class="program-list">
+            <article class="program"> <img src="https://i.ytimg.com/vi/--2rSkqWRYQ/mqdefault.jpg" alt="Image du Journal Télévisé">
+                <div class="program-info">
+                    <h4>Le Journal de Kolwezi</h4>
+                    <span class="tag">Actualités</span>
+                </div>
+            </article>
+            <article class="program">
+                <img src="https://i.ytimg.com/vi/Rb1M9kZTtRA/mqdefault.jpg" alt="Image du Magazine">
+                <div class="program-info">
+                    <h4>Mikuba Magazine</h4>
+                    <span class="tag">Culture & Société</span>
+                </div>
+            </article>
+            <article class="program">
+                <img src="https://i.ytimg.com/vi/3B8sYgF5os4/mqdefault.jpg" alt="Image du Débat">
+                <div class="program-info">
+                    <h4>Débat du Lualaba</h4>
+                    <span class="tag">Politique & Débats</span>
+                </div>
+            </article>
+             <article class="program">
+                <img src="https://i.ytimg.com/vi/A_Zc6N8v_l0/mqdefault.jpg" alt="Image d'une émission de divertissement">
+                <div class="program-info">
+                    <h4>Kolwezi Talents</h4>
+                    <span class="tag">Divertissement</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <hr> <section id="contact" class="contact">
+        <h3 class="section-heading">Nous Contacter</h3>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>📍 7FQX+VR3, Kolwezi, RDC</span>
             </div>
-            <div class="mega-column">
-              <h4>Équipe</h4>
-              <ul>
-                <li><a href="#">Journalistes</a></li>
-                <li><a href="#">Techniciens</a></li>
-                <li><a href="#">Animateurs</a></li>
-              </ul>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+243828718919">📞 +243 828 718 919</a>
             </div>
-            <div class="mega-column">
-              <h4>Charte & Engagements</h4>
-              <ul>
-                <li><a href="#">Charte éditoriale</a></li>
-                <li><a href="#">Distinctions</a></li>
-              </ul>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:contact@mikubatv.cd">📧 contact@mikubatv.cd</a>
             </div>
-          </div>
-        </li>
+        </div>
+    </section>
 
-        <li>
-          <a href="#">Programmes</a>
-          <div class="mega-menu">
-            <div class="mega-column">
-              <h4>Catégories</h4>
-              <ul>
-                <li><a href="#">Infos & Actu</a></li>
-                <li><a href="#">Société & Culture</a></li>
-                <li><a href="#">Sport</a></li>
-                <li><a href="#">Économie</a></li>
-              </ul>
-            </div>
-            <div class="mega-column">
-              <h4>Émissions phares</h4>
-              <ul>
-                <li><a href="#">Journal de Kolwezi</a></li>
-                <li><a href="#">Débat du Lualaba</a></li>
-                <li><a href="#">Mikuba Magazine</a></li>
-              </ul>
-            </div>
-          </div>
-        </li>
+    <footer>
+        <p>&copy; 2025 Mikuba TV | Tous droits réservés.</p>
+        <p>Développé avec ❤️ à Kolwezi | <a href="#">Politique de confidentialité</a> | <a href="#">Mentions légales</a></p>
+    </footer>
 
-        <li>
-          <a href="#">Galerie</a>
-          <div class="mega-menu">
-            <div class="mega-column">
-              <h4>Multimédia</h4>
-              <ul>
-                <li><a href="#">Photos</a></li>
-                <li><a href="#">Vidéos</a></li>
-                <li><a href="#">Cérémonies officielles</a></li>
-              </ul>
-            </div>
-          </div>
-        </li>
+    <script>
+        // Gestion de l'alerte du bouton
+        document.getElementById('live-button').addEventListener('click', function() {
+            alert('La fonctionnalité de flux en direct est en cours de développement 🔧. Revenez bientôt !');
+        });
+        
+        // Petite amélioration pour marquer le lien actif dans la nav (quand la page est chargée)
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav ul li a');
 
-        <li><a href="#">Live</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
 
-  <!-- Section Accueil -->
-  <section class="hero">
-    <h1>Bienvenue sur Mikuba TV</h1>
-    <p>La voix du Lualaba – Information, culture et innovation audiovisuelle</p>
-    <a href="#" class="btn-live">🔴 Regarder en direct</a>
-  </section>
+                navLinks.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href').includes(current)) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <script type="module">
+        // La configuration Firebase est bien structurée pour une utilisation future.
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 
-  <!-- Script JS -->
-  <script type="module">
-    // Menu responsive
-    const burger = document.getElementById('burger');
-    const menu = document.getElementById('menu');
-    burger.addEventListener('click', () => {
-      menu.classList.toggle('show');
-    });
+        // Votre configuration d'application web Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAL0bhwfdSfA_O5eJI2_T9qZmkR3fCShTg",
+            authDomain: "projet-mikuba.firebaseapp.com",
+            projectId: "projet-mikuba",
+            storageBucket: "projet-mikuba.firebasestorage.app",
+            messagingSenderId: "551330061877",
+            appId: "1:551330061877:web:4368662f8f97f7d85e1b7c"
+        };
 
-    // Firebase config
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyAL0bhwfdSfA_O5eJI2_T9qZmkR3fCShTg",
-      authDomain: "projet-mikuba.firebaseapp.com",
-      projectId: "projet-mikuba",
-      storageBucket: "projet-mikuba.firebasestorage.app",
-      messagingSenderId: "551330061877",
-      appId: "1:551330061877:web:4368662f8f97f7d85e1b7c"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    console.log("Firebase initialisé :", app);
-  </script>
-
+        // Initialisation de Firebase
+        const app = initializeApp(firebaseConfig);
+        console.log("Firebase connecté avec succès à Mikuba TV ✅", app);
+        
+        // NOTE: Il faudrait idéalement cacher ces clés dans un environnement de production.
+    </script>
 </body>
 </html>
