@@ -1,1 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mikuba TV - Chaîne de Kolwezi</title>
+
+  <!-- ==== STYLE ==== -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(90deg, #000000, #a60202);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #FFD700;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #FFD700;
+    }
+
+    .hero {
+      height: 80vh;
+      background: url('https://i.ytimg.com/vi/--2rSkqWRYQ/maxresdefault.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 15px;
+      color: #f0f0f0;
+    }
+
+    .hero button {
+      background: #FFD700;
+      color: black;
+      border: none;
+      padding: 12px 30px;
+      margin-top: 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .hero button:hover {
+      background: #ffbb00;
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 60px 8%;
+    }
+
+    .about, .programs, .contact {
+      text-align: center;
+    }
+
+    .about h3, .programs h3, .contact h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #FFD700;
+    }
+
+    .about p {
+      color: #ccc;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .program-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .program {
+      background: #111;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .program:hover {
+      transform: translateY(-5px);
+    }
+
+    .program img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .program h4 {
+      padding: 15px;
+      color: #FFD700;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    footer a {
+      color: #FFD700;
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ==== HEADER ==== -->
+  <header>
+    <h1>Mikuba TV</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#programs">Émissions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ==== HERO ==== -->
+  <section class="hero">
+    <h2>Bienvenue sur Mikuba TV</h2>
+    <p>La voix de Kolwezi, le reflet du Lualaba</p>
+    <button onclick="alert('Fonctionnalité en développement 🔧')">Regarder en direct 🔴</button>
+  </section>
+
+  <!-- ==== ABOUT ==== -->
+  <section id="about" class="about">
+    <h3>À propos de nous</h3>
+    <p>
+      Mikuba TV est une chaîne de télévision basée à Kolwezi, dans la province du Lualaba (RDC).
+      Elle informe, éduque et divertit depuis le cœur du Katanga.
+      Notre mission : offrir un contenu de qualité qui valorise la culture, les talents et les valeurs locales.
+    </p>
+  </section>
+
+  <!-- ==== PROGRAMS ==== -->
+  <section id="programs" class="programs">
+    <h3>Nos Émissions</h3>
+    <div class="program-list">
+      <div class="program">
+        <img src="https://i.ytimg.com/vi/--2rSkqWRYQ/mqdefault.jpg" alt="Journal Télévisé">
+        <h4>Le Journal de Kolwezi</h4>
+      </div>
+      <div class="program">
+        <img src="https://i.ytimg.com/vi/Rb1M9kZTtRA/mqdefault.jpg" alt="Magazine">
+        <h4>Mikuba Magazine</h4>
+      </div>
+      <div class="program">
+        <img src="https://i.ytimg.com/vi/3B8sYgF5os4/mqdefault.jpg" alt="Débat">
+        <h4>Débat du Lualaba</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==== CONTACT ==== -->
+  <section id="contact" class="contact">
+    <h3>Contactez-nous</h3>
+    <p>📍 7FQX+VR3, Kolwezi, RDC</p>
+    <p>📞 +243 828 718 919</p>
+    <p>📧 contact@mikubatv.cd</p>
+  </section>
+
+  <!-- ==== FOOTER ==== -->
+  <footer>
+    &copy; 2025 Mikuba TV | Développé avec ❤️ à Kolwezi | <a href="#">Mentions légales</a>
+  </footer>
+
+  <!-- ==== FIREBASE CONFIG ==== -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAL0bhwfdSfA_O5eJI2_T9qZmkR3fCShTg",
+      authDomain: "projet-mikuba.firebaseapp.com",
+      projectId: "projet-mikuba",
+      storageBucket: "projet-mikuba.firebasestorage.app",
+      messagingSenderId: "551330061877",
+      appId: "1:551330061877:web:4368662f8f97f7d85e1b7c"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    console.log("Firebase connecté avec succès à Mikuba TV ✅", app);
+  </script>
+</body>
+</html>
 
