@@ -207,6 +207,79 @@
             text-align: center;
         }
         
+        /* Carousel Section */
+        .carousel-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin: 4rem 0;
+        }
+        
+        .scrolling-text-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .scrolling-text {
+            animation: scrollText 20s linear infinite;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: white;
+        }
+        
+        @keyframes scrollText {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+        
+        .prefect-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .prefect-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-gold);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .prefect-message {
+            font-style: italic;
+            color: white;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .prefect-name {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+        
         /* Animations avancées */
         .float-animation {
             animation: float 6s ease-in-out infinite;
@@ -371,773 +444,503 @@
             border-radius: 2px;
         }
         
-        .footer-links a {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.75rem;
-            color: #94a3b8;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a i {
-            margin-right: 10px;
-            width: 16px;
-            text-align: center;
-            color: var(--accent-gold);
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        .footer-social a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            margin-right: 0.75rem;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-social a:hover {
-            background: var(--gradient-accent);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
-        }
-        
-        /* Chargement et retour en haut */
-        .loading-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--gradient-accent);
-            width: 0%;
-            z-index: 1001;
-            transition: width 0.3s ease;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--gradient-accent);
-            color: white;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 999;
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
-        }
-        
-        .back-to-top:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 12px 30px rgba(245, 158, 11, 0.6);
-        }
-        
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        /* Effets de particules */
-        .particles-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: particle-float 20s infinite linear;
-        }
-        
-        @keyframes particle-float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-            }
-        }
-        
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-content h2 {
-                font-size: 2.5rem;
+            .carousel-container {
+                grid-template-columns: 1fr;
             }
             
-            .premium-card:hover {
-                transform: translateY(-5px);
+            .scrolling-text-container,
+            .prefect-card {
+                height: auto;
             }
         }
     </style>
 </head>
 
-<body class="antialiased">
-    <!-- Barre de progression -->
-    <div class="loading-bar" id="loading-bar"></div>
-    
-    <!-- Bouton retour en haut -->
-    <div class="back-to-top" id="back-to-top">
-        <i class="fas fa-chevron-up text-lg"></i>
-    </div>
-
-    <!-- Header Élite -->
-    <header id="main-header" class="py-4 px-6 md:px-8">
+<body>
+    <!-- Header -->
+    <header id="main-header" class="p-4 md:px-8">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <!-- Logo -->
             <div class="flex items-center space-x-3">
-                <div class="pulse-glow bg-white p-3 rounded-2xl">
-                    <i class="fas fa-graduation-cap text-2xl text-blue-600"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold text-white">Saint Charles Lwanga</h1>
-                    <p class="text-xs text-blue-200">Excellence & Valeurs</p>
-                </div>
+                <i class="fas fa-church text-2xl text-accent-gold"></i>
+                <h1 class="text-xl font-extrabold text-white">Saint Charles Lwanga</h1>
             </div>
             
-            <!-- Navigation Desktop -->
-            <nav class="hidden lg:flex items-center space-x-8">
+            <nav class="hidden md:flex space-x-8">
                 <a href="#hero" class="nav-link active">Accueil</a>
-                
                 <div class="nav-item">
                     <a href="#about" class="nav-link flex items-center">
                         Notre École <i class="fas fa-chevron-down ml-2 text-xs"></i>
                     </a>
                     <div class="submenu">
-                        <a href="#history"><i class="fas fa-landmark"></i> Histoire & Mission</a>
-                        <a href="#team"><i class="fas fa-users"></i> Équipe Pédagogique</a>
-                        <a href="#facilities"><i class="fas fa-building"></i> Installations</a>
-                        <a href="#values"><i class="fas fa-heart"></i> Nos Valeurs</a>
-                        <a href="#certifications"><i class="fas fa-award"></i> Certifications</a>
+                        <a href="#"><i class="fas fa-history"></i> Histoire et Mission</a>
+                        <a href="#"><i class="fas fa-users"></i> Équipe Pédagogique</a>
+                        <a href="#"><i class="fas fa-building"></i> Installations</a>
+                        <a href="#"><i class="fas fa-heart"></i> Nos Valeurs</a>
                     </div>
                 </div>
-                
                 <div class="nav-item">
                     <a href="#programs" class="nav-link flex items-center">
                         Programmes <i class="fas fa-chevron-down ml-2 text-xs"></i>
                     </a>
                     <div class="submenu">
-                        <a href="#maternelle"><i class="fas fa-child"></i> Maternelle</a>
-                        <a href="#primaire"><i class="fas fa-book-open"></i> Primaire</a>
-                        <a href="#college"><i class="fas fa-user-graduate"></i> Collège</a>
-                        <a href="#lycee"><i class="fas fa-university"></i> Lycée</a>
-                        <a href="#international"><i class="fas fa-globe"></i> Section Internationale</a>
+                        <a href="#"><i class="fas fa-book"></i> Primaire</a>
+                        <a href="#"><i class="fas fa-book-open"></i> Secondaire</a>
+                        <a href="#"><i class="fas fa-futbol"></i> Activités Extrascolaires</a>
+                        <a href="#"><i class="fas fa-language"></i> Langues</a>
                     </div>
                 </div>
-                
-                <div class="nav-item">
-                    <a href="#admissions" class="nav-link flex items-center">
-                        Admissions <i class="fas fa-chevron-down ml-2 text-xs"></i>
-                    </a>
-                    <div class="submenu">
-                        <a href="#process"><i class="fas fa-clipboard-list"></i> Processus</a>
-                        <a href="#fees"><i class="fas fa-money-bill-wave"></i> Frais de Scolarité</a>
-                        <a href="#calendar"><i class="fas fa-calendar-alt"></i> Calendrier</a>
-                        <a href="#visite"><i class="fas fa-video"></i> Visite Virtuelle</a>
-                    </div>
-                </div>
-                
                 <a href="#news" class="nav-link">Actualités</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
             
-            <!-- CTA et Menu Mobile -->
-            <div class="flex items-center space-x-4">
-                <a href="#admissions" class="hidden lg:block btn-premium">
-                    <i class="fas fa-user-plus mr-2"></i> Inscription
-                </a>
-                <a href="portal.html" class="hidden md:flex items-center text-blue-200 hover:text-white transition-colors">
-                    <i class="fas fa-sign-in-alt mr-2"></i>
-                    <span>Espace Parents</span>
-                </a>
-                <button id="menu-toggle" class="lg:hidden text-2xl text-white">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
     </header>
 
-    <!-- Menu Mobile -->
-    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full gradient-bg p-6 z-50 transform -translate-y-full transition-transform duration-500 lg:hidden">
-        <button id="close-menu" class="absolute top-6 right-6 text-white text-3xl">
-            <i class="fas fa-times"></i>
-        </button>
-        <nav class="flex flex-col space-y-8 pt-24 text-center text-2xl font-semibold text-white">
-            <a href="#hero" class="hover:text-yellow-300 transition-colors">Accueil</a>
-            <a href="#about" class="hover:text-yellow-300 transition-colors">Notre École</a>
-            <a href="#programs" class="hover:text-yellow-300 transition-colors">Programmes</a>
-            <a href="#admissions" class="hover:text-yellow-300 transition-colors">Admissions</a>
-            <a href="#news" class="hover:text-yellow-300 transition-colors">Actualités</a>
-            <a href="#contact" class="hover:text-yellow-300 transition-colors">Contact</a>
-        </nav>
-    </div>
-
-    <!-- Hero Section avec Canvas 3D -->
-    <section id="hero" class="relative">
+    <!-- Hero Section -->
+    <section id="hero">
         <canvas id="hero-canvas"></canvas>
-        <div class="particles-container" id="particles"></div>
-        
-        <div class="hero-content max-w-6xl mx-auto px-6 text-white">
-            <div class="float-animation mb-8">
-                <i class="fas fa-crown text-6xl text-yellow-400 mb-4"></i>
+        <div class="hero-content container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 slide-in-up">
+                École d'Élite <span class="gradient-text">Saint Charles Lwanga</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-100 mb-10 slide-in-up">
+                Excellence académique, valeurs chrétiennes et avenir prometteur
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center slide-in-up">
+                <button class="btn-premium">
+                    <i class="fas fa-graduation-cap mr-2"></i>Découvrir nos programmes
+                </button>
+                <button class="btn-outline-premium">
+                    <i class="fas fa-calendar-check mr-2"></i>Visite guidée
+                </button>
             </div>
-            
-            <h2 class="text-5xl md:text-7xl font-bold mb-6 slide-in-up">
-                École <span class="gradient-text">Saint Charles Lwanga</span>
+        </div>
+    </section>
+
+    <!-- Carousel Section with Prefect's Message -->
+    <section class="py-20 bg-gradient-to-br from-blue-900 to-indigo-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-white mb-16">
+                Une éducation d'élite qui allie tradition et innovation pour former les leaders de demain
             </h2>
             
-            <p class="text-xl md:text-2xl mb-8 text-blue-100 slide-in-up" style="transition-delay: 0.2s">
-                L'excellence académique au service des valeurs humaines
-            </p>
-            
-            <p class="text-lg mb-12 max-w-2xl mx-auto text-blue-200 slide-in-up" style="transition-delay: 0.4s">
-                Une éducation d'élite qui allie tradition et innovation pour former les leaders de demain
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center slide-in-up" style="transition-delay: 0.6s">
-                <a href="#admissions" class="btn-premium">
-                    <i class="fas fa-rocket mr-2"></i> Commencer l'Aventure
-                </a>
-                <a href="#about" class="btn-outline-premium">
-                    <i class="fas fa-play-circle mr-2"></i> Découvrir
-                </a>
-            </div>
-        </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-2xl text-yellow-400"></i>
-        </div>
-    </section>
-
-    <!-- Section Statistiques -->
-    <section id="stats" class="py-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="stat-card slide-in-left">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">98%</div>
-                    <div class="text-blue-200 font-medium">Taux de Réussite</div>
-                    <div class="text-blue-300 text-sm mt-2">Baccalauréat 2024</div>
+            <div class="carousel-container">
+                <!-- Scrolling Text -->
+                <div class="scrolling-text-container">
+                    <div class="scrolling-text">
+                        <p class="mb-6">Excellence académique reconnue nationalement</p>
+                        <p class="mb-6">Valeurs chrétiennes intégrées dans l'enseignement</p>
+                        <p class="mb-6">Innovation pédagogique avec technologies modernes</p>
+                        <p class="mb-6">Développement des compétences sociales et émotionnelles</p>
+                        <p class="mb-6">Préparation aux défis du XXIe siècle</p>
+                        <p class="mb-6">Environnement d'apprentissage stimulant</p>
+                        <p class="mb-6">Équipe pédagogique qualifiée et dévouée</p>
+                        <p class="mb-6">Activités extrascolaires variées</p>
+                        <p class="mb-6">Tradition d'excellence depuis plus de 30 ans</p>
+                        <p class="mb-6">Leaders formés pour demain</p>
+                        <p class="mb-6">Excellence académique reconnue nationalement</p>
+                        <p class="mb-6">Valeurs chrétiennes intégrées dans l'enseignement</p>
+                        <p class="mb-6">Innovation pédagogique avec technologies modernes</p>
+                        <p class="mb-6">Développement des compétences sociales et émotionnelles</p>
+                        <p class="mb-6">Préparation aux défis du XXIe siècle</p>
+                    </div>
                 </div>
                 
-                <div class="stat-card slide-in-left" style="transition-delay: 0.1s">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">25+</div>
-                    <div class="text-blue-200 font-medium">Ans d'Excellence</div>
-                    <div class="text-blue-300 text-sm mt-2">Depuis 1999</div>
-                </div>
-                
-                <div class="stat-card slide-in-right" style="transition-delay: 0.2s">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">500+</div>
-                    <div class="text-blue-200 font-medium">Élèves Formés</div>
-                    <div class="text-blue-300 text-sm mt-2">Leader dans leur domaine</div>
-                </div>
-                
-                <div class="stat-card slide-in-right" style="transition-delay: 0.3s">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">15</div>
-                    <div class="text-blue-200 font-medium">Partenariats Internationaux</div>
-                    <div class="text-blue-300 text-sm mt-2">Ouverture mondiale</div>
+                <!-- Prefect's Card -->
+                <div class="prefect-card">
+                    <img src="https://placehold.co/150x150/1e3a8a/f59e0b?text=Prefet" alt="Photo du Préfet" class="prefect-photo">
+                    <div class="prefect-message">
+                        <p>"Notre école forme non seulement des esprits brillants, mais aussi des cœurs généreux. 
+                        Chaque élève est encouragé à atteindre l'excellence tout en servant sa communauté."</p>
+                        <p class="prefect-name">Père Jean-Marie KABONGO</p>
+                        <p class="text-blue-200">Préfet de l'École Saint Charles Lwanga</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Valeurs -->
-    <section id="values" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                    Notre <span class="gradient-text">Philosophie Éducative</span>
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Trois piliers fondamentaux qui guident notre mission éducative
-                </p>
+                <h2 class="text-4xl font-bold text-primary-dark mb-4">À propos de notre école</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Une tradition d'excellence académique et de valeurs chrétiennes depuis plus de 30 ans</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="slide-in-left">
+                    <h3 class="text-2xl font-bold mb-4">Notre Mission</h3>
+                    <p class="text-gray-600 mb-6">
+                        Former des citoyens responsables, respectueux des valeurs chrétiennes et prêts à relever les défis du XXIe siècle. 
+                        Nous nous engageons à offrir une éducation de qualité qui développe les talents de chaque élève.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent-gold mt-1 mr-3"></i>
+                            <span>Excellence académique et pédagogie innovante</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent-gold mt-1 mr-3"></i>
+                            <span>Éducation basée sur les valeurs chrétiennes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent-gold mt-1 mr-3"></i>
+                            <span>Développement des compétences sociales et émotionnelles</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="slide-in-right">
+                    <div class="relative">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-96 flex items-center justify-center">
+                            <i class="fas fa-school text-gray-400 text-6xl"></i>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-blue-600 to-blue-400 p-6 rounded-xl shadow-xl">
+                            <div class="text-3xl font-bold text-white">30+</div>
+                            <div class="text-sm text-white">Années d'Excellence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-dark mb-4">Nos Programmes Éducatifs</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Des cursus complets adaptés aux besoins de chaque niveau d'enseignement</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Carte 1 -->
-                <div class="premium-card p-8 text-center slide-in-left">
-                    <div class="float-animation mb-6">
-                        <i class="fas fa-brain text-5xl gradient-text"></i>
+                <div class="premium-card">
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-book text-2xl text-primary-blue"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Enseignement Primaire</h3>
+                        <p class="text-gray-600 mb-6">
+                            Un programme équilibré qui développe les fondements académiques, sociaux et émotionnels des jeunes élèves.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Classes de 1ère à 6ème année</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Approche pédagogique active</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Activités artistiques et sportives</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary-blue font-medium flex items-center">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Excellence Intellectuelle</h3>
-                    <p class="text-gray-600 mb-6">
-                        Programmes académiques rigoureux et méthodes pédagogiques innovantes 
-                        pour stimuler l'excellence intellectuelle de chaque élève.
-                    </p>
-                    <ul class="text-left text-gray-600 space-y-2">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Pédagogie différenciée</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Enseignants experts</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Technologies éducatives</li>
-                    </ul>
                 </div>
                 
-                <!-- Carte 2 -->
-                <div class="premium-card p-8 text-center slide-in-up">
-                    <div class="float-animation mb-6">
-                        <i class="fas fa-hands-helping text-5xl gradient-text"></i>
+                <div class="premium-card">
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-book-open text-2xl text-primary-blue"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Enseignement Secondaire</h3>
+                        <p class="text-gray-600 mb-6">
+                            Une formation complète qui prépare les élèves aux examens nationaux et aux défis de l'enseignement supérieur.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Humanités et Sciences</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Préparation aux examens</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Orientation professionnelle</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary-blue font-medium flex items-center">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Valeurs Humaines</h3>
-                    <p class="text-gray-600 mb-6">
-                        Développement intégral de la personne basé sur les valeurs chrétiennes, 
-                        l'éthique et le sens des responsabilités.
-                    </p>
-                    <ul class="text-left text-gray-600 space-y-2">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Éducation aux valeurs</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Service communautaire</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Leadership éthique</li>
-                    </ul>
                 </div>
                 
-                <!-- Carte 3 -->
-                <div class="premium-card p-8 text-center slide-in-right">
-                    <div class="float-animation mb-6">
-                        <i class="fas fa-globe-americas text-5xl gradient-text"></i>
+                <div class="premium-card">
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-futbol text-2xl text-primary-blue"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Activités Extrascolaires</h3>
+                        <p class="text-gray-600 mb-6">
+                            Des activités variées qui développent les talents et favorisent l'épanouissement des élèves.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Sports et loisirs</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Arts et créativité</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Clubs et associations</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary-blue font-medium flex items-center">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Ouverture Mondiale</h3>
-                    <p class="text-gray-600 mb-6">
-                        Préparation des élèves à devenir des citoyens du monde grâce à une 
-                        éducation multiculturelle et multilingue.
-                    </p>
-                    <ul class="text-left text-gray-600 space-y-2">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Programme bilingue</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Échanges internationaux</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Perspective globale</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Programmes -->
-    <section id="programs" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- Statistics Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                    Parcours <span class="gradient-text">Académiques</span>
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Un continuum éducatif de la maternelle au baccalauréat international
-                </p>
+                <h2 class="text-4xl font-bold mb-4">Nos Réalisations en Chiffres</h2>
+                <p class="text-xl text-blue-200 max-w-3xl mx-auto">Des résultats qui parlent d'eux-mêmes</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Maternelle -->
-                <div class="premium-card p-6 text-center group cursor-pointer">
-                    <div class="mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-child text-4xl text-pink-500"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Maternelle</h3>
-                    <p class="text-gray-600 text-sm mb-4">
-                        Éveil et développement des compétences fondamentales dans un environnement sécurisant
-                    </p>
-                    <div class="accent-gradient text-white text-sm font-medium py-1 px-3 rounded-full inline-block">
-                        3-5 ans
-                    </div>
-                </div>
-                
-                <!-- Primaire -->
-                <div class="premium-card p-6 text-center group cursor-pointer">
-                    <div class="mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-book-open text-4xl text-green-500"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Primaire</h3>
-                    <p class="text-gray-600 text-sm mb-4">
-                        Acquisition des fondamentaux avec une approche pédagogique innovante et stimulante
-                    </p>
-                    <div class="accent-gradient text-white text-sm font-medium py-1 px-3 rounded-full inline-block">
-                        6-10 ans
-                    </div>
-                </div>
-                
-                <!-- Collège -->
-                <div class="premium-card p-6 text-center group cursor-pointer">
-                    <div class="mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-user-graduate text-4xl text-blue-500"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Collège</h3>
-                    <p class="text-gray-600 text-sm mb-4">
-                        Approfondissement des connaissances et développement de l'autonomie intellectuelle
-                    </p>
-                    <div class="accent-gradient text-white text-sm font-medium py-1 px-3 rounded-full inline-block">
-                        11-14 ans
-                    </div>
-                </div>
-                
-                <!-- Lycée -->
-                <div class="premium-card p-6 text-center group cursor-pointer">
-                    <div class="mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-university text-4xl text-purple-500"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Lycée</h3>
-                    <p class="text-gray-600 text-sm mb-4">
-                        Préparation à l'enseignement supérieur avec des spécialisations d'excellence
-                    </p>
-                    <div class="accent-gradient text-white text-sm font-medium py-1 px-3 rounded-full inline-block">
-                        15-18 ans
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Admissions -->
-    <section id="admissions" class="py-20 gradient-bg text-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                Rejoignez <span class="text-yellow-400">l'Excellence</span>
-            </h2>
-            <p class="text-xl mb-8 text-blue-100">
-                Le processus d'admission est conçu pour identifier les talents et potentialités de chaque candidat
-            </p>
-            
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <div class="text-center">
-                    <div class="text-3xl text-yellow-400 mb-4">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Dossier de Candidature</h3>
-                    <p class="text-blue-200">Transmettez-nous votre dossier complet en ligne</p>
-                </div>
-                
-                <div class="text-center">
-                    <div class="text-3xl text-yellow-400 mb-4">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Entretien Personnalisé</h3>
-                    <p class="text-blue-200">Rencontre avec notre équipe pédagogique</p>
-                </div>
-                
-                <div class="text-center">
-                    <div class="text-3xl text-yellow-400 mb-4">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Intégration</h3>
-                    <p class="text-blue-200">Bienvenue dans la famille Saint Charles Lwanga</p>
-                </div>
-            </div>
-            
-            <a href="#contact" class="btn-premium text-lg px-12 py-4">
-                <i class="fas fa-rocket mr-2"></i> Démarrer Votre Candidature
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer Élite -->
-    <footer class="gradient-bg text-white pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
-                <!-- Colonne 1 -->
+                <div class="stat-card">
+                    <div class="text-4xl font-bold gradient-text mb-2">98%</div>
+                    <h3 class="text-xl font-bold">Taux de réussite</h3>
+                    <p class="text-blue-200">Aux examens nationaux</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="text-4xl font-bold gradient-text mb-2">450+</div>
+                    <h3 class="text-xl font-bold">Élèves inscrits</h3>
+                    <p class="text-blue-200">Dans nos classes</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="text-4xl font-bold gradient-text mb-2">45</div>
+                    <h3 class="text-xl font-bold">Membres du personnel</h3>
+                    <p class="text-blue-200">Enseignants qualifiés</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="text-4xl font-bold gradient-text mb-2">30</div>
+                    <h3 class="text-xl font-bold">Années d'existence</h3>
+                    <p class="text-blue-200">D'excellence éducative</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <div class="footer-section">
-                    <h3 class="text-xl font-bold">Saint Charles Lwanga</h3>
-                    <p class="text-blue-200 mt-4 mb-6">
-                        Établissement d'enseignement d'excellence fondé sur les valeurs chrétiennes et l'innovation pédagogique.
+                    <div class="flex items-center space-x-3 mb-6">
+                        <i class="fas fa-church text-2xl text-accent-gold"></i>
+                        <h3 class="text-xl font-extrabold">Saint Charles Lwanga</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Une éducation d'excellence basée sur les valeurs chrétiennes et l'accomplissement de chaque élève.
                     </p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-accent-gold transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent-gold transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent-gold transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent-gold transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Colonne 2 -->
                 <div class="footer-section">
-                    <h3 class="text-xl font-bold">Navigation</h3>
-                    <div class="footer-links mt-4">
-                        <a href="#about"><i class="fas fa-chevron-right"></i> Notre École</a>
-                        <a href="#programs"><i class="fas fa-chevron-right"></i> Programmes</a>
-                        <a href="#admissions"><i class="fas fa-chevron-right"></i> Admissions</a>
-                        <a href="#news"><i class="fas fa-chevron-right"></i> Actualités</a>
-                        <a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a>
-                        <a href="portal.html"><i class="fas fa-chevron-right"></i> Espace Parents</a>
+                    <h3>Liens Rapides</h3>
+                    <div class="space-y-3">
+                        <a href="#" class="block text-gray-400 hover:text-white transition">Accueil</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition">À propos</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition">Programmes</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition">Actualités</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition">Contact</a>
                     </div>
                 </div>
                 
-                <!-- Colonne 3 -->
                 <div class="footer-section">
-                    <h3 class="text-xl font-bold">Contact</h3>
-                    <div class="space-y-4 mt-4">
-                        <div class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-yellow-400 mt-1 mr-3"></i>
-                            <div>
-                                <p class="font-medium">123 Avenue de l'Éducation</p>
-                                <p class="text-blue-200">75016 Paris, France</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-phone text-yellow-400 mr-3"></i>
-                            <span>+33 1 23 45 67 89</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-envelope text-yellow-400 mr-3"></i>
-                            <span>contact@saintcharleslwanga.fr</span>
-                        </div>
-                    </div>
+                    <h3>Contact</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-accent-gold"></i>
+                            <span>123 Avenue de l'Éducation, Quartier Universitaire, Lubumbashi</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-accent-gold"></i>
+                            <span>+243 999 999 999</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent-gold"></i>
+                            <span>info@saintcharleslwanga.cd</span>
+                        </li>
+                    </ul>
                 </div>
                 
-                <!-- Colonne 4 -->
                 <div class="footer-section">
-                    <h3 class="text-xl font-bold">Newsletter</h3>
-                    <p class="text-blue-200 mt-4 mb-4">
-                        Recevez nos actualités et événements directement dans votre boîte mail.
-                    </p>
-                    <form class="space-y-3">
-                        <input type="email" placeholder="Votre email" class="w-full bg-blue-900 bg-opacity-50 border border-blue-700 rounded-lg px-4 py-3 text-white placeholder-blue-300 focus:outline-none focus:border-yellow-400 transition-colors">
-                        <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors">
-                            S'inscrire
+                    <h3>Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Restez informé de nos actualités</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:border-accent-gold">
+                        <button class="bg-accent-gold text-gray-900 px-4 py-2 rounded-r-lg font-medium">
+                            <i class="fas fa-paper-plane"></i>
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
             
-            <!-- Bottom Bar -->
-            <div class="border-t border-blue-800 mt-12 pt-8 text-center text-blue-300">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p>&copy; 2024 École Saint Charles Lwanga. Tous droits réservés.</p>
-                    <div class="flex space-x-6 mt-4 md:mt-0">
-                        <a href="#" class="hover:text-white transition-colors">Mentions légales</a>
-                        <a href="#" class="hover:text-white transition-colors">Confidentialité</a>
-                        <a href="#" class="hover:text-white transition-colors">Cookies</a>
-                    </div>
-                </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 École Saint Charles Lwanga. Tous droits réservés. | Conçu avec <i class="fas fa-heart text-red-500"></i> pour l'éducation</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Initialisation GSAP
+        // Initialize GSAP
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
         
-        document.addEventListener('DOMContentLoaded', function() {
-            // =============================================
-            // CONFIGURATION GÉNÉRALE
-            // =============================================
-            const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            
-            // =============================================
-            // HEADER ET NAVIGATION
-            // =============================================
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
             const header = document.getElementById('main-header');
-            const backToTop = document.getElementById('back-to-top');
-            const loadingBar = document.getElementById('loading-bar');
-            
-            // Scroll Header
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                
-                // Header effect
-                if (scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-                
-                // Back to top button
-                if (scrollY > 500) {
-                    backToTop.classList.add('show');
-                } else {
-                    backToTop.classList.remove('show');
-                }
-                
-                // Loading bar
-                const winHeight = window.innerHeight;
-                const docHeight = document.documentElement.scrollHeight;
-                const scrollTop = window.pageYOffset;
-                const trackLength = docHeight - winHeight;
-                const scrollPercentage = Math.floor(scrollTop / trackLength * 100);
-                loadingBar.style.width = scrollPercentage + '%';
-            });
-            
-            // Back to top
-            backToTop.addEventListener('click', () => {
-                gsap.to(window, {
-                    duration: 1.2,
-                    scrollTo: { y: 0 },
-                    ease: "power2.inOut"
-                });
-            });
-            
-            // =============================================
-            // ANIMATIONS AU SCROLL
-            // =============================================
-            if (!isReducedMotion) {
-                // Animation des éléments au scroll
-                gsap.utils.toArray('.slide-in-left, .slide-in-right, .slide-in-up').forEach(element => {
-                    gsap.fromTo(element, {
-                        opacity: 0,
-                        y: element.classList.contains('slide-in-up') ? 50 : 0,
-                        x: element.classList.contains('slide-in-left') ? -100 : 
-                           element.classList.contains('slide-in-right') ? 100 : 0
-                    }, {
-                        opacity: 1,
-                        y: 0,
-                        x: 0,
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
                         duration: 1,
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: element,
-                            start: "top 80%",
-                            end: "bottom 20%",
-                            toggleActions: "play none none reverse"
-                        }
+                        scrollTo: {
+                            y: target.offsetTop - 80,
+                            autoKill: false
+                        },
+                        ease: "power2.inOut"
                     });
-                });
-                
-                // Animation des cartes au hover
-                gsap.utils.toArray('.premium-card').forEach(card => {
-                    card.addEventListener('mouseenter', () => {
-                        gsap.to(card, {
-                            y: -10,
-                            scale: 1.02,
-                            duration: 0.4,
-                            ease: "power2.out"
-                        });
-                    });
-                    
-                    card.addEventListener('mouseleave', () => {
-                        gsap.to(card, {
-                            y: 0,
-                            scale: 1,
-                            duration: 0.4,
-                            ease: "power2.out"
-                        });
-                    });
-                });
-            }
-            
-            // =============================================
-            // MENU MOBILE
-            // =============================================
-            const menuToggle = document.getElementById('menu-toggle');
-            const closeMenu = document.getElementById('close-menu');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.remove('-translate-y-full');
-                document.body.style.overflow = 'hidden';
-            });
-            
-            closeMenu.addEventListener('click', () => {
-                mobileMenu.classList.add('-translate-y-full');
-                document.body.style.overflow = '';
-            });
-            
-            // =============================================
-            // PARTICULES D'ARRIÈRE-PLAN
-            // =============================================
-            function createParticles() {
-                const container = document.getElementById('particles');
-                const particleCount = 50;
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    
-                    // Propriétés aléatoires
-                    const size = Math.random() * 4 + 1;
-                    const left = Math.random() * 100;
-                    const delay = Math.random() * 20;
-                    const duration = 15 + Math.random() * 20;
-                    
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    particle.style.left = `${left}%`;
-                    particle.style.animationDelay = `${delay}s`;
-                    particle.style.animationDuration = `${duration}s`;
-                    
-                    container.appendChild(particle);
                 }
+            });
+        });
+        
+        // Animation on scroll
+        gsap.utils.toArray('.slide-in-left, .slide-in-right, .slide-in-up').forEach(element => {
+            gsap.from(element, {
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                x: element.classList.contains('slide-in-right') ? 100 : element.classList.contains('slide-in-left') ? -100 : 0,
+                y: element.classList.contains('slide-in-up') ? 50 : 0,
+                opacity: 0,
+                duration: 1,
+                ease: "power2.out"
+            });
+        });
+        
+        // Canvas 3D animation (simplified)
+        const canvas = document.getElementById('hero-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // Simple animation for background effect
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw some animated shapes
+                for (let i = 0; i < 20; i++) {
+                    const x = (Math.sin(Date.now() / 1000 + i) * canvas.width / 4) + canvas.width / 2;
+                    const y = (Math.cos(Date.now() / 1000 + i) * canvas.height / 4) + canvas.height / 2;
+                    const size = Math.sin(Date.now() / 500 + i) * 10 + 20;
+                    
+                    ctx.beginPath();
+                    ctx.arc(x, y, size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(245, 158, 11, ${0.1 + Math.sin(Date.now() / 1000 + i) * 0.1})`;
+                    ctx.fill();
+                }
+                
+                requestAnimationFrame(animate);
             }
             
-            createParticles();
+            animate();
             
-            // =============================================
-            // ANIMATION HERO
-            // =============================================
-            if (!isReducedMotion) {
-                // Animation du titre principal
-                gsap.from('#hero h2', {
-                    duration: 1.5,
-                    y: 100,
-                    opacity: 0,
-                    ease: "power3.out",
-                    delay: 0.2
-                });
-                
-                // Animation du sous-titre
-                gsap.from('#hero .text-xl', {
-                    duration: 1.2,
-                    y: 50,
-                    opacity: 0,
-                    ease: "power3.out",
-                    delay: 0.5
-                });
-                
-                // Animation des boutons
-                gsap.from('#hero .flex', {
-                    duration: 1,
-                    y: 30,
-                    opacity: 0,
-                    ease: "power3.out",
-                    delay: 0.8
-                });
-            }
-            
-            // =============================================
-            // NAVIGATION SMOOTH
-            // =============================================
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        gsap.to(window, {
-                            duration: 1.2,
-                            scrollTo: { y: target, offsetY: 80 },
-                            ease: "power2.inOut"
-                        });
-                    }
+            // Resize canvas on window resize
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+        
+        // Button hover effects
+        document.querySelectorAll('.btn-premium, .btn-outline-premium').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                gsap.to(this, {
+                    y: -5,
+                    duration: 0.3,
+                    ease: "power2.out"
                 });
             });
             
-            // =============================================
-            // OBSERVER POUR LES ANIMATIONS
-            // =============================================
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+            button.addEventListener('mouseleave', function() {
+                gsap.to(this, {
+                    y: 0,
+                    duration: 0.3,
+                    ease: "power2.out"
                 });
-            }, observerOptions);
+            });
+        });
+        
+        // Card hover effects
+        document.querySelectorAll('.premium-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                gsap.to(this, {
+                    y: -15,
+                    scale: 1.03,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+            });
             
-            document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-in-up').forEach(el => {
-                observer.observe(el);
+            card.addEventListener('mouseleave', function() {
+                gsap.to(this, {
+                    y: 0,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
             });
         });
     </script>
