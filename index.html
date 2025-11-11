@@ -1,1342 +1,1259 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>École Saint Charles Lwanga | Excellence, Foi et Avenir</title>
-    <meta name="description" content="École d'élite Saint Charles Lwanga - Éducation premium basée sur l'excellence académique et les valeurs chrétiennes.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <title>Saint Charles Lwanga - École d'Excellence</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231e3a8a'/><text x='50%' y='50%' font-size='60' text-anchor='middle' alignment-baseline='middle' fill='%23f59e0b'>🎓</text></svg>">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-dark: #0f172a;
-            --primary-blue: #1e3a8a;
-            --primary-light: #3b82f6;
-            --accent-gold: #f59e0b;
-            --accent-orange: #d97706;
-            --neutral-light: #f8fafc;
-            --neutral-dark: #1e293b;
-            --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%);
-            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
-            --glass-effect: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        html {
-            scroll-behavior: smooth;
+
+        :root {
+            --primary: #1a4b8c;
+            --secondary: #e63946;
+            --accent: #2a9d8f;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --transition: all 0.3s ease;
         }
-        
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--neutral-dark);
-            background: var(--neutral-light);
-            line-height: 1.7;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
             overflow-x: hidden;
-            font-weight: 400;
         }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            line-height: 1.2;
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
-        
-        .glass {
-            background: var(--glass-effect);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
-        
-        .gradient-bg {
-            background: var(--gradient-primary);
-        }
-        
-        .gradient-text {
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .accent-gradient {
-            background: var(--gradient-accent);
-        }
-        
-        /* Header Élite */
-        #main-header {
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
+            top: 0;
             z-index: 1000;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
         }
-        
-        #main-header.scrolled {
-            background: rgba(15, 23, 42, 0.98);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-            padding: 0.5rem 0;
+
+        header.scrolled {
+            padding: 5px 0;
+            background: rgba(255, 255, 255, 0.98);
         }
-        
-        .nav-link {
-            position: relative;
-            color: #cbd5e1;
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            position: relative;
         }
-        
-        .nav-link::after {
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient-accent);
-            transition: width 0.3s ease;
+            background: var(--primary);
+            transition: var(--transition);
         }
-        
-        .nav-link:hover::after,
-        .nav-link.active::after {
+
+        .nav-links a:hover::after {
             width: 100%;
         }
-        
-        .nav-link:hover,
-        .nav-link.active {
-            color: white;
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
-        
-        /* Sous-menus premium */
-        .nav-item {
-            position: relative;
-        }
-        
-        .submenu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            min-width: 280px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px) scale(0.95);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 100;
-            padding: 0.75rem 0;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .nav-item:hover .submenu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(5px) scale(1);
-        }
-        
-        .submenu a {
-            display: flex;
-            align-items: center;
-            padding: 12px 20px;
-            color: #cbd5e1;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-        }
-        
-        .submenu a:hover {
-            background: rgba(59, 130, 246, 0.1);
-            color: white;
-            border-left-color: var(--accent-gold);
-            padding-left: 25px;
-        }
-        
-        .submenu a i {
-            margin-right: 12px;
-            width: 18px;
-            text-align: center;
-            color: var(--accent-gold);
-        }
-        
-        /* Hero Section avec Canvas 3D */
-        #hero {
+
+        /* Hero Section */
+        .hero {
             height: 100vh;
-            position: relative;
-            background: var(--gradient-primary);
+            background: linear-gradient(rgba(26, 75, 140, 0.8), rgba(26, 75, 140, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
             text-align: center;
-        }
-
-        /* Section Carousel Élite */
-        .carousel-section {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
             position: relative;
             overflow: hidden;
         }
 
-        .carousel-container {
-            max-width: 1400px;
+        .hero-content {
+            max-width: 800px;
             margin: 0 auto;
-            position: relative;
+            z-index: 2;
         }
 
-        .text-carousel {
-            position: relative;
-            height: 120px;
-            overflow: hidden;
-        }
-
-        .carousel-text {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeUp 1s forwards 0.5s;
         }
 
-        .carousel-text.active {
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.8s;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 1.1s;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-duration: 20s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            left: 80%;
+            animation-duration: 15s;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            top: 80%;
+            left: 20%;
+            animation-duration: 25s;
+            animation-delay: 1s;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: var(--transition);
+        }
+
+        .about-image:hover {
+            transform: perspective(1000px) rotateY(0);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .program-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 2rem;
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .indicator {
+        .program-icon {
+            height: 80px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .program-content {
+            padding: 1.5rem;
+        }
+
+        .program-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(rgba(26, 75, 140, 0.9), rgba(26, 75, 140, 0.9)), url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--light);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .slider-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
+            background: #ccc;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
-        .indicator.active {
-            background: var(--accent-gold);
+        .slider-dot.active {
+            background: var(--primary);
             transform: scale(1.2);
         }
 
-        .prefet-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            overflow: hidden;
-            position: relative;
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
         }
 
-        .prefet-image {
-            position: relative;
-            overflow: hidden;
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .prefet-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(245, 158, 11, 0.1), rgba(59, 130, 246, 0.1));
-            z-index: 1;
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
         }
 
-        .prefet-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--gradient-accent);
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            z-index: 2;
+            font-size: 1.2rem;
+            flex-shrink: 0;
         }
-        
-        /* Animations avancées */
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-        
-        .pulse-glow {
-            animation: pulse-glow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes pulse-glow {
-            from { box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
-            to { box-shadow: 0 0 40px rgba(245, 158, 11, 0.8); }
-        }
-        
-        .slide-in-left {
-            transform: translateX(-100px);
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .slide-in-right {
-            transform: translateX(100px);
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .slide-in-up {
-            transform: translateY(50px);
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .visible {
-            transform: translate(0);
-            opacity: 1;
-        }
-        
-        /* Cartes premium */
-        .premium-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .premium-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-accent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-        
-        .premium-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .premium-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Boutons élégants */
-        .btn-premium {
-            background: var(--gradient-accent);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 16px 32px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .btn-premium::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.7s ease;
-            z-index: -1;
-        }
-        
-        .btn-premium:hover::before {
-            left: 100%;
-        }
-        
-        .btn-premium:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(245, 158, 11, 0.4);
-        }
-        
-        .btn-outline-premium {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            border-radius: 50px;
-            padding: 14px 30px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .btn-outline-premium:hover {
-            background: white;
-            color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Section Statistiques */
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
+
+        .contact-form {
+            background: var(--light);
             padding: 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
-        .stat-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-        }
-        
-        /* Footer Élite */
-        .footer-section h3 {
-            position: relative;
-            padding-bottom: 1rem;
+
+        .form-group {
             margin-bottom: 1.5rem;
         }
-        
-        .footer-section h3::after {
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 75, 140, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--gradient-accent);
-            border-radius: 2px;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
         }
-        
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
         .footer-links a {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.75rem;
-            color: #94a3b8;
-            transition: all 0.3s ease;
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
         }
-        
-        .footer-links a i {
-            margin-right: 10px;
-            width: 16px;
-            text-align: center;
-            color: var(--accent-gold);
-        }
-        
+
         .footer-links a:hover {
             color: white;
-            transform: translateX(5px);
+            padding-left: 5px;
         }
-        
-        .footer-social a {
-            display: inline-flex;
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
             color: white;
-            margin-right: 0.75rem;
-            transition: all 0.3s ease;
+            text-decoration: none;
+            transition: var(--transition);
         }
-        
-        .footer-social a:hover {
-            background: var(--gradient-accent);
+
+        .social-link:hover {
+            background: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
         }
-        
-        /* Chargement et retour en haut */
-        .loading-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--gradient-accent);
-            width: 0%;
-            z-index: 1001;
-            transition: width 0.3s ease;
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
         }
-        
+
+        /* Back to Top */
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: var(--gradient-accent);
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
             color: white;
-            width: 56px;
-            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
+            text-decoration: none;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             z-index: 999;
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
         }
-        
-        .back-to-top:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 12px 30px rgba(245, 158, 11, 0.6);
-        }
-        
-        .back-to-top.show {
+
+        .back-to-top.visible {
             opacity: 1;
             visibility: visible;
         }
-        
-        /* Effets de particules */
-        .particles-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
         }
-        
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: particle-float 20s infinite linear;
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
-        @keyframes particle-float {
+
+        @keyframes float {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
             }
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(0) rotate(360deg);
             }
         }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-content h2 {
-                font-size: 2.5rem;
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
             }
             
-            .premium-card:hover {
-                transform: translateY(-5px);
+            .about-image {
+                transform: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: var(--transition);
             }
 
-            .text-carousel {
-                height: 160px;
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+                text-align: center;
             }
         }
     </style>
 </head>
-
-<body class="antialiased">
-    <div class="loading-bar" id="loading-bar"></div>
-    
-    <div class="back-to-top" id="back-to-top">
-        <i class="fas fa-chevron-up text-lg"></i>
-    </div>
-
-    <header id="main-header" class="py-4 px-6 md:px-8">
-        <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <div class="flex items-center space-x-3">
-                <div class="pulse-glow bg-white p-3 rounded-2xl">
-                    <i class="fas fa-graduation-cap text-2xl text-blue-600"></i>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-circle"></div>
+                    <div class="logo-text">Saint Charles Lwanga</div>
                 </div>
-                <div>
-                    <h1 class="text-xl font-bold text-white">Saint Charles Lwanga</h1>
-                    <p class="text-xs text-blue-200">Excellence & Valeurs</p>
-                </div>
-            </div>
-            
-            <nav class="hidden lg:flex items-center space-x-8">
-                <a href="#hero" class="nav-link active">Accueil</a>
-                
-                <div class="nav-item">
-                    <a href="#about" class="nav-link flex items-center">
-                        Notre École <i class="fas fa-chevron-down ml-2 text-xs"></i>
-                    </a>
-                    <div class="submenu">
-                        <a href="#history"><i class="fas fa-landmark"></i> Histoire & Mission</a>
-                        <a href="#team"><i class="fas fa-users"></i> Équipe Pédagogique</a>
-                        <a href="#facilities"><i class="fas fa-building"></i> Installations</a>
-                        <a href="#values"><i class="fas fa-heart"></i> Nos Valeurs</a>
-                        <a href="#certifications"><i class="fas fa-award"></i> Certifications</a>
-                    </div>
-                </div>
-                
-                <div class="nav-item">
-                    <a href="#programs" class="nav-link flex items-center">
-                        Programmes <i class="fas fa-chevron-down ml-2 text-xs"></i>
-                    </a>
-                    <div class="submenu">
-                        <a href="#maternelle"><i class="fas fa-child"></i> Maternelle</a>
-                        <a href="#primaire"><i class="fas fa-book-open"></i> Primaire</a>
-                        <a href="#college"><i class="fas fa-user-graduate"></i> Collège</a>
-                        <a href="#lycee"><i class="fas fa-university"></i> Lycée</a>
-                        <a href="#international"><i class="fas fa-globe"></i> Section Internationale</a>
-                    </div>
-                </div>
-                
-                <div class="nav-item">
-                    <a href="#admissions" class="nav-link flex items-center">
-                        Admissions <i class="fas fa-chevron-down ml-2 text-xs"></i>
-                    </a>
-                    <div class="submenu">
-                        <a href="#process"><i class="fas fa-clipboard-list"></i> Processus</a>
-                        <a href="#fees"><i class="fas fa-money-bill-wave"></i> Frais de Scolarité</a>
-                        <a href="#calendar"><i class="fas fa-calendar-alt"></i> Calendrier</a>
-                        <a href="#visite"><i class="fas fa-video"></i> Visite Virtuelle</a>
-                    </div>
-                </div>
-                
-                <a href="#news" class="nav-link">Actualités</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </nav>
-            
-            <div class="flex items-center space-x-4">
-                <a href="#admissions" class="hidden lg:block btn-premium">
-                    <i class="fas fa-user-plus mr-2"></i> Inscription
-                </a>
-                <a href="portal.html" class="hidden md:flex items-center text-blue-200 hover:text-white transition-colors">
-                    <i class="fas fa-sign-in-alt mr-2"></i>
-                    <span>Espace Parents</span>
-                </a>
-                <button id="menu-toggle" class="lg:hidden text-2xl text-white">
+                <ul class="nav-links">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#about">À Propos</a></li>
+                    <li><a href="#programs">Programmes</a></li>
+                    <li><a href="#admissions">Admissions</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
                     <i class="fas fa-bars"></i>
-                </button>
-            </div>
+                </div>
+            </nav>
         </div>
     </header>
 
-    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full gradient-bg p-6 z-50 transform -translate-y-full transition-transform duration-500 lg:hidden">
-        <button id="close-menu" class="absolute top-6 right-6 text-white text-3xl">
-            <i class="fas fa-times"></i>
-        </button>
-        <nav class="flex flex-col space-y-8 pt-24 text-center text-2xl font-semibold text-white">
-            <a href="#hero" class="hover:text-yellow-300 transition-colors">Accueil</a>
-            <a href="#about" class="hover:text-yellow-300 transition-colors">Notre École</a>
-            <a href="#programs" class="hover:text-yellow-300 transition-colors">Programmes</a>
-            <a href="#admissions" class="hover:text-yellow-300 transition-colors">Admissions</a>
-            <a href="#news" class="hover:text-yellow-300 transition-colors">Actualités</a>
-            <a href="#contact" class="hover:text-yellow-300 transition-colors">Contact</a>
-        </nav>
-    </div>
-
-    <section id="hero" class="relative">
-        <canvas id="hero-canvas"></canvas>
-        <div class="particles-container" id="particles"></div>
-        
-        <div class="hero-content max-w-6xl mx-auto px-6 text-white">
-            <div class="float-animation mb-8">
-                <i class="fas fa-crown text-6xl text-yellow-400 mb-4"></i>
-            </div>
-            
-            <h2 class="text-5xl md:text-7xl font-bold mb-6 slide-in-up">
-                École <span class="gradient-text">Saint Charles Lwanga</span>
-            </h2>
-            
-            <p class="text-xl md:text-2xl mb-8 text-blue-100 slide-in-up" style="transition-delay: 0.2s">
-                L'excellence académique au service des valeurs humaines
-            </p>
-            
-            <p class="text-lg mb-12 max-w-2xl mx-auto text-blue-200 slide-in-up" style="transition-delay: 0.4s">
-                Une éducation d'élite qui allie tradition et innovation pour former les leaders de demain
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center slide-in-up" style="transition-delay: 0.6s">
-                <a href="#admissions" class="btn-premium">
-                    <i class="fas fa-rocket mr-2"></i> Commencer l'Aventure
-                </a>
-                <a href="#about" class="btn-outline-premium">
-                    <i class="fas fa-play-circle mr-2"></i> Découvrir
-                </a>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
         </div>
-        
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-2xl text-yellow-400"></i>
+        <div class="container">
+            <div class="hero-content">
+                <h1>École Saint Charles Lwanga</h1>
+                <p>Former les leaders de demain à travers l'excellence académique, l'intégrité morale et l'engagement communautaire.</p>
+                <div class="hero-btns">
+                    <a href="#admissions" class="btn btn-primary">Postuler Maintenant</a>
+                    <a href="#about" class="btn btn-secondary">Découvrir Notre École</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="carousel" class="carousel-section py-20">
-        <div class="carousel-container px-6">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <div class="text-center lg:text-left">
-                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                            Une Éducation <span class="gradient-text">d'Élite</span>
-                        </h2>
-                        <p class="text-xl text-blue-200 mb-8">
-                            Qui allie tradition et innovation pour former les leaders de demain
-                        </p>
-                    </div>
-
-                    <div class="text-carousel">
-                        <div class="carousel-text active">
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
-                                <i class="fas fa-brain text-yellow-400 mr-3"></i>
-                                Excellence Académique
-                            </h3>
-                            <p class="text-blue-200 text-lg leading-relaxed">
-                                Programmes académiques rigoureux enrichis par des méthodes pédagogiques innovantes 
-                                qui stimulent la curiosité intellectuelle et développent l'esprit critique de chaque élève.
-                            </p>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>À Propos de Notre École</h2>
+                <p>Fondée en 1958, l'École Saint Charles Lwanga s'engage à fournir une éducation de qualité qui forme des citoyens responsables et épanouis.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Notre Mission Éducative</h3>
+                    <p>À l'École Saint Charles Lwanga, nous croyons en une éducation holistique qui développe non seulement les compétences académiques mais aussi le caractère, la créativité et le sens des responsabilités sociales.</p>
+                    <p>Notre approche pédagogique innovante combine les meilleures pratiques éducatives avec des valeurs chrétiennes pour former des individus complets, prêts à affronter les défis du monde moderne.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Enseignants qualifiés et dévoués</span>
                         </div>
-
-                        <div class="carousel-text">
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
-                                <i class="fas fa-heart text-yellow-400 mr-3"></i>
-                                Valeurs Humaines
-                            </h3>
-                            <p class="text-blue-200 text-lg leading-relaxed">
-                                Développement intégral de la personne basé sur les valeurs chrétiennes, l'éthique, 
-                                le sens des responsabilités et l'engagement envers la communauté.
-                            </p>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Infrastructures modernes et sécurisées</span>
                         </div>
-
-                        <div class="carousel-text">
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
-                                <i class="fas fa-globe text-yellow-400 mr-3"></i>
-                                Innovation Pédagogique
-                            </h3>
-                            <p class="text-blue-200 text-lg leading-relaxed">
-                                Intégration des technologies éducatives les plus avancées avec des espaces 
-                                d'apprentissage modulaires qui s'adaptent aux besoins de chaque élève.
-                            </p>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Programmes académiques et parascolaires équilibrés</span>
                         </div>
-
-                        <div class="carousel-text">
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
-                                <i class="fas fa-users text-yellow-400 mr-3"></i>
-                                Leadership & Citoyenneté
-                            </h3>
-                            <p class="text-blue-200 text-lg leading-relaxed">
-                                Programme de développement du leadership qui prépare les élèves à devenir 
-                                des citoyens engagés, capables de contribuer positivement à la société.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="carousel-indicators">
-                        <div class="indicator active" data-index="0"></div>
-                        <div class="indicator" data-index="1"></div>
-                        <div class="indicator" data-index="2"></div>
-                        <div class="indicator" data-index="3"></div>
                     </div>
                 </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="École Saint Charles Lwanga">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="prefet-card p-8">
-                    <div class="prefet-badge">
-                        <i class="fas fa-star mr-1"></i> Mot du Préfet
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Programmes Académiques</h2>
+                <p>Découvrez notre offre éducative complète, de la maternelle au lycée, conçue pour répondre aux besoins de chaque élève.</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-child"></i>
                     </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div class="prefet-image rounded-2xl overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
-                                alt="Préfet de l'École Saint Charles Lwanga" 
-                                class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-700">
-                        </div>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-quote-left text-white text-lg"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-white">Dr. Michel Durand</h4>
-                                    <p class="text-blue-300 text-sm">Préfet de l'École</p>
-                                </div>
-                            </div>
-                            
-                            <blockquote class="text-blue-200 leading-relaxed italic">
-                                "Notre mission va au-delà de l'enseignement académique. Nous formons des êtres humains complets, 
-                                équipés pour exceller dans un monde en constante évolution, tout en restant ancrés dans des valeurs solides."
-                            </blockquote>
-                            
-                            <div class="flex items-center space-x-4 pt-4">
-                                <div class="flex items-center space-x-2 text-yellow-400">
-                                    <i class="fas fa-award"></i>
-                                    <span class="text-sm font-semibold">25 ans d'expérience</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-blue-400">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    <span class="text-sm font-semibold">Docteur en Éducation</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="program-content">
+                        <h3>Maternelle</h3>
+                        <p>Un environnement stimulant et sécurisant pour l'éveil et le développement des tout-petits âgés de 3 à 5 ans.</p>
+                        <a href="#" class="btn-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Primaire</h3>
+                        <p>Un programme complet qui pose les bases solides en littératie, numératie et compétences sociales.</p>
+                        <a href="#" class="btn-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Collège</h3>
+                        <p>Un curriculum diversifié qui prépare les élèves aux défis académiques du secondaire tout en développant leur autonomie.</p>
+                        <a href="#" class="btn-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Lycée</h3>
+                        <p>Une préparation rigoureuse aux examens nationaux et une orientation vers les études supérieures.</p>
+                        <a href="#" class="btn-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="stats" class="py-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 slide-in-up">
-                    Nos <span class="gradient-text">Chiffres Clés</span>
-                </h2>
-                <p class="text-xl text-blue-200 max-w-3xl mx-auto slide-in-up" style="transition-delay: 0.2s">
-                    L'impact de notre méthode éducative se mesure en résultats concrets et en accomplissements.
-                </p>
-            </div>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="stat-card slide-in-left">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">98%</div>
-                    <div class="text-blue-200 font-medium">Taux de Réussite aux Examens</div>
-                    <div class="text-blue-300 text-sm mt-2">Dernière promotion (Primaire, Collège, Lycée)</div>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="1250">0</div>
+                    <div class="stat-label">Élèves Inscrits</div>
                 </div>
-                <div class="stat-card slide-in-up" style="transition-delay: 0.2s">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">15+</div>
-                    <div class="text-blue-200 font-medium">Clubs & Activités Extra-scolaires</div>
-                    <div class="text-blue-300 text-sm mt-2">Développement complet de l'enfant</div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="85">0</div>
+                    <div class="stat-label">Enseignants Qualifiés</div>
                 </div>
-                <div class="stat-card slide-in-up" style="transition-delay: 0.4s">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">12:1</div>
-                    <div class="text-blue-200 font-medium">Ratio Élèves/Enseignant</div>
-                    <div class="text-blue-300 text-sm mt-2">Accompagnement personnalisé garanti</div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="98">0</div>
+                    <div class="stat-label">Taux de Réussite</div>
                 </div>
-                <div class="stat-card slide-in-right">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">25+</div>
-                    <div class="text-blue-200 font-medium">Années d'Excellence</div>
-                    <div class="text-blue-300 text-sm mt-2">Fondée en 2000, un héritage d'impact</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="programs" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 slide-in-up">
-                    Nos <span class="gradient-text">Programmes</span> Éducatifs
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto slide-in-up" style="transition-delay: 0.2s">
-                    Un parcours académique structuré de la Maternelle au Lycée, préparant aux meilleures universités.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="premium-card p-6 text-center slide-in-left">
-                    <i class="fas fa-child text-5xl text-blue-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-primary-dark mb-2">Maternelle</h3>
-                    <p class="text-gray-600">Éveil des sens, développement social et bases ludiques de l'apprentissage.</p>
-                </div>
-
-                <div class="premium-card p-6 text-center slide-in-up" style="transition-delay: 0.2s">
-                    <i class="fas fa-book-open text-5xl text-blue-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-primary-dark mb-2">Primaire</h3>
-                    <p class="text-gray-600">Acquisition des fondamentaux, éducation bilingue et projets créatifs.</p>
-                </div>
-
-                <div class="premium-card p-6 text-center slide-in-up" style="transition-delay: 0.4s">
-                    <i class="fas fa-user-graduate text-5xl text-blue-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-primary-dark mb-2">Collège</h3>
-                    <p class="text-gray-600">Spécialisation progressive, mentorat et développement de l'autonomie.</p>
-                </div>
-
-                <div class="premium-card p-6 text-center slide-in-right">
-                    <i class="fas fa-university text-5xl text-blue-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-primary-dark mb-2">Lycée</h3>
-                    <p class="text-gray-600">Préparation intensive aux examens d'entrée universitaires et orientation.</p>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12 slide-in-up" style="transition-delay: 0.6s">
-                <a href="#admissions" class="btn-premium">
-                    <i class="fas fa-info-circle mr-2"></i> Voir les détails des programmes
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="slide-in-left">
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                        Notre <span class="gradient-text">Philosophie</span> d'Excellence
-                    </h2>
-                    <p class="text-xl text-blue-200 mb-8">
-                        L'École Saint Charles Lwanga est fondée sur une triade de principes fondamentaux qui guident 
-                        chaque aspect de l'expérience éducative.
-                    </p>
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-gem text-3xl text-yellow-400 mt-1"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold text-white">Excellence Académique</h3>
-                                <p class="text-blue-300">Des standards élevés, un corps professoral d'élite et des ressources de pointe pour garantir le succès.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-cross text-3xl text-yellow-400 mt-1"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold text-white">Fondation Chrétienne</h3>
-                                <p class="text-blue-300">Un environnement qui nourrit la foi, l'éthique et le respect mutuel.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-seedling text-3xl text-yellow-400 mt-1"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold text-white">Préparation à l'Avenir</h3>
-                                <p class="text-blue-300">Développement des compétences du 21e siècle : esprit critique, collaboration et adaptabilité.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass p-8 rounded-3xl slide-in-right">
-                    <h3 class="text-3xl font-bold text-white mb-6">Visite Virtuelle</h3>
-                    <div class="aspect-video bg-gray-900 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-video text-6xl text-blue-400"></i>
-                    </div>
-                    <p class="text-blue-200 mb-4">
-                        Découvrez nos installations modernes, nos laboratoires de sciences, notre bibliothèque de luxe 
-                        et nos terrains de sport de classe mondiale.
-                    </p>
-                    <a href="#visite" class="btn-premium w-full text-center">
-                        <i class="fas fa-vr-cardboard mr-2"></i> Lancer la Visite 360°
-                    </a>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="25">0</div>
+                    <div class="stat-label">Ans d'Expérience</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="news" class="py-20 bg-neutral-light">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 slide-in-up">
-                    Ils parlent de <span class="gradient-text">Nous</span>
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto slide-in-up" style="transition-delay: 0.2s">
-                    Des parents et des élèves satisfaits, témoins de notre engagement pour l'excellence.
-                </p>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Témoignages</h2>
+                <p>Découvrez ce que les parents et élèves disent de leur expérience à l'École Saint Charles Lwanga.</p>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="premium-card p-8 slide-in-left">
-                    <i class="fas fa-quote-left text-3xl text-yellow-500 mb-4"></i>
-                    <p class="italic text-gray-700 mb-6">
-                        "L'encadrement est exceptionnel. Mon fils a non seulement excellé scolairement, mais il a 
-                        aussi développé un sens civique et une maturité impressionnante."
-                    </p>
-                    <div class="flex items-center space-x-3">
-                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" 
-                             alt="Photo de Parent 1" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <p class="font-bold text-primary-dark">Mme. Sophie L.</p>
-                            <p class="text-sm text-gray-500">Parent d'élève (Lycée)</p>
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Parent">
                         </div>
+                        <div class="testimonial-text">
+                            <p>"L'École Saint Charles Lwanga a offert à mes enfants un environnement d'apprentissage exceptionnel. Les enseignants sont dévoués et l'approche éducative est vraiment holistique."</p>
+                        </div>
+                        <div class="testimonial-author">Marie Koffi, Parent d'élève</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ancien élève">
+                        </div>
+                        <div class="testimonial-text">
+                            <p>"Les années passées à Saint Charles Lwanga m'ont non seulement préparé académiquement pour l'université, mais m'ont aussi inculqué des valeurs qui me guident encore aujourd'hui."</p>
+                        </div>
+                        <div class="testimonial-author">Jean Traoré, Ancien élève</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Enseignante">
+                        </div>
+                        <div class="testimonial-text">
+                            <p>"Travailler à Saint Charles Lwanga est une bénédiction. L'administration soutient l'innovation pédagogique et les élèves sont motivés à apprendre. C'est une véritable communauté éducative."</p>
+                        </div>
+                        <div class="testimonial-author">Aminata Diarra, Enseignante</div>
                     </div>
                 </div>
-
-                <div class="premium-card p-8 slide-in-up" style="transition-delay: 0.2s">
-                    <i class="fas fa-quote-left text-3xl text-yellow-500 mb-4"></i>
-                    <p class="italic text-gray-700 mb-6">
-                        "Les professeurs sont inspirants et les installations (surtout le labo de robotique!) 
-                        sont de loin les meilleures. Je suis fier d'être un étudiant de Saint Charles Lwanga."
-                    </p>
-                    <div class="flex items-center space-x-3">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" 
-                             alt="Photo d'Élève 1" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <p class="font-bold text-primary-dark">Marc D.</p>
-                            <p class="text-sm text-gray-500">Élève (Terminal)</p>
-                        </div>
-                    </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
                 </div>
-
-                <div class="premium-card p-8 slide-in-right">
-                    <i class="fas fa-quote-left text-3xl text-yellow-500 mb-4"></i>
-                    <p class="italic text-gray-700 mb-6">
-                        "La section internationale a permis à ma fille de s'épanouir dans un contexte multiculturel 
-                        tout en conservant un haut niveau académique. Une expérience unique!"
-                    </p>
-                    <div class="flex items-center space-x-3">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" 
-                             alt="Photo de Parent 2" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <p class="font-bold text-primary-dark">M. Thomas K.</p>
-                            <p class="text-sm text-gray-500">Parent d'élève (Primaire)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12 slide-in-up" style="transition-delay: 0.4s">
-                <a href="#" class="btn-premium">
-                    <i class="fas fa-comments mr-2"></i> Lire plus de témoignages
-                </a>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 slide-in-up">
-                    Contactez <span class="gradient-text">Notre Équipe</span>
-                </h2>
-                <p class="text-xl text-blue-200 max-w-3xl mx-auto slide-in-up" style="transition-delay: 0.2s">
-                    Nous sommes là pour répondre à vos questions et vous guider dans le processus d'inscription.
-                </p>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contactez-Nous</h2>
+                <p>N'hésitez pas à nous contacter pour toute question ou pour planifier une visite de notre campus.</p>
             </div>
-
-            <div class="grid lg:grid-cols-3 gap-12 text-white">
-                <div class="stat-card slide-in-left">
-                    <i class="fas fa-map-marker-alt text-4xl text-yellow-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Adresse</h3>
-                    <p class="text-blue-200">Avenue de l'Excellence, Quartier Scolaire</p>
-                    <p class="text-blue-200">12345 Ville d'Éducation, Pays</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Notre Adresse</h3>
+                            <p>Rue des Écoles, Plateau<br>Abidjan, Côte d'Ivoire</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Téléphone</h3>
+                            <p>+225 20 30 40 50<br>+225 20 30 40 51</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>info@saintcharleslwanga.ci<br>admissions@saintcharleslwanga.ci</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Heures d'Ouverture</h3>
+                            <p>Lundi - Vendredi: 7h30 - 17h30<br>Samedi: 8h00 - 12h00</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="stat-card slide-in-up" style="transition-delay: 0.2s">
-                    <i class="fas fa-phone-alt text-4xl text-yellow-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Téléphone</h3>
-                    <p class="text-blue-200">+123 456 7890 (Administration)</p>
-                    <p class="text-blue-200">+123 987 6543 (Admissions)</p>
-                </div>
-                
-                <div class="stat-card slide-in-right">
-                    <i class="fas fa-envelope text-4xl text-yellow-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Email</h3>
-                    <p class="text-blue-200">admissions@stcharleslwanga.edu</p>
-                    <p class="text-blue-200">info@stcharleslwanga.edu</p>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom Complet</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer le Message</button>
+                    </form>
                 </div>
             </div>
-
-            <form class="glass p-8 rounded-3xl mt-16 max-w-3xl mx-auto slide-in-up" style="transition-delay: 0.4s">
-                <h3 class="text-3xl font-bold text-white mb-6 text-center">Formulaire de Contact</h3>
-                <div class="grid md:grid-cols-2 gap-6 mb-4">
-                    <input type="text" placeholder="Votre Nom Complet" class="p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:ring-yellow-400 focus:border-yellow-400">
-                    <input type="email" placeholder="Votre Email" class="p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:ring-yellow-400 focus:border-yellow-400">
-                </div>
-                <input type="text" placeholder="Sujet de votre demande" class="p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 w-full mb-4 focus:ring-yellow-400 focus:border-yellow-400">
-                <textarea placeholder="Votre Message Détaillé" rows="5" class="p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 w-full mb-6 focus:ring-yellow-400 focus:border-yellow-400"></textarea>
-                <button type="submit" class="btn-premium w-full">
-                    <i class="fas fa-paper-plane mr-2"></i> Envoyer le Message
-                </button>
-            </form>
         </div>
     </section>
 
-    <footer class="bg-gray-900 py-16 text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-4 gap-12 border-b border-gray-800 pb-12 mb-8">
-                <div class="footer-section">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="bg-yellow-400 p-2 rounded-xl">
-                            <i class="fas fa-graduation-cap text-xl text-gray-900"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-0 pb-0 after:hidden">Saint Charles Lwanga</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Éducation d'élite qui forme des leaders ancrés dans les valeurs chrétiennes et l'excellence académique.
-                    </p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Saint Charles Lwanga</h3>
+                    <p>Former les leaders de demain à travers l'excellence académique, l'intégrité morale et l'engagement communautaire.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-
-                <div class="footer-section">
-                    <h3 class="text-xl font-bold text-white">Liens Rapides</h3>
-                    <div class="footer-links">
-                        <a href="#about"><i class="fas fa-chevron-right"></i> Notre Mission</a>
-                        <a href="#programs"><i class="fas fa-chevron-right"></i> Programmes Académiques</a>
-                        <a href="#admissions"><i class="fas fa-chevron-right"></i> Processus d'Admission</a>
-                        <a href="#team"><i class="fas fa-chevron-right"></i> Carrières (Recrutement)</a>
-                    </div>
+                <div class="footer-col">
+                    <h3>Liens Rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#about">À Propos</a></li>
+                        <li><a href="#programs">Programmes</a></li>
+                        <li><a href="#admissions">Admissions</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
                 </div>
-
-                <div class="footer-section">
-                    <h3 class="text-xl font-bold text-white">Programmes Clés</h3>
-                    <div class="footer-links">
-                        <a href="#maternelle"><i class="fas fa-chevron-right"></i> Maternelle & Primaire</a>
-                        <a href="#college"><i class="fas fa-chevron-right"></i> Collège & Lycée</a>
-                        <a href="#international"><i class="fas fa-chevron-right"></i> Section Internationale</a>
-                        <a href="#extracurricular"><i class="fas fa-chevron-right"></i> Activités Extra-scolaires</a>
-                    </div>
+                <div class="footer-col">
+                    <h3>Programmes</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Maternelle</a></li>
+                        <li><a href="#">Primaire</a></li>
+                        <li><a href="#">Collège</a></li>
+                        <li><a href="#">Lycée</a></li>
+                        <li><a href="#">Activités Parascolaires</a></li>
+                    </ul>
                 </div>
-
-                <div class="footer-section">
-                    <h3 class="text-xl font-bold text-white">Contact Info</h3>
-                    <div class="footer-links">
-                        <a href="tel:+1234567890"><i class="fas fa-phone-alt"></i> +123 456 7890</a>
-                        <a href="mailto:info@stcharleslwanga.edu"><i class="fas fa-envelope"></i> info@stcharleslwanga.edu</a>
-                        <a href="#contact"><i class="fas fa-map-marker-alt"></i> Localisation Complète</a>
-                        <a href="portal.html"><i class="fas fa-sign-in-alt"></i> Espace Parents</a>
-                    </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Rue des Écoles, Plateau</li>
+                        <li><i class="fas fa-phone"></i> +225 20 30 40 50</li>
+                        <li><i class="fas fa-envelope"></i> info@saintcharleslwanga.ci</li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="text-center text-gray-500 pt-8">
-                <p>&copy; 2025 École Saint Charles Lwanga. Tous droits réservés.</p>
-                <p class="text-xs mt-2">Politique de Confidentialité | Conditions d'Utilisation</p>
+            <div class="copyright">
+                <p>&copy; 2023 École Saint Charles Lwanga. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
     <script>
-        // Initialisation de Tailwind CSS
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-dark': '#0f172a',
-                        'primary-blue': '#1e3a8a',
-                        'accent-gold': '#f59e0b',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                }
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            GSAP.registerPlugin(ScrollTrigger, ScrollToPlugin);
-            
-            // 1. Animation de la barre de progression
-            function updateProgressBar() {
-                const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-                document.getElementById('loading-bar').style.width = scrollPercentage + '%';
-            }
-            window.addEventListener('scroll', updateProgressBar);
-            window.addEventListener('resize', updateProgressBar);
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
 
-            // 2. Comportement du Header au scroll
-            const header = document.getElementById('main-header');
-            let lastScrollY = 0;
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-                
-                // Masquer/Afficher au scroll (optionnel)
-                if (window.scrollY > lastScrollY && window.scrollY > 200) {
-                    header.style.transform = 'translateY(-100%)';
-                } else {
-                    header.style.transform = 'translateY(0)';
-                }
-                lastScrollY = window.scrollY;
-            });
-            
-            // 3. Menu Mobile
-            const menuToggle = document.getElementById('menu-toggle');
-            const closeMenu = document.getElementById('close-menu');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.remove('-translate-y-full');
-            });
-            
-            closeMenu.addEventListener('click', () => {
-                mobileMenu.classList.add('-translate-y-full');
-            });
-            
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('-translate-y-full');
-                });
-            });
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.querySelector('i').classList.toggle('fa-bars');
+            mobileMenu.querySelector('i').classList.toggle('fa-times');
+        });
 
-            // 4. ScrollToPlugin pour les liens d'ancrage
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId !== '#') {
-                        GSAP.to(window, {duration: 1.2, scrollTo: {y: targetId, offsetY: 70}, ease: "power2.inOut"});
-                        
-                        // Gestion de la classe 'active' dans la navigation desktop
-                        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-                        
-                        // Trouver le lien de navigation le plus pertinent (peut être un parent dans un nav-item)
-                        const primaryLink = this.closest('.nav-item') ? this.closest('.nav-item').querySelector('.nav-link') : this;
-                        primaryLink.classList.add('active');
-                    }
-                });
-            });
-            
-            // 5. Back to Top Button
-            const backToTop = document.getElementById('back-to-top');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 500) {
-                    backToTop.classList.add('show');
-                } else {
-                    backToTop.classList.remove('show');
-                }
-            });
-            backToTop.addEventListener('click', () => {
-                GSAP.to(window, {duration: 1.5, scrollTo: 0, ease: "power3.inOut"});
-            });
-            
-            // 6. Carousel de Texte
-            let currentTextIndex = 0;
-            const carouselTexts = document.querySelectorAll('.carousel-text');
-            const indicators = document.querySelectorAll('.indicator');
-            const totalTexts = carouselTexts.length;
-
-            function updateCarousel(index) {
-                // Masquer le texte actuel
-                carouselTexts.forEach(text => text.classList.remove('active'));
-                indicators.forEach(indicator => indicator.classList.remove('active'));
-                
-                // Afficher le nouveau texte
-                carouselTexts[index].classList.add('active');
-                indicators[index].classList.add('active');
-                currentTextIndex = index;
-            }
-
-            function nextText() {
-                let nextIndex = (currentTextIndex + 1) % totalTexts;
-                updateCarousel(nextIndex);
-            }
-
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => updateCarousel(index));
-            });
-            
-            // Auto-rotation
-            setInterval(nextText, 5000); 
-            
-            // 7. ScrollReveal pour les sections (GSAP/ScrollTrigger)
-            const sectionsToAnimate = [
-                { selector: '#stats .slide-in-left', x: -100, delay: 0 },
-                { selector: '#stats .slide-in-up:nth-child(2)', y: 50, delay: 0.2 },
-                { selector: '#stats .slide-in-up:nth-child(3)', y: 50, delay: 0.4 },
-                { selector: '#stats .slide-in-right', x: 100, delay: 0.6 },
-                { selector: '#programs .premium-card.slide-in-left', x: -50, delay: 0 },
-                { selector: '#programs .premium-card:nth-child(2)', y: 50, delay: 0.2 },
-                { selector: '#programs .premium-card:nth-child(3)', y: 50, delay: 0.4 },
-                { selector: '#programs .premium-card.slide-in-right', x: 50, delay: 0.6 },
-                { selector: '#about .slide-in-left', x: -50, delay: 0 },
-                { selector: '#about .slide-in-right', x: 50, delay: 0.2 },
-                { selector: '#news .premium-card.slide-in-left', x: -50, delay: 0 },
-                { selector: '#news .premium-card:nth-child(2)', y: 50, delay: 0.2 },
-                { selector: '#news .premium-card.slide-in-right', x: 50, delay: 0.4 },
-                { selector: '#contact .stat-card.slide-in-left', x: -50, delay: 0 },
-                { selector: '#contact .stat-card:nth-child(2)', y: 50, delay: 0.2 },
-                { selector: '#contact .stat-card.slide-in-right', x: 50, delay: 0.4 },
-            ];
-
-            sectionsToAnimate.forEach(item => {
-                GSAP.utils.toArray(item.selector).forEach(element => {
-                    GSAP.from(element, {
-                        x: item.x || 0,
-                        y: item.y || 0,
-                        opacity: 0,
-                        duration: 1,
-                        delay: item.delay,
-                        ease: "power2.out",
-                        scrollTrigger: {
-                            trigger: element,
-                            start: "top 85%",
-                            toggleActions: "play none none none",
-                        }
-                    });
-                });
-            });
-            
-            // Animer le contenu de l'Héro Section (initialement caché par CSS)
-            GSAP.utils.toArray('.hero-content .slide-in-up').forEach((el, i) => {
-                GSAP.to(el, {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1.2,
-                    ease: "power3.out",
-                    delay: 0.8 + (i * 0.2) // Démarrer après le chargement ou l'animation Three.js (si implémentée)
-                });
-            });
-
-            // 8. Animation Three.js (Simulacre, le code Three.js réel est complexe)
-            // Pour un déploiement réel, le code Three.js devrait être intégré ici pour le canvas.
-            const canvas = document.getElementById('hero-canvas');
-            if (canvas) {
-                // Exemple simple pour éviter une erreur JS, mais nécessite un code Three.js complet pour fonctionner
-                // const scene = new THREE.Scene();
-                // const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                // const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
-                // ... setup scene, render loop, resize handling ...
-                
-                // Placeholder pour l'effet de particules
-                const particlesContainer = document.getElementById('particles');
-                for (let i = 0; i < 50; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    const size = Math.random() * 5 + 2;
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    particle.style.left = `${Math.random() * 100}%`;
-                    particle.style.top = `${Math.random() * 100}%`;
-                    particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                    particle.style.opacity = `${Math.random() * 0.8 + 0.2}`;
-                    particlesContainer.appendChild(particle);
-                }
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
         });
+
+        // Back to Top Button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenu.querySelector('i').classList.add('fa-bars');
+                        mobileMenu.querySelector('i').classList.remove('fa-times');
+                    }
+                }
+            });
+        });
+
+        // Animate Stats Counter
+        const statItems = document.querySelectorAll('.stat-item');
+        const statsSection = document.querySelector('.stats');
+
+        function animateStats() {
+            statItems.forEach(item => {
+                const numberElement = item.querySelector('.stat-number');
+                const target = parseInt(numberElement.getAttribute('data-target'));
+                let count = 0;
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+
+                const updateCount = () => {
+                    count += increment;
+                    if (count < target) {
+                        numberElement.textContent = Math.floor(count);
+                        setTimeout(updateCount, 16);
+                    } else {
+                        numberElement.textContent = target;
+                    }
+                };
+
+                updateCount();
+            });
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('stats')) {
+                        animateStats();
+                    }
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe program cards
+        document.querySelectorAll('.program-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Observe stat items
+        document.querySelectorAll('.stat-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Testimonial Slider
+        const track = document.querySelector('.testimonial-track');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+
+        function goToSlide(index) {
+            track.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+
+        // Auto slide testimonials
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            goToSlide(currentSlide);
+        }, 5000);
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Merci pour votre message! Nous vous contacterons bientôt.');
+            contactForm.reset();
+        });
+
+        // Add some CSS for the features list
+        const style = document.createElement('style');
+        style.textContent = `
+            .about-features {
+                margin-top: 1.5rem;
+            }
+            .feature-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 0.8rem;
+            }
+            .feature-item i {
+                color: var(--accent);
+                margin-right: 10px;
+            }
+            .btn-link {
+                color: var(--primary);
+                text-decoration: none;
+                font-weight: 600;
+                display: inline-flex;
+                align-items: center;
+                margin-top: 1rem;
+                transition: var(--transition);
+            }
+            .btn-link:hover {
+                color: var(--secondary);
+            }
+            .btn-link i {
+                margin-left: 5px;
+                transition: var(--transition);
+            }
+            .btn-link:hover i {
+                transform: translateX(5px);
+            }
+            .logo-circle {
+                width: 50px;
+                height: 50px;
+                background: var(--primary);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
