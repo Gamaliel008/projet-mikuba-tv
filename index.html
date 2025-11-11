@@ -4,63 +4,362 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>École Saint Charles Lwanga | Excellence, Foi et Avenir</title>
-    <meta name="description" content="Découvrez l'École Saint Charles Lwanga. Une éducation moderne et complète sur une seule page.">
-
+    <meta name="description" content="École Saint Charles Lwanga - Une éducation moderne et complète basée sur l'excellence académique et les valeurs chrétiennes.">
+    
+    <!-- Préchargement des polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script src="https://unpkg.com/scrollreveal"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎓</text></svg>">
 
     <style>
-        /* Styles de base pour surcharger Tailwind si nécessaire ou ajouter des éléments spécifiques */
-        body {
-            font-family: 'Roboto', sans-serif;
-            color: #333;
-            background-color: #f7f9fc;
-        }
-
-        /* Couleur principale de l'école (exemple : bleu profond) */
-        .color-primary {
-            background-color: #0d47a1; /* Bleu Profond */
-        }
-        .text-primary {
-            color: #0d47a1;
-        }
-        .btn-primary {
-            background-color: #ffc107; /* Jaune Vif/Or pour l'action */
-            color: #0d47a1;
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #f7b300;
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #ffc107;
+            --accent-color: #f7b300;
+            --light-color: #f7f9fc;
+            --dark-color: #333;
         }
         
-        /* Style du header pour qu'il reste en haut */
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .color-primary {
+            background-color: var(--primary-color);
+        }
+        
+        .text-primary {
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
         #main-header {
             position: fixed;
             width: 100%;
             z-index: 1000;
-            backdrop-filter: blur(10px); /* Effet verre dépoli */
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Style de la navigation pour les liens actifs */
-        #main-nav a.active {
-            font-weight: bold;
-            border-bottom: 2px solid #0d47a1;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
         
-        /* Section Hero (Image de fond) */
+        #main-header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        #main-nav a.active {
+            font-weight: bold;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        /* Styles pour les sous-menus */
+        .nav-item {
+            position: relative;
+        }
+        
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .nav-item:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .submenu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--dark-color);
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.2s ease;
+        }
+        
+        .submenu a:last-child {
+            border-bottom: none;
+        }
+        
+        .submenu a:hover {
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+            padding-left: 25px;
+        }
+        
         #hero {
-            background: linear-gradient(rgba(13, 71, 161, 0.7), rgba(13, 71, 161, 0.5)), url('https://picsum.photos/1600/900') center center / cover no-repeat;
+            background: linear-gradient(rgba(13, 71, 161, 0.8), rgba(13, 71, 161, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center center / cover no-repeat;
             height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .program-card {
+            transition: all 0.3s ease;
+            border-top: 4px solid;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-item {
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 1rem;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 80px;
+            color: var(--secondary-color);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .news-item {
+            transition: all 0.3s ease;
+        }
+        
+        .news-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background-color: var(--secondary-color);
+            width: 0%;
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+            margin: 3rem 0;
+        }
+        
+        /* Styles pour le footer amélioré */
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links a {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: #cbd5e0;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-contact li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .footer-contact i {
+            margin-right: 0.75rem;
+            color: var(--secondary-color);
+            margin-top: 0.25rem;
+        }
+        
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-newsletter input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            color: white;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-newsletter input::placeholder {
+            color: #cbd5e0;
+        }
+        
+        .footer-newsletter button {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .footer-newsletter button:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
         }
     </style>
 </head>
 
 <body class="antialiased">
+    <!-- Barre de chargement -->
+    <div class="loading-bar" id="loading-bar"></div>
+    
+    <!-- Bouton retour en haut -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
 
     <header id="main-header" class="p-4 md:px-8">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
@@ -71,9 +370,43 @@
             
             <nav id="main-nav" class="hidden md:flex space-x-6 text-gray-600 font-medium">
                 <a href="#hero" class="hover:text-primary active">Accueil</a>
-                <a href="#about" class="hover:text-primary">Notre École</a>
-                <a href="#programs" class="hover:text-primary">Programmes</a>
-                <a href="#admissions" class="hover:text-primary">Admissions</a>
+                
+                <div class="nav-item">
+                    <a href="#about" class="hover:text-primary flex items-center">
+                        Notre École <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </a>
+                    <div class="submenu">
+                        <a href="#history">Histoire et Mission</a>
+                        <a href="#team">Équipe Pédagogique</a>
+                        <a href="#facilities">Installations</a>
+                        <a href="#values">Nos Valeurs</a>
+                    </div>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="#programs" class="hover:text-primary flex items-center">
+                        Programmes <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </a>
+                    <div class="submenu">
+                        <a href="#maternelle">Maternelle</a>
+                        <a href="#primaire">Primaire</a>
+                        <a href="#secondaire">Secondaire</a>
+                        <a href="#parascolaire">Activités Parascolaires</a>
+                    </div>
+                </div>
+                
+                <div class="nav-item">
+                    <a href="#admissions" class="hover:text-primary flex items-center">
+                        Admissions <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </a>
+                    <div class="submenu">
+                        <a href="#process">Processus d'Admission</a>
+                        <a href="#fees">Frais de Scolarité</a>
+                        <a href="#calendar">Calendrier Scolaire</a>
+                        <a href="#faq">FAQ</a>
+                    </div>
+                </div>
+                
                 <a href="#news" class="hover:text-primary">Actualités</a>
                 <a href="#contact" class="hover:text-primary">Contact</a>
             </nav>
@@ -105,15 +438,15 @@
     </div>
 
     <section id="hero" class="flex items-center text-white text-center pt-20">
-        <div class="max-w-4xl mx-auto p-8">
-            <h2 class="text-5xl md:text-6xl font-extrabold mb-4 animate-hero-text">
-                Élever la **nouvelle génération** par la <span class="text-yellow-300">Foi</span> et l'Éducation
+        <div class="max-w-4xl mx-auto p-8 hero-content">
+            <h2 class="text-5xl md:text-6xl font-extrabold mb-4">
+                Élever la <span class="text-yellow-300">nouvelle génération</span> par la Foi et l'Éducation
             </h2>
-            <p class="text-xl mb-8 opacity-0 animate-hero-p">
+            <p class="text-xl mb-8">
                 Un environnement d'apprentissage stimulant, basé sur l'excellence académique et les valeurs éthiques.
             </p>
             <div class="space-x-4">
-                <a href="#admissions" class="btn-primary px-8 py-3 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transition duration-300">
+                <a href="#admissions" class="btn-primary px-8 py-3 rounded-full text-lg font-bold shadow-xl">
                     Déposer une candidature
                 </a>
                 <a href="#about" class="text-white border-2 border-white px-8 py-3 rounded-full text-lg font-bold hover:bg-white hover:text-primary transition duration-300">
@@ -123,22 +456,45 @@
         </div>
     </section>
 
+    <section id="stats" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="stat-item p-4">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">98%</div>
+                    <div class="text-gray-600">Taux de réussite</div>
+                </div>
+                <div class="stat-item p-4">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">25+</div>
+                    <div class="text-gray-600">Années d'expérience</div>
+                </div>
+                <div class="stat-item p-4">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">500+</div>
+                    <div class="text-gray-600">Élèves formés</div>
+                </div>
+                <div class="stat-item p-4">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">15</div>
+                    <div class="text-gray-600">Activités parascolaires</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="values" class="py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h3 class="text-4xl font-bold text-primary mb-12" data-sr-target>Notre Pédagogie en Trois Piliers</h3>
             
             <div class="grid md:grid-cols-3 gap-12 text-gray-700">
-                <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1" data-sr-target>
+                <div class="p-6 bg-white rounded-xl shadow-lg card-hover" data-sr-target>
                     <i class="fas fa-graduation-cap text-5xl text-yellow-500 mb-4"></i>
                     <h4 class="text-2xl font-semibold mb-3 text-primary">Excellence Académique</h4>
                     <p>Des programmes rigoureux et des méthodes d'enseignement innovantes pour maximiser le potentiel de chaque élève.</p>
                 </div>
-                <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1" data-sr-target>
+                <div class="p-6 bg-white rounded-xl shadow-lg card-hover" data-sr-target>
                     <i class="fas fa-hands-praying text-5xl text-yellow-500 mb-4"></i>
                     <h4 class="text-2xl font-semibold mb-3 text-primary">Valeurs et Foi</h4>
                     <p>Développement moral et éthique, enraciné dans les valeurs chrétiennes de Saint Charles Lwanga.</p>
                 </div>
-                <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1" data-sr-target>
+                <div class="p-6 bg-white rounded-xl shadow-lg card-hover" data-sr-target>
                     <i class="fas fa-globe-europe text-5xl text-yellow-500 mb-4"></i>
                     <h4 class="text-2xl font-semibold mb-3 text-primary">Ouverture au Monde</h4>
                     <p>Promotion du bilinguisme et de la compréhension interculturelle pour préparer les citoyens de demain.</p>
@@ -146,6 +502,8 @@
             </div>
         </div>
     </section>
+
+    <div class="section-divider"></div>
 
     <section id="about" class="py-16 md:py-24 color-primary text-white">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
@@ -164,7 +522,7 @@
                 </a>
             </div>
             <div class="order-1 md:order-2" data-sr-target>
-                <img src="https://picsum.photos/600/400" alt="Locaux modernes de l'école" class="rounded-xl shadow-2xl w-full">
+                <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Locaux modernes de l'école" class="rounded-xl shadow-2xl w-full">
             </div>
         </div>
     </section>
@@ -174,19 +532,19 @@
             <h2 class="text-4xl font-bold text-primary mb-12" data-sr-target>Parcours Académiques</h2>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-red-500" data-sr-target>
+                <div class="p-8 bg-white rounded-xl shadow-lg program-card border-red-500" data-sr-target>
                     <i class="fas fa-child text-5xl text-red-500 mb-4"></i>
                     <h3 class="text-2xl font-semibold mb-3 text-red-500">Maternelle</h3>
                     <p class="text-gray-600">Développement moteur, social et initiation ludique aux langues et aux nombres.</p>
                     <span class="inline-block mt-4 text-sm font-bold text-red-500">3 à 5 ans</span>
                 </div>
-                <div class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-green-500" data-sr-target>
+                <div class="p-8 bg-white rounded-xl shadow-lg program-card border-green-500" data-sr-target>
                     <i class="fas fa-book-open text-5xl text-green-500 mb-4"></i>
                     <h3 class="text-2xl font-semibold mb-3 text-green-500">Primaire</h3>
                     <p class="text-gray-600">Acquisition des fondamentaux (lecture, écriture, calcul) avec projets STEAM et arts.</p>
                     <span class="inline-block mt-4 text-sm font-bold text-green-500">6 à 11 ans</span>
                 </div>
-                <div class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-blue-500" data-sr-target>
+                <div class="p-8 bg-white rounded-xl shadow-lg program-card border-blue-500" data-sr-target>
                     <i class="fas fa-user-tie text-5xl text-blue-500 mb-4"></i>
                     <h3 class="text-2xl font-semibold mb-3 text-blue-500">Secondaire</h3>
                     <p class="text-gray-600">Préparation intensive aux diplômes, orientation universitaire et développement du leadership.</p>
@@ -196,12 +554,36 @@
         </div>
     </section>
 
-    <section id="news" class="py-16 md:py-24 bg-gray-100">
+    <section id="testimonials" class="py-16 md:py-24 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-primary mb-12" data-sr-target>Témoignages</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card" data-sr-target>
+                    <p class="text-gray-700 mb-4">"L'école Saint Charles Lwanga a offert à mes enfants un environnement d'apprentissage exceptionnel où ils s'épanouissent tant sur le plan académique que personnel."</p>
+                    <div class="font-bold text-primary">Marie D.</div>
+                    <div class="text-sm text-gray-500">Mère de deux élèves</div>
+                </div>
+                <div class="testimonial-card" data-sr-target>
+                    <p class="text-gray-700 mb-4">"En tant qu'enseignant, je suis impressionné par l'engagement de l'école envers l'excellence académique et le développement des valeurs chrétiennes chez les élèves."</p>
+                    <div class="font-bold text-primary">Jean P.</div>
+                    <div class="text-sm text-gray-500">Professeur de sciences</div>
+                </div>
+                <div class="testimonial-card" data-sr-target>
+                    <p class="text-gray-700 mb-4">"Les infrastructures modernes et les activités parascolaires variées permettent aux élèves de développer leurs talents et passions au-delà des salles de classe."</p>
+                    <div class="font-bold text-primary">Sophie L.</div>
+                    <div class="text-sm text-gray-500">Ancienne élève</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl font-bold text-primary mb-12 text-center" data-sr-target>Le Dynamisme de Saint Charles Lwanga</h2>
             
             <div class="grid md:grid-cols-2 gap-10">
-                <article class="bg-white rounded-xl shadow-lg p-6 flex space-x-4 hover:shadow-xl transition duration-300" data-sr-target>
+                <article class="bg-white rounded-xl shadow-lg p-6 flex space-x-4 news-item" data-sr-target>
                     <i class="fas fa-trophy text-5xl text-yellow-500 flex-shrink-0"></i>
                     <div>
                         <h4 class="text-xl font-bold text-primary mb-2">Nos élèves remportent le Concours National de Robotique !</h4>
@@ -210,7 +592,7 @@
                     </div>
                 </article>
 
-                <div class="bg-white rounded-xl shadow-lg p-6" data-sr-target>
+                <div class="bg-white rounded-xl shadow-lg p-6 news-item" data-sr-target>
                     <h4 class="text-xl font-bold text-primary mb-4"><i class="fas fa-calendar-alt mr-2"></i> Événements à Venir</h4>
                     <ul class="space-y-4">
                         <li class="border-b pb-2">
@@ -237,7 +619,7 @@
             <p class="text-xl mb-8">
                 Le processus d'admission est simple et entièrement en ligne. Commencez votre démarche aujourd'hui.
             </p>
-            <a href="formulaire-admission.html" class="btn-primary px-10 py-4 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transition duration-300">
+            <a href="formulaire-admission.html" class="btn-primary px-10 py-4 rounded-full text-lg font-bold shadow-xl">
                 <i class="fas fa-edit mr-2"></i> Démarrer la Pré-inscription
             </a>
         </div>
@@ -262,17 +644,76 @@
             
             <div class="md:col-span-2" data-sr-target>
                 <h3 class="text-2xl font-bold text-primary mb-4">Notre Localisation</h3>
-                <div class="bg-gray-200 h-64 rounded-xl shadow-lg overflow-hidden">
-                    
+                <div class="map-container bg-gray-200 rounded-xl shadow-lg overflow-hidden">
+                    <!-- Intégration Google Maps ou autre service de cartographie -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.292292615509614!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1642001411111!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="color-primary text-white py-8">
-        <div class="max-w-7xl mx-auto px-6 text-center text-sm border-t border-yellow-500 pt-4">
-            <p>&copy; 2025 École Saint Charles Lwanga. Tous droits réservés.</p>
-            <p class="mt-2">Fait avec <i class="fas fa-heart text-red-500"></i> et l'esprit de l'éducation moderne.</p>
+    <footer class="color-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="footer-section">
+                    <h3>Saint Charles Lwanga</h3>
+                    <p class="text-gray-300 mb-4">Une éducation d'excellence basée sur les valeurs chrétiennes pour former les leaders de demain.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liens Rapides</h3>
+                    <div class="footer-links">
+                        <a href="#about">Notre École</a>
+                        <a href="#programs">Programmes</a>
+                        <a href="#admissions">Admissions</a>
+                        <a href="#news">Actualités</a>
+                        <a href="#contact">Contact</a>
+                        <a href="portal.html">Espace Parents</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123, Avenue des Écoles<br>01 Ville, Pays</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+1 (234) 567-890</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@scl-ecole.org</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p class="text-gray-300 mb-4">Inscrivez-vous pour recevoir nos actualités et événements.</p>
+                    <div class="footer-newsletter">
+                        <input type="email" placeholder="Votre adresse email">
+                        <button type="submit">S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom text-center text-gray-300">
+                <p>&copy; 2025 École Saint Charles Lwanga. Tous droits réservés.</p>
+                <div class="mt-2">
+                    <a href="#" class="text-gray-300 hover:text-white mx-2">Mentions légales</a> | 
+                    <a href="#" class="text-gray-300 hover:text-white mx-2">Politique de confidentialité</a> | 
+                    <a href="#" class="text-gray-300 hover:text-white mx-2">Plan du site</a>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -299,7 +740,6 @@
             // Fermer le menu après le clic sur un lien (navigation SPA)
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    // Petite attente pour l'effet de transition
                     setTimeout(() => {
                         mobileMenu.classList.add('-translate-y-full');
                     }, 300);
@@ -309,36 +749,102 @@
             // ===================================
             // B. ANIMATIONS SCROLLREVEAL (JS)
             // ===================================
-            // Configure et révèle les éléments marqués de l'attribut data-sr-target
-            
-            // 1. Configuration par défaut
             const sr = ScrollReveal({
                 delay: 200,
                 distance: '50px',
                 easing: 'ease-in-out',
                 duration: 800,
-                reset: false // Animation à chaque défilement
+                reset: false
             });
 
-            // 2. Révéler les titres et sections principales
+            // Révéler les éléments
             sr.reveal('[data-sr-target]', { origin: 'bottom' });
-
-            // 3. Révéler les cartes avec un intervalle
-            sr.reveal('.program-card, .news-item, .stat-item', { interval: 60 });
-            
-            // 4. Animation spécifique pour la section 'About' (gauche/droite)
+            sr.reveal('.program-card, .news-item, .stat-item, .testimonial-card', { interval: 60 });
             sr.reveal('#about .order-2', { origin: 'left' });
             sr.reveal('#about .order-1', { origin: 'right' });
 
+            // ===================================
+            // C. NAVIGATION ACTIVE (JS)
+            // ===================================
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('#main-nav a');
+
+            function updateActiveNavLink() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveNavLink);
 
             // ===================================
-            // C. ANIMATION TEXTE HERO (Simple CSS/JS)
+            // D. BOUTON RETOUR EN HAUT (JS)
             // ===================================
-            // Simule l'animation des textes de la section Hero pour apparaître après le chargement
+            const backToTopButton = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // ===================================
+            // E. HEADER SCROLL (JS)
+            // ===================================
+            const header = document.getElementById('main-header');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // ===================================
+            // F. BARRE DE CHARGEMENT (JS)
+            // ===================================
+            const loadingBar = document.getElementById('loading-bar');
+            
+            window.addEventListener('scroll', () => {
+                const winHeight = window.innerHeight;
+                const docHeight = document.documentElement.scrollHeight;
+                const scrollTop = window.pageYOffset;
+                const trackLength = docHeight - winHeight;
+                const scrollPercentage = Math.floor(scrollTop / trackLength * 100);
+                
+                loadingBar.style.width = scrollPercentage + '%';
+            });
+
+            // ===================================
+            // G. ANIMATION HERO (JS)
+            // ===================================
             const heroP = document.querySelector('#hero p');
             if (heroP) {
                 setTimeout(() => {
-                    heroP.classList.remove('opacity-0');
                     heroP.style.transition = 'opacity 1s ease 0.5s';
                     heroP.style.opacity = '1';
                 }, 500);
