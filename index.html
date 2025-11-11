@@ -1,339 +1,347 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mikuba - Portail Officiel | Proximité, Transparence, Projets</title>
+    <title>École Saint Charles Lwanga | Excellence, Foi et Avenir</title>
+    <meta name="description" content="Découvrez l'École Saint Charles Lwanga. Une éducation moderne et complète sur une seule page.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <meta name="description" content="Portail officiel de Mikuba. Retrouvez les services municipaux, les actualités et les projets de développement de la zone." />
-    <meta property="og:title" content="Mikuba – Portail Officiel" />
-    <meta property="og:description" content="Proximité, Transparence, Projets. Votre zone en ligne." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.mikuba-officiel.cd" />
-    <meta property="og:image" content="https://www.mikuba-officiel.cd/social-share.jpg" /> 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/flowbite@2.5.2/dist/flowbite.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        
-        /* * COULEURS ADAPTÉES AU LOGO MIKUBA
-         * ROUGE BRIQUE (Couleur Principale : fond, navigation) : #7f1d1d (red-900)
-         * JAUNE/OR (Couleur Secondaire : accent, boutons) : #facc15 (yellow-400) - Un jaune vif pour le contraste
-         */
-        :root {
-            --color-primary: #7f1d1d; /* RED-900 pour le Rouge Brique sombre du logo */
-            --color-secondary: #facc15; /* YELLOW-400 pour le Jaune Vif/Or du logo */
-        }
-        
+        /* Styles de base pour surcharger Tailwind si nécessaire ou ajouter des éléments spécifiques */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f4f7f9;
-        }
-        
-        /* Styles personnalisés pour améliorer l'aspect des liens */
-        .dropdown-item-hover {
-            transition: background-color 0.15s ease, color 0.15s ease;
-        }
-        .dropdown-item-hover:hover {
-            background-color: #fef3c7; /* yellow-100 pour un hover doux */
-            color: var(--color-primary); /* Texte en Rouge Brique au survol */
-        }
-        
-        /* Styles pour le carrousel textuel */
-        .text-carousel-item {
-            display: none;
-            opacity: 0;
-            position: absolute; 
-            width: 90%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            transition: opacity 0.5s ease-in-out;
-            padding: 1rem; 
-        }
-        .text-carousel-item.active {
-            display: block;
-            opacity: 1;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: #f7f9fc;
         }
 
-        /* Hauteur des carrousels (Standardisé) */
-        .text-carousel-container {
-            height: 24rem; /* h-96 */
-            max-height: 400px;
+        /* Couleur principale de l'école (exemple : bleu profond) */
+        .color-primary {
+            background-color: #0d47a1; /* Bleu Profond */
+        }
+        .text-primary {
+            color: #0d47a1;
+        }
+        .btn-primary {
+            background-color: #ffc107; /* Jaune Vif/Or pour l'action */
+            color: #0d47a1;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #f7b300;
         }
         
-        /* Style pour les sections (Uniformité) */
-        .section-heading-icon {
-            color: var(--color-secondary);
+        /* Style du header pour qu'il reste en haut */
+        #main-header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px); /* Effet verre dépoli */
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .section-heading-border {
-            border-bottom: 2px solid var(--color-secondary);
+
+        /* Style de la navigation pour les liens actifs */
+        #main-nav a.active {
+            font-weight: bold;
+            border-bottom: 2px solid #0d47a1;
         }
-        .section-card-border-top {
-            border-top: 4px solid var(--color-primary);
+        
+        /* Section Hero (Image de fond) */
+        #hero {
+            background: linear-gradient(rgba(13, 71, 161, 0.7), rgba(13, 71, 161, 0.5)), url('https://picsum.photos/1600/900') center center / cover no-repeat;
+            height: 100vh;
         }
     </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="antialiased">
 
-    <nav class="bg-[var(--color-primary)] text-white shadow sticky top-0 z-50" role="navigation" aria-label="Menu principal de Mikuba">
-        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center py-4">
-            <a href="index.html" class="flex items-center text-2xl font-bold space-x-2" aria-label="Accueil du Portail de Mikuba">
-                <i class="fa-solid fa-crosshairs text-[var(--color-secondary)]"></i> 
-                <span>**Mikuba**</span>
-            </a>
-
-            <ul class="hidden md:flex space-x-6 font-medium" role="menubar">
-                <li><a href="index.html" class="flex items-center hover:text-[var(--color-secondary)] transition duration-150" role="menuitem"><i class="fa-solid fa-house mr-1"></i> Accueil</a></li>
-                <li class="relative" role="none"><button data-dropdown-toggle="menuServices" class="flex items-center hover:text-[var(--color-secondary)] transition duration-150" role="menuitem" aria-expanded="false" aria-controls="menuServices"><i class="fa-solid fa-gear mr-1"></i> Services<i class="fa-solid fa-chevron-down ml-2 text-xs"></i></button><div id="menuServices" class="hidden absolute z-10 mt-2 bg-white text-gray-800 shadow-xl rounded-lg w-64 ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="menuServices-button"><ul class="py-2">
-                    <li><a href="etat_civil.html" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-id-card mr-2 text-gray-600"></i> État civil</a></li>
-                    <li><a href="urbanisme.html" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-city mr-2 text-gray-600"></i> Urbanisme & Permis</a></li>
-                    <li><a href="sante_publique.html" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-hospital mr-2 text-gray-600"></i> Santé publique</a></li>
-                    <li><a href="securite_police.html" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-shield-halved mr-2 text-gray-600"></i> Sécurité & Police</a></li>
-                    <li><a href="environnement.html" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-recycle mr-2 text-gray-600"></i> Environnement & Propreté</a></li>
-                    <li class="relative group" role="none">
-                        <a href="finances.html" class="flex items-center justify-between w-full px-4 py-2 rounded-md dropdown-item-hover" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                            <span><i class="fa-solid fa-sack-dollar mr-2 text-gray-600"></i> Finances</span>
-                            <i class="fa-solid fa-chevron-right text-xs"></i>
-                        </a>
-                        <div class="hidden group-hover:block absolute left-full top-0 bg-white text-gray-800 shadow-xl rounded-lg w-56 ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical">
-                            <ul class="py-2">
-                                <li><a href="impots_taxes.html" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-money-bill mr-2 text-gray-600"></i> Impôts & Taxes locales</a></li>
-                                <li><a href="budget_municipal.html" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-chart-line mr-2 text-gray-600"></i> Budget municipal</a></li>
-                                <li><a href="recette_depense.html" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-coins mr-2 text-gray-600"></i> Recettes & Dépenses</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul></div></li>
-                <li class="relative" role="none"><button data-dropdown-toggle="menuProjets" class="flex items-center hover:text-[var(--color-secondary)] transition duration-150" role="menuitem" aria-expanded="false" aria-controls="menuProjets"><i class="fa-solid fa-building mr-1"></i> Projets<i class="fa-solid fa-chevron-down ml-2 text-xs"></i></button><div id="menuProjets" class="hidden absolute z-10 mt-2 bg-white text-gray-800 shadow-xl rounded-lg w-60 ring-1 ring-black ring-opacity-5" role="menu"><ul class="py-2"><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-road mr-2 text-gray-600"></i> Infrastructures routières</a></li><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-bolt mr-2 text-gray-600"></i> Énergie & Éclairage</a></li><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-tree mr-2 text-gray-600"></i> Espaces verts</a></li><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-school mr-2 text-gray-600"></i> Infrastructures scolaires</a></li></ul></div></li>
-                <li class="relative" role="none"><button data-dropdown-toggle="menuActu" class="flex items-center hover:text-[var(--color-secondary)] transition duration-150" role="menuitem" aria-expanded="false" aria-controls="menuActu"><i class="fa-solid fa-newspaper mr-1"></i> Actualités<i class="fa-solid fa-chevron-down ml-2 text-xs"></i></button><div id="menuActu" class="hidden absolute z-10 mt-2 bg-white text-gray-800 shadow-xl rounded-lg w-56 ring-1 ring-black ring-opacity-5" role="menu"><ul class="py-2"><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-bullhorn mr-2 text-gray-600"></i> Communiqués officiels</a></li><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-file-alt mr-2 text-gray-600"></i> Rapports publics</a></li><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-book-open mr-2 text-gray-600"></i> Publications</a></li></ul></div></li>
-                <li class="relative" role="none"><button data-dropdown-toggle="menuEvents" class="flex items-center hover:text-[var(--color-secondary)] transition duration-150" role="menuitem" aria-expanded="false" aria-controls="menuEvents"><i class="fa-solid fa-calendar-days mr-1"></i> Événements<i class="fa-solid fa-chevron-down ml-2 text-xs"></i></button><div id="menuEvents" class="hidden absolute z-10 mt-2 bg-white text-gray-800 shadow-xl rounded-lg w-56 ring-1 ring-black ring-opacity-5" role="menu"><ul class="py-2"><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-flag mr-2 text-gray-600"></i> Cérémonies officielles</a></li><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-masks-theater mr-2 text-gray-600"></i> Fêtes locales</a></li><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-users mr-2 text-gray-600"></i> Rencontres citoyennes</a></li></ul></div></li>
-                <li class="relative" role="none"><button data-dropdown-toggle="menuAbout" class="flex items-center hover:text-[var(--color-secondary)] transition duration-150" role="menuitem" aria-expanded="false" aria-controls="menuAbout"><i class="fa-solid fa-circle-info mr-1"></i> À propos<i class="fa-solid fa-chevron-down ml-2 text-xs"></i></button><div id="menuAbout" class="hidden absolute z-10 mt-2 bg-white text-gray-800 shadow-xl rounded-lg w-56 ring-1 ring-black ring-opacity-5" role="menu"><ul class="py-2"><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-landmark-dome mr-2 text-gray-600"></i> Histoire de la zone</a></li><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-sitemap mr-2 text-gray-600"></i> Organisation locale</a></li><li><a href="#" class="block px-4 py-2 rounded-md dropdown-item-hover" role="menuitem"><i class="fa-solid fa-envelope mr-2 text-gray-600"></i> Contact</a></li></ul></div></li>
-            </ul>
+    <header id="main-header" class="p-4 md:px-8">
+        <div class="flex justify-between items-center max-w-7xl mx-auto">
+            <div class="flex items-center space-x-3">
+                <i class="fas fa-church text-2xl text-primary"></i>
+                <h1 class="text-xl font-extrabold text-primary">Saint Charles Lwanga</h1>
+            </div>
+            
+            <nav id="main-nav" class="hidden md:flex space-x-6 text-gray-600 font-medium">
+                <a href="#hero" class="hover:text-primary active">Accueil</a>
+                <a href="#about" class="hover:text-primary">Notre École</a>
+                <a href="#programs" class="hover:text-primary">Programmes</a>
+                <a href="#admissions" class="hover:text-primary">Admissions</a>
+                <a href="#news" class="hover:text-primary">Actualités</a>
+                <a href="#contact" class="hover:text-primary">Contact</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#admissions" class="hidden md:block btn-primary px-4 py-2 rounded-full text-sm font-bold shadow-md">
+                    <i class="fas fa-user-plus mr-1"></i> S'inscrire
+                </a>
+                <a href="portal.html" class="text-primary hover:text-gray-700 text-sm font-medium">
+                    <i class="fas fa-sign-in-alt mr-1"></i> Espace Parents
+                </a>
+                <button id="menu-toggle" class="md:hidden text-2xl text-primary">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full color-primary p-6 z-50 transform -translate-y-full transition-transform duration-300 md:hidden">
+        <button id="close-menu" class="absolute top-4 right-4 text-white text-3xl"><i class="fas fa-times"></i></button>
+        <nav class="flex flex-col space-y-6 pt-20 text-center text-xl font-bold text-white">
+            <a href="#hero" class="hover:text-yellow-300">Accueil</a>
+            <a href="#about" class="hover:text-yellow-300">Notre École</a>
+            <a href="#programs" class="hover:text-yellow-300">Programmes</a>
+            <a href="#admissions" class="hover:text-yellow-300">Admissions</a>
+            <a href="#news" class="hover:text-yellow-300">Actualités</a>
+            <a href="#contact" class="hover:text-yellow-300">Contact</a>
         </nav>
+    </div>
 
-    <main class="max-w-7xl mx-auto py-12 px-6 space-y-16">
-        
-        <section id="mot-du-maire-photos" class="grid lg:grid-cols-2 gap-8 bg-white p-6 rounded-xl shadow-2xl border-t-4 border-[var(--color-secondary)]" role="region" aria-labelledby="mot-du-maire-heading">
-            
-            <div>
-                <h2 id="mot-du-maire-heading" class="text-3xl font-extrabold text-[var(--color-primary)] mb-4 border-b pb-2 flex items-center">
-                    <i class="fa-solid fa-camera text-[var(--color-secondary)] mr-3 section-heading-icon"></i> Le Maire en Images
-                </h2>
-                <div id="carousel-maire-images" class="relative w-full" data-carousel="slide" data-carousel-sync="#carousel-maire-text" data-carousel-interval="7000">
-                    <div class="relative h-96 overflow-hidden rounded-lg shadow-lg">
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="jcq4.jpeg" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Photo du Maire lors d'un événement" loading="lazy">
-                        </div>
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="jcq1.jpeg" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Maire en discussion avec des citoyens" loading="lazy">
-                        </div>
-                        </div>
-                    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev aria-label="Image précédente">
-                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--color-primary)]/30 group-hover:bg-[var(--color-primary)]/50 transition duration-150"><svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/></svg><span class="sr-only">Previous</span></span>
-                    </button>
-                    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next aria-label="Image suivante">
-                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--color-primary)]/30 group-hover:bg-[var(--color-primary)]/50 transition duration-150"><svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg><span class="sr-only">Next</span></span>
-                    </button>
-                    <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2" data-carousel-indicators>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-[var(--color-primary)]" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-[var(--color-primary)]" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-[var(--color-primary)]" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-[var(--color-primary)]" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <h2 class="text-3xl font-extrabold text-[var(--color-primary)] mb-4 border-b pb-2 flex items-center">
-                    <i class="fa-solid fa-microphone-alt text-[var(--color-primary)] mr-3"></i> Mot du Maire
-                </h2>
-                <div id="carousel-maire-text" class="relative w-full text-carousel-container bg-gray-50 rounded-lg p-6 shadow-inner flex items-center justify-center overflow-hidden" aria-live="polite">
-                    
-                    <div class="text-carousel-item active p-4" data-index="0">
-                        <p class="text-lg text-gray-700 mb-3 leading-relaxed font-medium">
-                            Chers concitoyens de **Mikuba**, c'est avec une grande fierté que je vous accueille sur notre nouveau portail numérique. Cet outil est le reflet de notre engagement pour une **transparence** totale et une **administration de proximité**.
-                        </p>
-                        <p class="text-gray-600 leading-relaxed italic">
-                            Nous œuvrons chaque jour pour améliorer nos infrastructures et stimuler notre économie locale. Votre participation et vos suggestions sont essentielles pour bâtir le Mikuba moderne que nous méritons tous.
-                        </p>
-                        <p class="text-right mt-2">
-                            <span class="block text-lg font-semibold text-gray-800">Nom du Maire de Mikuba</span>
-                            <span class="block text-sm text-gray-800">Maire de Mikuba</span>
-                        </p>
-                    </div>
-
-                    <div class="text-carousel-item p-4" data-index="1">
-                        <p class="text-lg text-gray-700 mb-3 leading-relaxed font-medium">
-                            La bonne gouvernance et l'inclusion sont au cœur de ma vision. Chaque décision prise vise à garantir un environnement sain et sécurisé, où les opportunités sont équitablement réparties pour nos jeunes.
-                        </p>
-                        <p class="text-gray-600 leading-relaxed italic">
-                            Je vous invite à consulter régulièrement les sections Projets et Actualités pour suivre l'avancement des chantiers qui transforment notre zone. Ensemble, relevons les défis et célébrons nos succès.
-                        </p>
-                        <p class="text-right mt-2">
-                            <span class="block text-lg font-semibold text-gray-800">Nom du Maire de Mikuba</span>
-                            <span class="block text-sm text-gray-800">Maire de Mikuba</span>
-                        </p>
-                    </div>
-                    
-                    </div>
-            </div>
-        </section>
-
-        <hr class="border-gray-300">
-
-        <section id="mikuba-en-detail" class="grid lg:grid-cols-2 gap-8 bg-white p-6 rounded-xl shadow-2xl border-t-4 border-[var(--color-primary)]" role="region" aria-labelledby="mikuba-detail-heading">
-            
-            <div>
-                <h2 id="mikuba-detail-heading" class="text-3xl font-extrabold text-[var(--color-primary)] mb-4 border-b pb-2 flex items-center">
-                    <i class="fa-solid fa-city text-[var(--color-primary)] mr-3 section-heading-icon"></i> Mikuba : Notre Zone en Images
-                </h2>
-                <div id="carousel-ville-images" class="relative w-full" data-carousel="slide" data-carousel-sync="#carousel-ville-text" data-carousel-interval="7000">
-                    <div class="relative h-96 overflow-hidden rounded-lg shadow-lg">
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="kzi1.png" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Vue panoramique de Mikuba." loading="lazy">
-                        </div>
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="kzi2.png" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Une rue de Mikuba, reflétant l'activité locale." loading="lazy">
-                        </div>
-                    </div>
-                    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev aria-label="Image précédente">
-                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--color-primary)]/30 group-hover:bg-[var(--color-primary)]/50 transition duration-150"><svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/></svg><span class="sr-only">Previous</span></span>
-                    </button>
-                    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next aria-label="Image suivante">
-                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--color-primary)]/30 group-hover:bg-[var(--color-primary)]/50 transition duration-150"><svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg><span class="sr-only">Next</span></span>
-                    </button>
-                    <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2" data-carousel-indicators>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-[var(--color-primary)]" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-[var(--color-primary)]" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-[var(--color-primary)]" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-[var(--color-primary)]" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                        <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-[var(--color-primary)]" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <h2 class="text-3xl font-extrabold text-[var(--color-primary)] mb-4 border-b pb-2 flex items-center">
-                    <i class="fa-solid fa-info-circle text-[var(--color-secondary)] mr-3 section-heading-icon"></i> Découvrez Mikuba
-                </h2>
-                <div id="carousel-ville-text" class="relative w-full text-carousel-container bg-gray-50 rounded-lg p-6 shadow-inner flex items-center justify-center overflow-hidden" aria-live="polite">
-                    
-                    <div class="text-carousel-item active p-4" data-index="0">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Mikuba, Quartier du Cuivre et du Cobalt</h3>
-                        <p class="text-lg text-gray-700 leading-relaxed mb-2">
-                            Vue imprenable de Mikuba. Son dynamisme urbain en fait une zone en pleine croissance.
-                        </p>
-                        <p class="text-gray-600 italic text-sm">
-                            Le développement des infrastructures est notre priorité pour une zone plus connectée et moderne.
-                        </p>
-                    </div>
-                    
-                    </div>
-            </div>
-        </section>
-
-        <hr class="border-gray-300">
-
-        <section id="actualites-mikuba" class="bg-white p-6 md:p-10 rounded-xl shadow-2xl border-t-4 border-[var(--color-primary)]" role="region" aria-labelledby="actu-heading">
-            <h2 id="actu-heading" class="text-3xl font-extrabold text-[var(--color-primary)] text-center mb-8 border-b-2 border-[var(--color-secondary)] pb-2 flex items-center justify-center section-heading-border">
-                <i class="fa-solid fa-bullhorn text-[var(--color-secondary)] mr-3 section-heading-icon"></i> Les Dernières **Actualités** de Mikuba
+    <section id="hero" class="flex items-center text-white text-center pt-20">
+        <div class="max-w-4xl mx-auto p-8">
+            <h2 class="text-5xl md:text-6xl font-extrabold mb-4 animate-hero-text">
+                Élever la **nouvelle génération** par la <span class="text-yellow-300">Foi</span> et l'Éducation
             </h2>
-            <p class="text-center text-gray-600 mb-10">Informations importantes, décrets et événements majeurs dans la zone de Mikuba.</p>
+            <p class="text-xl mb-8 opacity-0 animate-hero-p">
+                Un environnement d'apprentissage stimulant, basé sur l'excellence académique et les valeurs éthiques.
+            </p>
+            <div class="space-x-4">
+                <a href="#admissions" class="btn-primary px-8 py-3 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transition duration-300">
+                    Déposer une candidature
+                </a>
+                <a href="#about" class="text-white border-2 border-white px-8 py-3 rounded-full text-lg font-bold hover:bg-white hover:text-primary transition duration-300">
+                    Découvrir
+                </a>
+            </div>
+        </div>
+    </section>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-[var(--color-primary)] hover:shadow-xl transition duration-300 section-card-border-top">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-handshake mr-2 text-[var(--color-secondary)]"></i> Nouvelle loi sur le commerce local</h3>
-                    <p class="text-gray-600 mb-4 text-sm">Le Maire a promulgué une nouvelle législation visant à faciliter l'établissement des petits commerces et la protection des entrepreneurs locaux.</p>
-                    <a href="#" class="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-primary)]/80 font-medium text-sm transition" aria-label="Lire le décret sur la nouvelle loi d'investissement">
-                        Lire le décret
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </a>
+    <section id="values" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-4xl font-bold text-primary mb-12" data-sr-target>Notre Pédagogie en Trois Piliers</h3>
+            
+            <div class="grid md:grid-cols-3 gap-12 text-gray-700">
+                <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1" data-sr-target>
+                    <i class="fas fa-graduation-cap text-5xl text-yellow-500 mb-4"></i>
+                    <h4 class="text-2xl font-semibold mb-3 text-primary">Excellence Académique</h4>
+                    <p>Des programmes rigoureux et des méthodes d'enseignement innovantes pour maximiser le potentiel de chaque élève.</p>
                 </div>
-
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-[var(--color-primary)] hover:shadow-xl transition duration-300 section-card-border-top">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-road mr-2 text-[var(--color-secondary)]"></i> Réhabilitation de l'axe central</h3>
-                    <p class="text-gray-600 mb-4 text-sm">Les travaux de grande envergure pour la réhabilitation de l'axe routier principal de Mikuba progressent conformément au calendrier établi.</p>
-                    <a href="#" class="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-primary)]/80 font-medium text-sm transition" aria-label="Voir le rapport d'étape de la réhabilitation routière">
-                        Voir le rapport d'étape
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </a>
+                <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1" data-sr-target>
+                    <i class="fas fa-hands-praying text-5xl text-yellow-500 mb-4"></i>
+                    <h4 class="text-2xl font-semibold mb-3 text-primary">Valeurs et Foi</h4>
+                    <p>Développement moral et éthique, enraciné dans les valeurs chrétiennes de Saint Charles Lwanga.</p>
                 </div>
-
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-[var(--color-primary)] hover:shadow-xl transition duration-300 section-card-border-top">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-hospital mr-2 text-[var(--color-secondary)]"></i> Campagne de vaccination locale</h3>
-                    <p class="text-gray-600 mb-4 text-sm">Campagne de vaccination organisée par les services de santé, renforçant l'accès aux soins de qualité pour la population de Mikuba.</p>
-                    <a href="#" class="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-primary)]/80 font-medium text-sm transition" aria-label="Voir la galerie de la campagne de vaccination">
-                        Galerie de l'événement
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </a>
+                <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1" data-sr-target>
+                    <i class="fas fa-globe-europe text-5xl text-yellow-500 mb-4"></i>
+                    <h4 class="text-2xl font-semibold mb-3 text-primary">Ouverture au Monde</h4>
+                    <p>Promotion du bilinguisme et de la compréhension interculturelle pour préparer les citoyens de demain.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        </main>
+    <section id="about" class="py-16 md:py-24 color-primary text-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1" data-sr-target>
+                <h2 class="text-4xl font-bold mb-4">Un Cadre Propice à l'Épanouissement</h2>
+                <p class="text-lg mb-6">
+                    L'École Saint Charles Lwanga ne se contente pas d'enseigner ; nous inspirons. Nos infrastructures modernes, de nos laboratoires de sciences high-tech à notre médiathèque richement dotée, sont conçues pour encourager la curiosité et la collaboration.
+                </p>
+                <ul class="space-y-3 mb-6">
+                    <li><i class="fas fa-check-circle mr-2 text-yellow-300"></i> Personnel enseignant hautement qualifié.</li>
+                    <li><i class="fas fa-check-circle mr-2 text-yellow-300"></i> Petites classes pour un suivi individualisé.</li>
+                    <li><i class="fas fa-check-circle mr-2 text-yellow-300"></i> Forte implication des parents dans la vie scolaire.</li>
+                </ul>
+                <a href="#contact" class="btn-primary px-6 py-3 rounded-full font-bold shadow-lg">
+                    <i class="fas fa-map-marker-alt mr-1"></i> Visitez nos locaux
+                </a>
+            </div>
+            <div class="order-1 md:order-2" data-sr-target>
+                <img src="https://picsum.photos/600/400" alt="Locaux modernes de l'école" class="rounded-xl shadow-2xl w-full">
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-primary mb-12" data-sr-target>Parcours Académiques</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-red-500" data-sr-target>
+                    <i class="fas fa-child text-5xl text-red-500 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-3 text-red-500">Maternelle</h3>
+                    <p class="text-gray-600">Développement moteur, social et initiation ludique aux langues et aux nombres.</p>
+                    <span class="inline-block mt-4 text-sm font-bold text-red-500">3 à 5 ans</span>
+                </div>
+                <div class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-green-500" data-sr-target>
+                    <i class="fas fa-book-open text-5xl text-green-500 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-3 text-green-500">Primaire</h3>
+                    <p class="text-gray-600">Acquisition des fondamentaux (lecture, écriture, calcul) avec projets STEAM et arts.</p>
+                    <span class="inline-block mt-4 text-sm font-bold text-green-500">6 à 11 ans</span>
+                </div>
+                <div class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-blue-500" data-sr-target>
+                    <i class="fas fa-user-tie text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-3 text-blue-500">Secondaire</h3>
+                    <p class="text-gray-600">Préparation intensive aux diplômes, orientation universitaire et développement du leadership.</p>
+                    <span class="inline-block mt-4 text-sm font-bold text-blue-500">12 à 18 ans</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="py-16 md:py-24 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-primary mb-12 text-center" data-sr-target>Le Dynamisme de Saint Charles Lwanga</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <article class="bg-white rounded-xl shadow-lg p-6 flex space-x-4 hover:shadow-xl transition duration-300" data-sr-target>
+                    <i class="fas fa-trophy text-5xl text-yellow-500 flex-shrink-0"></i>
+                    <div>
+                        <h4 class="text-xl font-bold text-primary mb-2">Nos élèves remportent le Concours National de Robotique !</h4>
+                        <p class="text-sm text-gray-500 mb-3">10 Novembre 2025</p>
+                        <p class="text-gray-700">Félicitations à l'équipe 'Lwanga Tech' pour leur innovation et leur esprit d'équipe au sommet de la compétition.</p>
+                    </div>
+                </article>
+
+                <div class="bg-white rounded-xl shadow-lg p-6" data-sr-target>
+                    <h4 class="text-xl font-bold text-primary mb-4"><i class="fas fa-calendar-alt mr-2"></i> Événements à Venir</h4>
+                    <ul class="space-y-4">
+                        <li class="border-b pb-2">
+                            <p class="font-semibold">Journée Portes Ouvertes</p>
+                            <p class="text-sm text-gray-600"><span class="font-bold mr-1">Samedi 7 Déc.</span> | 9h00 - 12h00</p>
+                        </li>
+                        <li class="border-b pb-2">
+                            <p class="font-semibold">Réunion Parents-Professeurs</p>
+                            <p class="text-sm text-gray-600"><span class="font-bold mr-1">Jeudi 12 Déc.</span> | 18h00</p>
+                        </li>
+                        <li>
+                            <p class="font-semibold">Spectacle de Noël</p>
+                            <p class="text-sm text-gray-600"><span class="font-bold mr-1">Vendredi 20 Déc.</span> | 19h00</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admissions" class="py-16 md:py-24 color-primary text-white text-center">
+        <div class="max-w-4xl mx-auto px-6" data-sr-target>
+            <h2 class="text-4xl font-bold mb-4">Lancez l'Avenir de votre Enfant</h2>
+            <p class="text-xl mb-8">
+                Le processus d'admission est simple et entièrement en ligne. Commencez votre démarche aujourd'hui.
+            </p>
+            <a href="formulaire-admission.html" class="btn-primary px-10 py-4 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transition duration-300">
+                <i class="fas fa-edit mr-2"></i> Démarrer la Pré-inscription
+            </a>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+            
+            <div data-sr-target>
+                <h3 class="text-2xl font-bold text-primary mb-4">Contactez-nous</h3>
+                <ul class="space-y-4 text-lg text-gray-700">
+                    <li><i class="fas fa-phone-alt mr-3 text-yellow-500"></i> <a href="tel:+1234567890" class="hover:text-primary">+1 (234) 567-890</a></li>
+                    <li><i class="fas fa-envelope mr-3 text-yellow-500"></i> <a href="mailto:contact@scl-ecole.org" class="hover:text-primary">contact@scl-ecole.org</a></li>
+                    <li><i class="fas fa-map-marker-alt mr-3 text-yellow-500"></i> 123, Avenue des Écoles, 01 Ville</li>
+                </ul>
+                <div class="mt-6 space-x-4 text-2xl">
+                    <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-2" data-sr-target>
+                <h3 class="text-2xl font-bold text-primary mb-4">Notre Localisation</h3>
+                <div class="bg-gray-200 h-64 rounded-xl shadow-lg overflow-hidden">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="color-primary text-white py-8">
+        <div class="max-w-7xl mx-auto px-6 text-center text-sm border-t border-yellow-500 pt-4">
+            <p>&copy; 2025 École Saint Charles Lwanga. Tous droits réservés.</p>
+            <p class="mt-2">Fait avec <i class="fas fa-heart text-red-500"></i> et l'esprit de l'éducation moderne.</p>
+        </div>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const textCarousel = document.getElementById('carousel-maire-text');
-            const imageCarousel = document.getElementById('carousel-maire-images');
+            // ===================================
+            // A. LOGIQUE DU MENU MOBILE (JS)
+            // ===================================
+            const menuToggle = document.getElementById('menu-toggle');
+            const closeMenu = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = mobileMenu.querySelectorAll('a');
 
-            if (textCarousel && imageCarousel) {
-                const textItems = textCarousel.querySelectorAll('.text-carousel-item');
-                let currentIndex = 0;
+            // Ouvrir le menu
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.remove('-translate-y-full');
+            });
 
-                const flowbiteImageInstance = FlowbiteInstances.getInstance(imageCarousel, 'carousel');
+            // Fermer le menu (bouton X)
+            closeMenu.addEventListener('click', () => {
+                mobileMenu.classList.add('-translate-y-full');
+            });
 
-                const updateTextCarousel = (index) => {
-                    textItems.forEach((item, i) => {
-                        item.classList.remove('active');
-                        if (i === index) {
-                            item.classList.add('active');
-                        }
-                    });
-                };
-
-                // Écouter l'événement Flowbite (carrousel d'images)
-                imageCarousel.addEventListener('slide.bs.carousel', (event) => {
-                    const nextIndex = event.detail.to;
-                    updateTextCarousel(nextIndex);
+            // Fermer le menu après le clic sur un lien (navigation SPA)
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Petite attente pour l'effet de transition
+                    setTimeout(() => {
+                        mobileMenu.classList.add('-translate-y-full');
+                    }, 300);
                 });
+            });
 
-                // Initialisation au chargement
-                updateTextCarousel(currentIndex);
-            }
-        });
+            // ===================================
+            // B. ANIMATIONS SCROLLREVEAL (JS)
+            // ===================================
+            // Configure et révèle les éléments marqués de l'attribut data-sr-target
+            
+            // 1. Configuration par défaut
+            const sr = ScrollReveal({
+                delay: 200,
+                distance: '50px',
+                easing: 'ease-in-out',
+                duration: 800,
+                reset: false // Animation à chaque défilement
+            });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const textCarousel = document.getElementById('carousel-ville-text');
-            const imageCarousel = document.getElementById('carousel-ville-images');
+            // 2. Révéler les titres et sections principales
+            sr.reveal('[data-sr-target]', { origin: 'bottom' });
 
-            if (textCarousel && imageCarousel) {
-                const textItems = textCarousel.querySelectorAll('.text-carousel-item');
-                let currentIndex = 0;
+            // 3. Révéler les cartes avec un intervalle
+            sr.reveal('.program-card, .news-item, .stat-item', { interval: 60 });
+            
+            // 4. Animation spécifique pour la section 'About' (gauche/droite)
+            sr.reveal('#about .order-2', { origin: 'left' });
+            sr.reveal('#about .order-1', { origin: 'right' });
 
-                const flowbiteImageInstance = FlowbiteInstances.getInstance(imageCarousel, 'carousel');
 
-                const updateTextCarousel = (index) => {
-                    textItems.forEach((item, i) => {
-                        item.classList.remove('active');
-                        if (i === index) {
-                            item.classList.add('active');
-                        }
-                    });
-                };
-
-                imageCarousel.addEventListener('slide.bs.carousel', (event) => {
-                    const nextIndex = event.detail.to;
-                    updateTextCarousel(nextIndex);
-                });
-
-                updateTextCarousel(currentIndex);
+            // ===================================
+            // C. ANIMATION TEXTE HERO (Simple CSS/JS)
+            // ===================================
+            // Simule l'animation des textes de la section Hero pour apparaître après le chargement
+            const heroP = document.querySelector('#hero p');
+            if (heroP) {
+                setTimeout(() => {
+                    heroP.classList.remove('opacity-0');
+                    heroP.style.transition = 'opacity 1s ease 0.5s';
+                    heroP.style.opacity = '1';
+                }, 500);
             }
         });
     </script>
