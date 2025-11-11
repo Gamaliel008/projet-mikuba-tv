@@ -25,6 +25,8 @@
             --accent-color: #f7b300;
             --light-color: #f7f9fc;
             --dark-color: #333;
+            --gradient-primary: linear-gradient(135deg, #0d47a1, #1976d2);
+            --gradient-secondary: linear-gradient(135deg, #ffc107, #ff9800);
         }
         
         body {
@@ -32,6 +34,7 @@
             color: var(--dark-color);
             background-color: var(--light-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -48,15 +51,69 @@
         }
         
         .btn-primary {
-            background-color: var(--secondary-color);
+            background: var(--gradient-secondary);
             color: var(--primary-color);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
         }
         
         .btn-primary:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--gradient-primary);
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(13, 71, 161, 0.3);
+        }
+        
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-secondary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(13, 71, 161, 0.4);
         }
         
         #main-header {
@@ -72,6 +129,7 @@
         #main-header.scrolled {
             background-color: rgba(255, 255, 255, 0.98);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 12px 0;
         }
         
         #main-nav a.active {
@@ -97,6 +155,7 @@
             transform: translateY(10px);
             transition: all 0.3s ease;
             z-index: 100;
+            padding: 10px 0;
         }
         
         .nav-item:hover .submenu {
@@ -111,10 +170,28 @@
             color: var(--dark-color);
             border-bottom: 1px solid #f0f0f0;
             transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .submenu a:last-child {
             border-bottom: none;
+        }
+        
+        .submenu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--gradient-secondary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .submenu a:hover::before {
+            transform: scaleY(1);
         }
         
         .submenu a:hover {
@@ -124,15 +201,76 @@
         }
         
         #hero {
-            background: linear-gradient(rgba(13, 71, 161, 0.8), rgba(13, 71, 161, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center center / cover no-repeat;
+            background: linear-gradient(rgba(13, 71, 161, 0.85), rgba(13, 71, 161, 0.85)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center center / cover no-repeat;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
         
         .hero-content {
             animation: fadeInUp 1s ease-out;
+            text-align: center;
+            max-width: 900px;
+            z-index: 2;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .element-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary-color);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .element-2 {
+            width: 200px;
+            height: 200px;
+            background: white;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .element-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--accent-color);
+            top: 60%;
+            left: 15%;
+            animation-delay: 4s;
         }
         
         @keyframes fadeInUp {
@@ -146,44 +284,142 @@
             }
         }
         
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                transform: translate(20px, -20px) rotate(180deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+        
         .card-hover {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .card-hover:hover::before {
+            left: 100%;
         }
         
         .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         .program-card {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border-top: 4px solid;
+            position: relative;
+            overflow: hidden;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-secondary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .program-card:hover::before {
+            transform: scaleX(1);
         }
         
         .program-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         .stat-item {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .stat-item:hover::before {
+            transform: scaleX(1);
         }
         
         .stat-item:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            transition: all 0.4s ease;
+        }
+        
+        .stat-item:hover .stat-number {
+            transform: scale(1.1);
         }
         
         .testimonial-card {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
             margin: 1rem;
             position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .testimonial-card::before {
-            content: """;
+            content: '"';
             position: absolute;
             top: -10px;
             left: 20px;
@@ -191,28 +427,45 @@
             color: var(--secondary-color);
             font-family: Georgia, serif;
             line-height: 1;
+            opacity: 0.3;
         }
         
         .news-item {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
         
         .news-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .news-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            transition: all 0.4s ease;
+        }
+        
+        .news-item:hover .news-image {
+            transform: scale(1.05);
         }
         
         .map-container {
-            height: 300px;
-            border-radius: 10px;
+            height: 400px;
+            border-radius: 15px;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: var(--primary-color);
+            background: var(--gradient-primary);
             color: white;
             width: 50px;
             height: 50px;
@@ -225,6 +478,7 @@
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 999;
+            box-shadow: 0 4px 15px rgba(13, 71, 161, 0.3);
         }
         
         .back-to-top.show {
@@ -232,12 +486,17 @@
             visibility: visible;
         }
         
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(13, 71, 161, 0.4);
+        }
+        
         .loading-bar {
             position: fixed;
             top: 0;
             left: 0;
             height: 3px;
-            background-color: var(--secondary-color);
+            background: var(--gradient-secondary);
             width: 0%;
             z-index: 1001;
             transition: width 0.3s ease;
@@ -259,6 +518,7 @@
             margin-bottom: 1.5rem;
             position: relative;
             padding-bottom: 0.5rem;
+            color: white;
         }
         
         .footer-section h3::after {
@@ -268,7 +528,7 @@
             left: 0;
             width: 40px;
             height: 2px;
-            background-color: var(--secondary-color);
+            background: var(--gradient-secondary);
         }
         
         .footer-links a {
@@ -276,11 +536,26 @@
             margin-bottom: 0.75rem;
             color: #cbd5e0;
             transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .footer-links a::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            font-size: 0.7rem;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
         }
         
         .footer-links a:hover {
             color: white;
             transform: translateX(5px);
+        }
+        
+        .footer-links a:hover::before {
+            color: white;
         }
         
         .footer-contact li {
@@ -293,6 +568,8 @@
             margin-right: 0.75rem;
             color: var(--secondary-color);
             margin-top: 0.25rem;
+            width: 20px;
+            text-align: center;
         }
         
         .footer-social a {
@@ -306,12 +583,29 @@
             color: white;
             margin-right: 0.75rem;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-social a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .footer-social a:hover::before {
+            left: 0;
         }
         
         .footer-social a:hover {
-            background-color: var(--secondary-color);
+            transform: translateY(-5px);
             color: var(--primary-color);
-            transform: translateY(-3px);
         }
         
         .footer-newsletter input {
@@ -322,6 +616,14 @@
             color: white;
             width: 100%;
             margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-newsletter input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.3);
         }
         
         .footer-newsletter input::placeholder {
@@ -329,7 +631,7 @@
         }
         
         .footer-newsletter button {
-            background-color: var(--secondary-color);
+            background: var(--gradient-secondary);
             color: var(--primary-color);
             border: none;
             padding: 0.75rem 1.5rem;
@@ -338,16 +640,151 @@
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-newsletter button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .footer-newsletter button:hover::before {
+            left: 100%;
         }
         
         .footer-newsletter button:hover {
-            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
         }
         
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 2rem;
             margin-top: 2rem;
+            color: #cbd5e0;
+        }
+        
+        /* Animations pour les sections */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .slide-in-left.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .slide-in-right.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background: white;
+            z-index: 1001;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        
+        .mobile-nav-links {
+            margin-top: 3rem;
+        }
+        
+        .mobile-nav-links a {
+            display: block;
+            padding: 1rem 0;
+            color: var(--dark-color);
+            border-bottom: 1px solid #eee;
+            font-weight: 500;
+        }
+        
+        .mobile-submenu {
+            padding-left: 1.5rem;
+            display: none;
+        }
+        
+        .mobile-submenu a {
+            padding: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -368,296 +805,500 @@
                 <h1 class="text-xl font-extrabold text-primary">Saint Charles Lwanga</h1>
             </div>
             
-            <nav id="main-nav" class="hidden md:flex space-x-6 text-gray-600 font-medium">
-                <a href="#hero" class="hover:text-primary active">Accueil</a>
+            <!-- Desktop Navigation -->
+            <nav id="main-nav" class="desktop-nav hidden md:flex space-x-6 text-gray-600 font-medium">
+                <a href="#hero" class="hover:text-primary active flex items-center">
+                    <i class="fas fa-home mr-2"></i>Accueil
+                </a>
                 
                 <div class="nav-item">
                     <a href="#about" class="hover:text-primary flex items-center">
-                        Notre École <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        <i class="fas fa-school mr-2"></i>Notre École <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </a>
                     <div class="submenu">
-                        <a href="#history">Histoire et Mission</a>
-                        <a href="#team">Équipe Pédagogique</a>
-                        <a href="#facilities">Installations</a>
-                        <a href="#values">Nos Valeurs</a>
+                        <a href="#history"><i class="fas fa-history mr-2"></i>Histoire et Mission</a>
+                        <a href="#team"><i class="fas fa-users mr-2"></i>Équipe Pédagogique</a>
+                        <a href="#facilities"><i class="fas fa-building mr-2"></i>Installations</a>
+                        <a href="#values"><i class="fas fa-heart mr-2"></i>Nos Valeurs</a>
                     </div>
                 </div>
                 
                 <div class="nav-item">
                     <a href="#programs" class="hover:text-primary flex items-center">
-                        Programmes <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        <i class="fas fa-graduation-cap mr-2"></i>Programmes <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </a>
                     <div class="submenu">
-                        <a href="#maternelle">Maternelle</a>
-                        <a href="#primaire">Primaire</a>
-                        <a href="#secondaire">Secondaire</a>
-                        <a href="#parascolaire">Activités Parascolaires</a>
+                        <a href="#primary"><i class="fas fa-book mr-2"></i>Primaire</a>
+                        <a href="#secondary"><i class="fas fa-book-open mr-2"></i>Secondaire</a>
+                        <a href="#extracurricular"><i class="fas fa-futbol mr-2"></i>Activités Extrascolaires</a>
+                        <a href="#languages"><i class="fas fa-language mr-2"></i>Langues</a>
                     </div>
                 </div>
                 
-                <div class="nav-item">
-                    <a href="#admissions" class="hover:text-primary flex items-center">
-                        Admissions <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                    </a>
-                    <div class="submenu">
-                        <a href="#process">Processus d'Admission</a>
-                        <a href="#fees">Frais de Scolarité</a>
-                        <a href="#calendar">Calendrier Scolaire</a>
-                        <a href="#faq">FAQ</a>
-                    </div>
-                </div>
+                <a href="#news" class="hover:text-primary flex items-center">
+                    <i class="fas fa-newspaper mr-2"></i>Actualités
+                </a>
                 
-                <a href="#news" class="hover:text-primary">Actualités</a>
-                <a href="#contact" class="hover:text-primary">Contact</a>
+                <a href="#contact" class="hover:text-primary flex items-center">
+                    <i class="fas fa-envelope mr-2"></i>Contact
+                </a>
             </nav>
             
-            <div class="flex items-center space-x-4">
-                <a href="#admissions" class="hidden md:block btn-primary px-4 py-2 rounded-full text-sm font-bold shadow-md">
-                    <i class="fas fa-user-plus mr-1"></i> S'inscrire
-                </a>
-                <a href="portal.html" class="text-primary hover:text-gray-700 text-sm font-medium">
-                    <i class="fas fa-sign-in-alt mr-1"></i> Espace Parents
-                </a>
-                <button id="menu-toggle" class="md:hidden text-2xl text-primary">
-                    <i class="fas fa-bars"></i>
-                </button>
+            <!-- Mobile Menu Button -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
 
-    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full color-primary p-6 z-50 transform -translate-y-full transition-transform duration-300 md:hidden">
-        <button id="close-menu" class="absolute top-4 right-4 text-white text-3xl"><i class="fas fa-times"></i></button>
-        <nav class="flex flex-col space-y-6 pt-20 text-center text-xl font-bold text-white">
-            <a href="#hero" class="hover:text-yellow-300">Accueil</a>
-            <a href="#about" class="hover:text-yellow-300">Notre École</a>
-            <a href="#programs" class="hover:text-yellow-300">Programmes</a>
-            <a href="#admissions" class="hover:text-yellow-300">Admissions</a>
-            <a href="#news" class="hover:text-yellow-300">Actualités</a>
-            <a href="#contact" class="hover:text-yellow-300">Contact</a>
-        </nav>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <span class="close-menu" id="closeMenu">&times;</span>
+        <div class="mobile-nav-links">
+            <a href="#hero"><i class="fas fa-home mr-2"></i>Accueil</a>
+            
+            <div class="mobile-dropdown">
+                <a href="#about" class="flex justify-between items-center">
+                    <span><i class="fas fa-school mr-2"></i>Notre École</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="mobile-submenu" id="aboutSubmenu">
+                    <a href="#history"><i class="fas fa-history mr-2"></i>Histoire et Mission</a>
+                    <a href="#team"><i class="fas fa-users mr-2"></i>Équipe Pédagogique</a>
+                    <a href="#facilities"><i class="fas fa-building mr-2"></i>Installations</a>
+                    <a href="#values"><i class="fas fa-heart mr-2"></i>Nos Valeurs</a>
+                </div>
+            </div>
+            
+            <div class="mobile-dropdown">
+                <a href="#programs" class="flex justify-between items-center">
+                    <span><i class="fas fa-graduation-cap mr-2"></i>Programmes</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="mobile-submenu" id="programsSubmenu">
+                    <a href="#primary"><i class="fas fa-book mr-2"></i>Primaire</a>
+                    <a href="#secondary"><i class="fas fa-book-open mr-2"></i>Secondaire</a>
+                    <a href="#extracurricular"><i class="fas fa-futbol mr-2"></i>Activités Extrascolaires</a>
+                    <a href="#languages"><i class="fas fa-language mr-2"></i>Langues</a>
+                </div>
+            </div>
+            
+            <a href="#news"><i class="fas fa-newspaper mr-2"></i>Actualités</a>
+            <a href="#contact"><i class="fas fa-envelope mr-2"></i>Contact</a>
+        </div>
     </div>
 
-    <section id="hero" class="flex items-center text-white text-center pt-20">
-        <div class="max-w-4xl mx-auto p-8 hero-content">
-            <h2 class="text-5xl md:text-6xl font-extrabold mb-4">
-                Élever la <span class="text-yellow-300">nouvelle génération</span> par la Foi et l'Éducation
-            </h2>
-            <p class="text-xl mb-8">
-                Un environnement d'apprentissage stimulant, basé sur l'excellence académique et les valeurs éthiques.
-            </p>
-            <div class="space-x-4">
-                <a href="#admissions" class="btn-primary px-8 py-3 rounded-full text-lg font-bold shadow-xl">
-                    Déposer une candidature
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="floating-elements">
+            <div class="floating-element element-1"></div>
+            <div class="floating-element element-2"></div>
+            <div class="floating-element element-3"></div>
+        </div>
+        
+        <div class="hero-content container mx-auto px-4">
+            <h1 class="fade-in">École Saint Charles Lwanga</h1>
+            <p class="fade-in">Excellence académique, valeurs chrétiennes et avenir prometteur pour chaque élève</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in">
+                <a href="#programs" class="btn-primary">
+                    <i class="fas fa-graduation-cap mr-2"></i>Découvrir nos programmes
                 </a>
-                <a href="#about" class="text-white border-2 border-white px-8 py-3 rounded-full text-lg font-bold hover:bg-white hover:text-primary transition duration-300">
-                    Découvrir
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="stats" class="py-12 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="stat-item p-4">
-                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">98%</div>
-                    <div class="text-gray-600">Taux de réussite</div>
-                </div>
-                <div class="stat-item p-4">
-                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">25+</div>
-                    <div class="text-gray-600">Années d'expérience</div>
-                </div>
-                <div class="stat-item p-4">
-                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">500+</div>
-                    <div class="text-gray-600">Élèves formés</div>
-                </div>
-                <div class="stat-item p-4">
-                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">15</div>
-                    <div class="text-gray-600">Activités parascolaires</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="values" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h3 class="text-4xl font-bold text-primary mb-12" data-sr-target>Notre Pédagogie en Trois Piliers</h3>
-            
-            <div class="grid md:grid-cols-3 gap-12 text-gray-700">
-                <div class="p-6 bg-white rounded-xl shadow-lg card-hover" data-sr-target>
-                    <i class="fas fa-graduation-cap text-5xl text-yellow-500 mb-4"></i>
-                    <h4 class="text-2xl font-semibold mb-3 text-primary">Excellence Académique</h4>
-                    <p>Des programmes rigoureux et des méthodes d'enseignement innovantes pour maximiser le potentiel de chaque élève.</p>
-                </div>
-                <div class="p-6 bg-white rounded-xl shadow-lg card-hover" data-sr-target>
-                    <i class="fas fa-hands-praying text-5xl text-yellow-500 mb-4"></i>
-                    <h4 class="text-2xl font-semibold mb-3 text-primary">Valeurs et Foi</h4>
-                    <p>Développement moral et éthique, enraciné dans les valeurs chrétiennes de Saint Charles Lwanga.</p>
-                </div>
-                <div class="p-6 bg-white rounded-xl shadow-lg card-hover" data-sr-target>
-                    <i class="fas fa-globe-europe text-5xl text-yellow-500 mb-4"></i>
-                    <h4 class="text-2xl font-semibold mb-3 text-primary">Ouverture au Monde</h4>
-                    <p>Promotion du bilinguisme et de la compréhension interculturelle pour préparer les citoyens de demain.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section id="about" class="py-16 md:py-24 color-primary text-white">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="order-2 md:order-1" data-sr-target>
-                <h2 class="text-4xl font-bold mb-4">Un Cadre Propice à l'Épanouissement</h2>
-                <p class="text-lg mb-6">
-                    L'École Saint Charles Lwanga ne se contente pas d'enseigner ; nous inspirons. Nos infrastructures modernes, de nos laboratoires de sciences high-tech à notre médiathèque richement dotée, sont conçues pour encourager la curiosité et la collaboration.
-                </p>
-                <ul class="space-y-3 mb-6">
-                    <li><i class="fas fa-check-circle mr-2 text-yellow-300"></i> Personnel enseignant hautement qualifié.</li>
-                    <li><i class="fas fa-check-circle mr-2 text-yellow-300"></i> Petites classes pour un suivi individualisé.</li>
-                    <li><i class="fas fa-check-circle mr-2 text-yellow-300"></i> Forte implication des parents dans la vie scolaire.</li>
-                </ul>
-                <a href="#contact" class="btn-primary px-6 py-3 rounded-full font-bold shadow-lg">
-                    <i class="fas fa-map-marker-alt mr-1"></i> Visitez nos locaux
+                <a href="#contact" class="btn-secondary">
+                    <i class="fas fa-calendar-check mr-2"></i>Visite guidée
                 </a>
             </div>
-            <div class="order-1 md:order-2" data-sr-target>
-                <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Locaux modernes de l'école" class="rounded-xl shadow-2xl w-full">
-            </div>
         </div>
     </section>
 
-    <section id="programs" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold text-primary mb-12" data-sr-target>Parcours Académiques</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-8 bg-white rounded-xl shadow-lg program-card border-red-500" data-sr-target>
-                    <i class="fas fa-child text-5xl text-red-500 mb-4"></i>
-                    <h3 class="text-2xl font-semibold mb-3 text-red-500">Maternelle</h3>
-                    <p class="text-gray-600">Développement moteur, social et initiation ludique aux langues et aux nombres.</p>
-                    <span class="inline-block mt-4 text-sm font-bold text-red-500">3 à 5 ans</span>
-                </div>
-                <div class="p-8 bg-white rounded-xl shadow-lg program-card border-green-500" data-sr-target>
-                    <i class="fas fa-book-open text-5xl text-green-500 mb-4"></i>
-                    <h3 class="text-2xl font-semibold mb-3 text-green-500">Primaire</h3>
-                    <p class="text-gray-600">Acquisition des fondamentaux (lecture, écriture, calcul) avec projets STEAM et arts.</p>
-                    <span class="inline-block mt-4 text-sm font-bold text-green-500">6 à 11 ans</span>
-                </div>
-                <div class="p-8 bg-white rounded-xl shadow-lg program-card border-blue-500" data-sr-target>
-                    <i class="fas fa-user-tie text-5xl text-blue-500 mb-4"></i>
-                    <h3 class="text-2xl font-semibold mb-3 text-blue-500">Secondaire</h3>
-                    <p class="text-gray-600">Préparation intensive aux diplômes, orientation universitaire et développement du leadership.</p>
-                    <span class="inline-block mt-4 text-sm font-bold text-blue-500">12 à 18 ans</span>
-                </div>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4">À propos de notre école</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Une tradition d'excellence académique et de valeurs chrétiennes depuis plus de 30 ans</p>
             </div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="py-16 md:py-24 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold text-primary mb-12" data-sr-target>Témoignages</h2>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="testimonial-card" data-sr-target>
-                    <p class="text-gray-700 mb-4">"L'école Saint Charles Lwanga a offert à mes enfants un environnement d'apprentissage exceptionnel où ils s'épanouissent tant sur le plan académique que personnel."</p>
-                    <div class="font-bold text-primary">Marie D.</div>
-                    <div class="text-sm text-gray-500">Mère de deux élèves</div>
-                </div>
-                <div class="testimonial-card" data-sr-target>
-                    <p class="text-gray-700 mb-4">"En tant qu'enseignant, je suis impressionné par l'engagement de l'école envers l'excellence académique et le développement des valeurs chrétiennes chez les élèves."</p>
-                    <div class="font-bold text-primary">Jean P.</div>
-                    <div class="text-sm text-gray-500">Professeur de sciences</div>
-                </div>
-                <div class="testimonial-card" data-sr-target>
-                    <p class="text-gray-700 mb-4">"Les infrastructures modernes et les activités parascolaires variées permettent aux élèves de développer leurs talents et passions au-delà des salles de classe."</p>
-                    <div class="font-bold text-primary">Sophie L.</div>
-                    <div class="text-sm text-gray-500">Ancienne élève</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="news" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-bold text-primary mb-12 text-center" data-sr-target>Le Dynamisme de Saint Charles Lwanga</h2>
-            
-            <div class="grid md:grid-cols-2 gap-10">
-                <article class="bg-white rounded-xl shadow-lg p-6 flex space-x-4 news-item" data-sr-target>
-                    <i class="fas fa-trophy text-5xl text-yellow-500 flex-shrink-0"></i>
-                    <div>
-                        <h4 class="text-xl font-bold text-primary mb-2">Nos élèves remportent le Concours National de Robotique !</h4>
-                        <p class="text-sm text-gray-500 mb-3">10 Novembre 2025</p>
-                        <p class="text-gray-700">Félicitations à l'équipe 'Lwanga Tech' pour leur innovation et leur esprit d'équipe au sommet de la compétition.</p>
-                    </div>
-                </article>
-
-                <div class="bg-white rounded-xl shadow-lg p-6 news-item" data-sr-target>
-                    <h4 class="text-xl font-bold text-primary mb-4"><i class="fas fa-calendar-alt mr-2"></i> Événements à Venir</h4>
-                    <ul class="space-y-4">
-                        <li class="border-b pb-2">
-                            <p class="font-semibold">Journée Portes Ouvertes</p>
-                            <p class="text-sm text-gray-600"><span class="font-bold mr-1">Samedi 7 Déc.</span> | 9h00 - 12h00</p>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="slide-in-left">
+                    <h3 class="text-2xl font-bold mb-4">Notre Mission</h3>
+                    <p class="text-gray-600 mb-6">
+                        Former des citoyens responsables, respectueux des valeurs chrétiennes et prêts à relever les défis du XXIe siècle. 
+                        Nous nous engageons à offrir une éducation de qualité qui développe les talents de chaque élève.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span>Excellence académique et pédagogie innovante</span>
                         </li>
-                        <li class="border-b pb-2">
-                            <p class="font-semibold">Réunion Parents-Professeurs</p>
-                            <p class="text-sm text-gray-600"><span class="font-bold mr-1">Jeudi 12 Déc.</span> | 18h00</p>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span>Éducation basée sur les valeurs chrétiennes</span>
                         </li>
-                        <li>
-                            <p class="font-semibold">Spectacle de Noël</p>
-                            <p class="text-sm text-gray-600"><span class="font-bold mr-1">Vendredi 20 Déc.</span> | 19h00</p>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span>Développement des compétences sociales et émotionnelles</span>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="admissions" class="py-16 md:py-24 color-primary text-white text-center">
-        <div class="max-w-4xl mx-auto px-6" data-sr-target>
-            <h2 class="text-4xl font-bold mb-4">Lancez l'Avenir de votre Enfant</h2>
-            <p class="text-xl mb-8">
-                Le processus d'admission est simple et entièrement en ligne. Commencez votre démarche aujourd'hui.
-            </p>
-            <a href="formulaire-admission.html" class="btn-primary px-10 py-4 rounded-full text-lg font-bold shadow-xl">
-                <i class="fas fa-edit mr-2"></i> Démarrer la Pré-inscription
-            </a>
-        </div>
-    </section>
-
-    <section id="contact" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
-            
-            <div data-sr-target>
-                <h3 class="text-2xl font-bold text-primary mb-4">Contactez-nous</h3>
-                <ul class="space-y-4 text-lg text-gray-700">
-                    <li><i class="fas fa-phone-alt mr-3 text-yellow-500"></i> <a href="tel:+1234567890" class="hover:text-primary">+1 (234) 567-890</a></li>
-                    <li><i class="fas fa-envelope mr-3 text-yellow-500"></i> <a href="mailto:contact@scl-ecole.org" class="hover:text-primary">contact@scl-ecole.org</a></li>
-                    <li><i class="fas fa-map-marker-alt mr-3 text-yellow-500"></i> 123, Avenue des Écoles, 01 Ville</li>
-                </ul>
-                <div class="mt-6 space-x-4 text-2xl">
-                    <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            
-            <div class="md:col-span-2" data-sr-target>
-                <h3 class="text-2xl font-bold text-primary mb-4">Notre Localisation</h3>
-                <div class="map-container bg-gray-200 rounded-xl shadow-lg overflow-hidden">
-                    <!-- Intégration Google Maps ou autre service de cartographie -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.292292615509614!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1642001411111!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                
+                <div class="slide-in-right">
+                    <div class="relative">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-96 flex items-center justify-center">
+                            <i class="fas fa-school text-gray-400 text-6xl"></i>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-blue-600 to-blue-400 p-6 rounded-xl shadow-xl">
+                            <div class="text-3xl font-bold text-white">30+</div>
+                            <div class="text-sm text-white">Années d'Excellence</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="color-primary text-white py-12">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- Programs Section -->
+    <section id="programs" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4">Nos Programmes Éducatifs</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Des cursus complets adaptés aux besoins de chaque niveau d'enseignement</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="program-card card-hover">
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-book text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Enseignement Primaire</h3>
+                        <p class="text-gray-600 mb-6">
+                            Un programme équilibré qui développe les fondements académiques, sociaux et émotionnels des jeunes élèves.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Classes de 1ère à 6ème année</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Approche pédagogique active</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Activités artistiques et sportives</span>
+                            </li>
+                        </ul>
+                        <a href="#primary" class="text-primary font-medium flex items-center">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="program-card card-hover">
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-book-open text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Enseignement Secondaire</h3>
+                        <p class="text-gray-600 mb-6">
+                            Une formation complète qui prépare les élèves aux examens nationaux et aux défis de l'enseignement supérieur.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Humanités et Sciences</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Préparation aux examens</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Orientation professionnelle</span>
+                            </li>
+                        </ul>
+                        <a href="#secondary" class="text-primary font-medium flex items-center">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="program-card card-hover">
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-futbol text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Activités Extrascolaires</h3>
+                        <p class="text-gray-600 mb-6">
+                            Des activités variées qui développent les talents et favorisent l'épanouissement des élèves.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Sports et loisirs</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Arts et créativité</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Clubs et associations</span>
+                            </li>
+                        </ul>
+                        <a href="#extracurricular" class="text-primary font-medium flex items-center">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Nos Réalisations en Chiffres</h2>
+                <p class="text-xl text-blue-200 max-w-3xl mx-auto">Des résultats qui parlent d'eux-mêmes</p>
+            </div>
+            
             <div class="grid md:grid-cols-4 gap-8">
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <h3 class="text-xl font-bold">Taux de réussite</h3>
+                    <p class="text-blue-200">Aux examens nationaux</p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">450+</div>
+                    <h3 class="text-xl font-bold">Élèves inscrits</h3>
+                    <p class="text-blue-200">Dans nos classes</p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">45</div>
+                    <h3 class="text-xl font-bold">Membres du personnel</h3>
+                    <p class="text-blue-200">Enseignants qualifiés</p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">30</div>
+                    <h3 class="text-xl font-bold">Années d'existence</h3>
+                    <p class="text-blue-200">D'excellence éducative</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4">Témoignages</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Ce que disent nos parents d'élèves et nos anciens élèves</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="testimonial-card">
+                    <p class="text-gray-600 mb-6">
+                        "L'éducation que mon fils reçoit à Saint Charles Lwanga est exceptionnelle. 
+                        Non seulement ses résultats académiques se sont améliorés, mais il a aussi développé 
+                        un sens des responsabilités et des valeurs solides."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4"></div>
+                        <div>
+                            <h4 class="font-bold">Marie Dubois</h4>
+                            <p class="text-gray-600 text-sm">Mère de deux élèves</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="text-gray-600 mb-6">
+                        "Grâce à la formation reçue à Saint Charles Lwanga, j'ai pu intégrer l'université 
+                        de mes rêves. L'accent mis sur l'excellence académique et les valeurs humaines 
+                        m'a permis de réussir mes études supérieures."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4"></div>
+                        <div>
+                            <h4 class="font-bold">Jean-Pierre Mwamba</h4>
+                            <p class="text-gray-600 text-sm">Ancien élève - Université de Lubumbashi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4">Actualités de l'École</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Restez informés des derniers événements et annonces</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="news-item card-hover">
+                    <div class="news-image bg-gray-300"></div>
+                    <div class="p-6">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mb-3">Événement</span>
+                        <h3 class="text-xl font-bold mb-2">Remise des prix annuelle</h3>
+                        <p class="text-gray-600 mb-4">
+                            Cérémonie de remise des prix pour les élèves méritants de l'année académique 2024-2025.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">15 Juin 2025</span>
+                            <a href="#" class="text-primary font-medium">Lire plus</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-item card-hover">
+                    <div class="news-image bg-gray-300"></div>
+                    <div class="p-6">
+                        <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded mb-3">Succès</span>
+                        <h3 class="text-xl font-bold mb-2">Excellents résultats aux examens</h3>
+                        <p class="text-gray-600 mb-4">
+                            Nos élèves obtiennent des résultats exceptionnels aux examens nationaux cette année.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">10 Juin 2025</span>
+                            <a href="#" class="text-primary font-medium">Lire plus</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-item card-hover">
+                    <div class="news-image bg-gray-300"></div>
+                    <div class="p-6">
+                        <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded mb-3">Infrastructure</span>
+                        <h3 class="text-xl font-bold mb-2">Nouvelle bibliothèque inaugurée</h3>
+                        <p class="text-gray-600 mb-4">
+                            Inauguration de notre nouvelle bibliothèque moderne équipée de 5000 ouvrages.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">5 Juin 2025</span>
+                            <a href="#" class="text-primary font-medium">Lire plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4">Contactez-nous</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Nous serions ravis de vous accueillir et de répondre à vos questions</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Informations de contact</h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Adresse</h4>
+                                <p class="text-gray-600">123 Avenue de l'Éducation, Quartier Universitaire, Lubumbashi</p>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Téléphone</h4>
+                                <p class="text-gray-600">+243 999 999 999</p>
+                                <p class="text-gray-600">+243 888 888 888</p>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Email</h4>
+                                <p class="text-gray-600">info@saintcharleslwanga.cd</p>
+                                <p class="text-gray-600">admission@saintcharleslwanga.cd</p>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-clock text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Horaires</h4>
+                                <p class="text-gray-600">Lundi - Vendredi: 7h30 - 17h00</p>
+                                <p class="text-gray-600">Samedi: 8h00 - 12h00</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Envoyez-nous un message</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Nom complet</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">Sujet</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary w-full">
+                            <i class="fas fa-paper-plane mr-2"></i>Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <div class="map-container bg-gray-200 flex items-center justify-center">
+                    <i class="fas fa-map text-gray-400 text-6xl"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <div class="footer-section">
-                    <h3>Saint Charles Lwanga</h3>
-                    <p class="text-gray-300 mb-4">Une éducation d'excellence basée sur les valeurs chrétiennes pour former les leaders de demain.</p>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <i class="fas fa-church text-2xl text-secondary"></i>
+                        <h3 class="text-xl font-extrabold">Saint Charles Lwanga</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Une éducation d'excellence basée sur les valeurs chrétiennes et l'accomplissement de chaque élève.
+                    </p>
                     <div class="footer-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -669,186 +1310,230 @@
                 <div class="footer-section">
                     <h3>Liens Rapides</h3>
                     <div class="footer-links">
-                        <a href="#about">Notre École</a>
+                        <a href="#hero">Accueil</a>
+                        <a href="#about">À propos</a>
                         <a href="#programs">Programmes</a>
-                        <a href="#admissions">Admissions</a>
                         <a href="#news">Actualités</a>
                         <a href="#contact">Contact</a>
-                        <a href="portal.html">Espace Parents</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Programmes</h3>
+                    <div class="footer-links">
+                        <a href="#primary">Enseignement Primaire</a>
+                        <a href="#secondary">Enseignement Secondaire</a>
+                        <a href="#extracurricular">Activités Extrascolaires</a>
+                        <a href="#languages">Langues Étrangères</a>
+                        <a href="#facilities">Installations</a>
                     </div>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Contact</h3>
-                    <ul class="footer-contact">
+                    <ul class="footer-contact text-gray-400">
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>123, Avenue des Écoles<br>01 Ville, Pays</span>
+                            <span>123 Avenue de l'Éducation, Quartier Universitaire, Lubumbashi</span>
                         </li>
                         <li>
-                            <i class="fas fa-phone-alt"></i>
-                            <span>+1 (234) 567-890</span>
+                            <i class="fas fa-phone"></i>
+                            <span>+243 999 999 999</span>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>contact@scl-ecole.org</span>
+                            <span>info@saintcharleslwanga.cd</span>
                         </li>
                     </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Newsletter</h3>
-                    <p class="text-gray-300 mb-4">Inscrivez-vous pour recevoir nos actualités et événements.</p>
                     <div class="footer-newsletter">
-                        <input type="email" placeholder="Votre adresse email">
-                        <button type="submit">S'inscrire</button>
+                        <h3 class="text-white mb-3">Newsletter</h3>
+                        <input type="email" placeholder="Votre email">
+                        <button><i class="fas fa-paper-plane mr-2"></i>S'abonner</button>
                     </div>
                 </div>
             </div>
             
-            <div class="footer-bottom text-center text-gray-300">
-                <p>&copy; 2025 École Saint Charles Lwanga. Tous droits réservés.</p>
-                <div class="mt-2">
-                    <a href="#" class="text-gray-300 hover:text-white mx-2">Mentions légales</a> | 
-                    <a href="#" class="text-gray-300 hover:text-white mx-2">Politique de confidentialité</a> | 
-                    <a href="#" class="text-gray-300 hover:text-white mx-2">Plan du site</a>
-                </div>
+            <div class="footer-bottom text-center text-gray-500">
+                <p>&copy; 2025 École Saint Charles Lwanga. Tous droits réservés. | Conçu avec <i class="fas fa-heart text-red-500"></i> pour l'éducation</p>
             </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // ===================================
-            // A. LOGIQUE DU MENU MOBILE (JS)
-            // ===================================
-            const menuToggle = document.getElementById('menu-toggle');
-            const closeMenu = document.getElementById('close-menu');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = mobileMenu.querySelectorAll('a');
-
-            // Ouvrir le menu
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.remove('-translate-y-full');
-            });
-
-            // Fermer le menu (bouton X)
-            closeMenu.addEventListener('click', () => {
-                mobileMenu.classList.add('-translate-y-full');
-            });
-
-            // Fermer le menu après le clic sur un lien (navigation SPA)
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    setTimeout(() => {
-                        mobileMenu.classList.add('-translate-y-full');
-                    }, 300);
-                });
-            });
-
-            // ===================================
-            // B. ANIMATIONS SCROLLREVEAL (JS)
-            // ===================================
-            const sr = ScrollReveal({
-                delay: 200,
-                distance: '50px',
-                easing: 'ease-in-out',
-                duration: 800,
-                reset: false
-            });
-
-            // Révéler les éléments
-            sr.reveal('[data-sr-target]', { origin: 'bottom' });
-            sr.reveal('.program-card, .news-item, .stat-item, .testimonial-card', { interval: 60 });
-            sr.reveal('#about .order-2', { origin: 'left' });
-            sr.reveal('#about .order-1', { origin: 'right' });
-
-            // ===================================
-            // C. NAVIGATION ACTIVE (JS)
-            // ===================================
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('#main-nav a');
-
-            function updateActiveNavLink() {
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (scrollY >= (sectionTop - 200)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target) && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
             }
-
-            window.addEventListener('scroll', updateActiveNavLink);
-
-            // ===================================
-            // D. BOUTON RETOUR EN HAUT (JS)
-            // ===================================
-            const backToTopButton = document.getElementById('back-to-top');
-
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    backToTopButton.classList.add('show');
-                } else {
-                    backToTopButton.classList.remove('show');
-                }
-            });
-
-            backToTopButton.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            // ===================================
-            // E. HEADER SCROLL (JS)
-            // ===================================
-            const header = document.getElementById('main-header');
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-
-            // ===================================
-            // F. BARRE DE CHARGEMENT (JS)
-            // ===================================
-            const loadingBar = document.getElementById('loading-bar');
+        });
+        
+        // Mobile dropdown functionality
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+        mobileDropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('a');
+            const submenu = dropdown.querySelector('.mobile-submenu');
             
-            window.addEventListener('scroll', () => {
-                const winHeight = window.innerHeight;
-                const docHeight = document.documentElement.scrollHeight;
-                const scrollTop = window.pageYOffset;
-                const trackLength = docHeight - winHeight;
-                const scrollPercentage = Math.floor(scrollTop / trackLength * 100);
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const icon = toggle.querySelector('i');
                 
-                loadingBar.style.width = scrollPercentage + '%';
+                if (submenu.style.display === 'block') {
+                    submenu.style.display = 'none';
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    submenu.style.display = 'block';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
             });
-
-            // ===================================
-            // G. ANIMATION HERO (JS)
-            // ===================================
-            const heroP = document.querySelector('#hero p');
-            if (heroP) {
-                setTimeout(() => {
-                    heroP.style.transition = 'opacity 1s ease 0.5s';
-                    heroP.style.opacity = '1';
-                }, 500);
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
+            
+            // Back to top button
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // Back to top functionality
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Loading bar
+        window.addEventListener('load', () => {
+            const loadingBar = document.getElementById('loading-bar');
+            loadingBar.style.width = '100%';
+            
+            setTimeout(() => {
+                loadingBar.style.opacity = '0';
+            }, 300);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animations
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Initialize ScrollReveal
+        ScrollReveal().reveal('.program-card', {
+            delay: 200,
+            distance: '50px',
+            origin: 'bottom',
+            duration: 1000,
+            easing: 'ease-in-out'
+        });
+        
+        ScrollReveal().reveal('.stat-item', {
+            delay: 200,
+            distance: '50px',
+            origin: 'bottom',
+            duration: 1000,
+            interval: 200,
+            easing: 'ease-in-out'
+        });
+        
+        ScrollReveal().reveal('.testimonial-card', {
+            delay: 200,
+            distance: '50px',
+            origin: 'left',
+            duration: 1000,
+            interval: 300,
+            easing: 'ease-in-out'
+        });
+        
+        ScrollReveal().reveal('.news-item', {
+            delay: 200,
+            distance: '50px',
+            origin: 'bottom',
+            duration: 1000,
+            interval: 200,
+            easing: 'ease-in-out'
+        });
+        
+        // Add animation to buttons on hover
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Add animation to cards on hover
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
         });
     </script>
 </body>
