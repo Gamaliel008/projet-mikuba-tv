@@ -6,10 +6,12 @@
     <title>École Saint Charles Lwanga | Excellence, Foi et Avenir</title>
     <meta name="description" content="École d'élite Saint Charles Lwanga - Éducation premium basée sur l'excellence académique et les valeurs chrétiennes.">
     
+    <!-- Préchargement optimisé -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Bibliothèques premium -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -17,6 +19,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
+    <!-- Favicon premium -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231e3a8a'/><text x='50%' y='50%' font-size='60' text-anchor='middle' alignment-baseline='middle' fill='%23f59e0b'>🎓</text></svg>">
 
     <style>
@@ -209,6 +212,7 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             position: relative;
             overflow: hidden;
+            padding: 5rem 0;
         }
 
         .carousel-container {
@@ -231,6 +235,14 @@
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            color: white;
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .carousel-text.active {
@@ -266,11 +278,15 @@
             border-radius: 24px;
             overflow: hidden;
             position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .prefet-image {
             position: relative;
             overflow: hidden;
+            height: 300px;
         }
 
         .prefet-image::before {
@@ -295,6 +311,34 @@
             font-size: 0.875rem;
             font-weight: 600;
             z-index: 2;
+        }
+        
+        .prefet-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .prefet-message {
+            font-style: italic;
+            color: #e2e8f0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .prefet-name {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .prefet-title {
+            color: #94a3b8;
+            font-size: 0.9rem;
         }
         
         /* Animations avancées */
@@ -461,364 +505,133 @@
             border-radius: 2px;
         }
         
-        .footer-links a {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.75rem;
-            color: #94a3b8;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a i {
-            margin-right: 10px;
-            width: 16px;
-            text-align: center;
-            color: var(--accent-gold);
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        .footer-social a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            margin-right: 0.75rem;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-social a:hover {
-            background: var(--gradient-accent);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
-        }
-        
-        /* Chargement et retour en haut */
-        .loading-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--gradient-accent);
-            width: 0%;
-            z-index: 1001;
-            transition: width 0.3s ease;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--gradient-accent);
-            color: white;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 999;
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
-        }
-        
-        .back-to-top:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 12px 30px rgba(245, 158, 11, 0.6);
-        }
-        
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        /* Effets de particules */
-        .particles-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: particle-float 20s infinite linear;
-        }
-        
-        @keyframes particle-float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-            }
-        }
-        
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-content h2 {
-                font-size: 2.5rem;
+            .carousel-text {
+                font-size: 1.5rem;
             }
             
-            .premium-card:hover {
-                transform: translateY(-5px);
-            }
-
-            .text-carousel {
-                height: 160px;
+            .prefet-image {
+                height: 250px;
             }
         }
     </style>
 </head>
 
-<body class="antialiased">
-    <div class="loading-bar" id="loading-bar"></div>
-    
-    <div class="back-to-top" id="back-to-top">
-        <i class="fas fa-chevron-up text-lg"></i>
-    </div>
-
-    <header id="main-header" class="py-4 px-6 md:px-8">
+<body>
+    <!-- Header -->
+    <header id="main-header" class="p-4 md:px-8">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
             <div class="flex items-center space-x-3">
-                <div class="pulse-glow bg-white p-3 rounded-2xl">
-                    <i class="fas fa-graduation-cap text-2xl text-blue-600"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold text-white">Saint Charles Lwanga</h1>
-                    <p class="text-xs text-blue-200">Excellence & Valeurs</p>
-                </div>
+                <i class="fas fa-church text-2xl text-accent-gold"></i>
+                <h1 class="text-xl font-extrabold text-white">Saint Charles Lwanga</h1>
             </div>
             
-            <nav class="hidden lg:flex items-center space-x-8">
+            <nav class="hidden md:flex space-x-8">
                 <a href="#hero" class="nav-link active">Accueil</a>
-                
                 <div class="nav-item">
                     <a href="#about" class="nav-link flex items-center">
                         Notre École <i class="fas fa-chevron-down ml-2 text-xs"></i>
                     </a>
                     <div class="submenu">
-                        <a href="#history"><i class="fas fa-landmark"></i> Histoire & Mission</a>
-                        <a href="#team"><i class="fas fa-users"></i> Équipe Pédagogique</a>
-                        <a href="#facilities"><i class="fas fa-building"></i> Installations</a>
-                        <a href="#values"><i class="fas fa-heart"></i> Nos Valeurs</a>
-                        <a href="#certifications"><i class="fas fa-award"></i> Certifications</a>
+                        <a href="#"><i class="fas fa-history"></i> Histoire et Mission</a>
+                        <a href="#"><i class="fas fa-users"></i> Équipe Pédagogique</a>
+                        <a href="#"><i class="fas fa-building"></i> Installations</a>
+                        <a href="#"><i class="fas fa-heart"></i> Nos Valeurs</a>
                     </div>
                 </div>
-                
                 <div class="nav-item">
                     <a href="#programs" class="nav-link flex items-center">
                         Programmes <i class="fas fa-chevron-down ml-2 text-xs"></i>
                     </a>
                     <div class="submenu">
-                        <a href="#maternelle"><i class="fas fa-child"></i> Maternelle</a>
-                        <a href="#primaire"><i class="fas fa-book-open"></i> Primaire</a>
-                        <a href="#college"><i class="fas fa-user-graduate"></i> Collège</a>
-                        <a href="#lycee"><i class="fas fa-university"></i> Lycée</a>
-                        <a href="#international"><i class="fas fa-globe"></i> Section Internationale</a>
+                        <a href="#"><i class="fas fa-book"></i> Primaire</a>
+                        <a href="#"><i class="fas fa-book-open"></i> Secondaire</a>
+                        <a href="#"><i class="fas fa-futbol"></i> Activités Extrascolaires</a>
+                        <a href="#"><i class="fas fa-language"></i> Langues</a>
                     </div>
                 </div>
-                
-                <div class="nav-item">
-                    <a href="#admissions" class="nav-link flex items-center">
-                        Admissions <i class="fas fa-chevron-down ml-2 text-xs"></i>
-                    </a>
-                    <div class="submenu">
-                        <a href="#process"><i class="fas fa-clipboard-list"></i> Processus</a>
-                        <a href="#fees"><i class="fas fa-money-bill-wave"></i> Frais de Scolarité</a>
-                        <a href="#calendar"><i class="fas fa-calendar-alt"></i> Calendrier</a>
-                        <a href="#visite"><i class="fas fa-video"></i> Visite Virtuelle</a>
-                    </div>
-                </div>
-                
                 <a href="#news" class="nav-link">Actualités</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
             
-            <div class="flex items-center space-x-4">
-                <a href="#admissions" class="hidden lg:block btn-premium">
-                    <i class="fas fa-user-plus mr-2"></i> Inscription
-                </a>
-                <a href="portal.html" class="hidden md:flex items-center text-blue-200 hover:text-white transition-colors">
-                    <i class="fas fa-sign-in-alt mr-2"></i>
-                    <span>Espace Parents</span>
-                </a>
-                <button id="menu-toggle" class="lg:hidden text-2xl text-white">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
     </header>
 
-    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full gradient-bg p-6 z-50 transform -translate-y-full transition-transform duration-500 lg:hidden">
-        <button id="close-menu" class="absolute top-6 right-6 text-white text-3xl">
-            <i class="fas fa-times"></i>
-        </button>
-        <nav class="flex flex-col space-y-8 pt-24 text-center text-2xl font-semibold text-white">
-            <a href="#hero" class="hover:text-yellow-300 transition-colors">Accueil</a>
-            <a href="#about" class="hover:text-yellow-300 transition-colors">Notre École</a>
-            <a href="#programs" class="hover:text-yellow-300 transition-colors">Programmes</a>
-            <a href="#admissions" class="hover:text-yellow-300 transition-colors">Admissions</a>
-            <a href="#news" class="hover:text-yellow-300 transition-colors">Actualités</a>
-            <a href="#contact" class="hover:text-yellow-300 transition-colors">Contact</a>
-        </nav>
-    </div>
-
-    <section id="hero" class="relative">
+    <!-- Hero Section -->
+    <section id="hero">
         <canvas id="hero-canvas"></canvas>
-        <div class="particles-container" id="particles"></div>
-        
-        <div class="hero-content max-w-6xl mx-auto px-6 text-white">
-            <div class="float-animation mb-8">
-                <i class="fas fa-crown text-6xl text-yellow-400 mb-4"></i>
+        <div class="hero-content container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 slide-in-up">
+                École d'Élite <span class="gradient-text">Saint Charles Lwanga</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-100 mb-10 slide-in-up">
+                Excellence académique, valeurs chrétiennes et avenir prometteur
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center slide-in-up">
+                <button class="btn-premium">
+                    <i class="fas fa-graduation-cap mr-2"></i>Découvrir nos programmes
+                </button>
+                <button class="btn-outline-premium">
+                    <i class="fas fa-calendar-check mr-2"></i>Visite guidée
+                </button>
             </div>
-            
-            <h2 class="text-5xl md:text-7xl font-bold mb-6 slide-in-up">
-                École <span class="gradient-text">Saint Charles Lwanga</span>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel-section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16">
+                Une éducation d'élite qui allie tradition et innovation pour former les leaders de demain
             </h2>
             
-            <p class="text-xl md:text-2xl mb-8 text-blue-100 slide-in-up" style="transition-delay: 0.2s">
-                L'excellence académique au service des valeurs humaines
-            </p>
-            
-            <p class="text-lg mb-12 max-w-2xl mx-auto text-blue-200 slide-in-up" style="transition-delay: 0.4s">
-                Une éducation d'élite qui allie tradition et innovation pour former les leaders de demain
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center slide-in-up" style="transition-delay: 0.6s">
-                <a href="#admissions" class="btn-premium">
-                    <i class="fas fa-rocket mr-2"></i> Commencer l'Aventure
-                </a>
-                <a href="#about" class="btn-outline-premium">
-                    <i class="fas fa-play-circle mr-2"></i> Découvrir
-                </a>
-            </div>
-        </div>
-        
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-2xl text-yellow-400"></i>
-        </div>
-    </section>
-
-    <section id="carousel" class="carousel-section py-20">
-        <div class="carousel-container px-6">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <div class="text-center lg:text-left">
-                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                            Une Éducation <span class="gradient-text">d'Élite</span>
-                        </h2>
-                        <p class="text-xl text-blue-200 mb-8">
-                            Qui allie tradition et innovation pour former les leaders de demain
+                <!-- Text Carousel -->
+                <div class="text-carousel">
+                    <div class="carousel-text active">
+                        Excellence académique reconnue
+                    </div>
+                    <div class="carousel-text">
+                        Valeurs chrétiennes intégrées
+                    </div>
+                    <div class="carousel-text">
+                        Innovation pédagogique moderne
+                    </div>
+                    <div class="carousel-text">
+                        Développement des compétences
+                    </div>
+                </div>
+                
+                <!-- Indicators -->
+                <div class="carousel-indicators">
+                    <div class="indicator active" data-slide="0"></div>
+                    <div class="indicator" data-slide="1"></div>
+                    <div class="indicator" data-slide="2"></div>
+                    <div class="indicator" data-slide="3"></div>
+                </div>
+                
+                <!-- Prefet Card -->
+                <div class="prefet-card">
+                    <div class="prefet-image">
+                        <div class="w-full h-full bg-gray-200 border-2 border-dashed rounded-xl flex items-center justify-center">
+                            <i class="fas fa-user text-gray-400 text-6xl"></i>
+                        </div>
+                        <div class="prefet-badge">
+                            <i class="fas fa-crown mr-2"></i>Préfet
+                        </div>
+                    </div>
+                    <div class="prefet-content">
+                        <p class="prefet-message">
+                            "Notre école forme non seulement des esprits brillants, mais aussi des cœurs généreux. 
+                            Chaque élève est encouragé à atteindre l'excellence tout en servant sa communauté."
                         </p>
-                    </div>
-
-                    <div class="text-carousel">
-                        <div class="carousel-text active">
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
-                                <i class="fas fa-brain text-yellow-400 mr-3"></i>
-                                Excellence Académique
-                            </h3>
-                            <p class="text-blue-200 text-lg leading-relaxed">
-                                Programmes académiques rigoureux enrichis par des méthodes pédagogiques innovantes 
-                                qui stimulent la curiosité intellectuelle et développent l'esprit critique de chaque élève.
-                            </p>
-                        </div>
-
-                        <div class="carousel-text">
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
-                                <i class="fas fa-heart text-yellow-400 mr-3"></i>
-                                Valeurs Humaines
-                            </h3>
-                            <p class="text-blue-200 text-lg leading-relaxed">
-                                Développement intégral de la personne basé sur les valeurs chrétiennes, l'éthique, 
-                                le sens des responsabilités et l'engagement envers la communauté.
-                            </p>
-                        </div>
-
-                        <div class="carousel-text">
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
-                                <i class="fas fa-globe text-yellow-400 mr-3"></i>
-                                Innovation Pédagogique
-                            </h3>
-                            <p class="text-blue-200 text-lg leading-relaxed">
-                                Intégration des technologies éducatives les plus avancées avec des espaces 
-                                d'apprentissage modulaires qui s'adaptent aux besoins de chaque élève.
-                            </p>
-                        </div>
-
-                        <div class="carousel-text">
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
-                                <i class="fas fa-users text-yellow-400 mr-3"></i>
-                                Leadership & Citoyenneté
-                            </h3>
-                            <p class="text-blue-200 text-lg leading-relaxed">
-                                Programme de développement du leadership qui prépare les élèves à devenir 
-                                des citoyens engagés, capables de contribuer positivement à la société.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="carousel-indicators">
-                        <div class="indicator active" data-index="0"></div>
-                        <div class="indicator" data-index="1"></div>
-                        <div class="indicator" data-index="2"></div>
-                        <div class="indicator" data-index="3"></div>
-                    </div>
-                </div>
-
-                <div class="prefet-card p-8">
-                    <div class="prefet-badge">
-                        <i class="fas fa-star mr-1"></i> Mot du Préfet
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div class="prefet-image rounded-2xl overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
-                                alt="Préfet de l'École Saint Charles Lwanga" 
-                                class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-700">
-                        </div>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-quote-left text-white text-lg"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-white">Dr. Michel Durand</h4>
-                                    <p class="text-blue-300 text-sm">Préfet de l'École</p>
-                                </div>
-                            </div>
-                            
-                            <blockquote class="text-blue-200 leading-relaxed italic">
-                                "Notre mission va au-delà de l'enseignement académique. Nous formons des êtres humains complets, 
-                                équipés pour exceller dans un monde en constante évolution, tout en restant ancrés dans des valeurs solides."
-                            </blockquote>
-                            
-                            <div class="flex items-center space-x-4 pt-4">
-                                <div class="flex items-center space-x-2 text-yellow-400">
-                                    <i class="fas fa-award"></i>
-                                    <span class="text-sm font-semibold">25 ans d'expérience</span>
-                                </div>
-                                <div class="flex items-center space-x-2 text-blue-400">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    <span class="text-sm font-semibold">Docteur en Éducation</span>
-                                </div>
-                            </div>
+                        <div>
+                            <p class="prefet-name">Père Jean-Marie KABONGO</p>
+                            <p class="prefet-title">Préfet de l'École Saint Charles Lwanga</p>
                         </div>
                     </div>
                 </div>
@@ -826,516 +639,412 @@
         </div>
     </section>
 
-    <section id="stats" class="py-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 slide-in-up">
-                    Nos <span class="gradient-text">Chiffres Clés</span>
-                </h2>
-                <p class="text-xl text-blue-200 max-w-3xl mx-auto slide-in-up" style="transition-delay: 0.2s">
-                    L'impact de notre méthode éducative se mesure en résultats concrets et en accomplissements.
-                </p>
-            </div>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="stat-card slide-in-left">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">98%</div>
-                    <div class="text-blue-200 font-medium">Taux de Réussite aux Examens</div>
-                    <div class="text-blue-300 text-sm mt-2">Dernière promotion (Primaire, Collège, Lycée)</div>
-                </div>
-                <div class="stat-card slide-in-up" style="transition-delay: 0.2s">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">15+</div>
-                    <div class="text-blue-200 font-medium">Clubs & Activités Extra-scolaires</div>
-                    <div class="text-blue-300 text-sm mt-2">Développement complet de l'enfant</div>
-                </div>
-                <div class="stat-card slide-in-up" style="transition-delay: 0.4s">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">12:1</div>
-                    <div class="text-blue-200 font-medium">Ratio Élèves/Enseignant</div>
-                    <div class="text-blue-300 text-sm mt-2">Accompagnement personnalisé garanti</div>
-                </div>
-                <div class="stat-card slide-in-right">
-                    <div class="text-4xl font-bold text-yellow-400 mb-2">25+</div>
-                    <div class="text-blue-200 font-medium">Années d'Excellence</div>
-                    <div class="text-blue-300 text-sm mt-2">Fondée en 2000, un héritage d'impact</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="programs" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 slide-in-up">
-                    Nos <span class="gradient-text">Programmes</span> Éducatifs
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto slide-in-up" style="transition-delay: 0.2s">
-                    Un parcours académique structuré de la Maternelle au Lycée, préparant aux meilleures universités.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="premium-card p-6 text-center slide-in-left">
-                    <i class="fas fa-child text-5xl text-blue-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-primary-dark mb-2">Maternelle</h3>
-                    <p class="text-gray-600">Éveil des sens, développement social et bases ludiques de l'apprentissage.</p>
-                </div>
-
-                <div class="premium-card p-6 text-center slide-in-up" style="transition-delay: 0.2s">
-                    <i class="fas fa-book-open text-5xl text-blue-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-primary-dark mb-2">Primaire</h3>
-                    <p class="text-gray-600">Acquisition des fondamentaux, éducation bilingue et projets créatifs.</p>
-                </div>
-
-                <div class="premium-card p-6 text-center slide-in-up" style="transition-delay: 0.4s">
-                    <i class="fas fa-user-graduate text-5xl text-blue-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-primary-dark mb-2">Collège</h3>
-                    <p class="text-gray-600">Spécialisation progressive, mentorat et développement de l'autonomie.</p>
-                </div>
-
-                <div class="premium-card p-6 text-center slide-in-right">
-                    <i class="fas fa-university text-5xl text-blue-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-primary-dark mb-2">Lycée</h3>
-                    <p class="text-gray-600">Préparation intensive aux examens d'entrée universitaires et orientation.</p>
-                </div>
+                <h2 class="text-4xl font-bold text-primary-dark mb-4">À propos de notre école</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Une tradition d'excellence académique et de valeurs chrétiennes depuis plus de 30 ans</p>
             </div>
             
-            <div class="text-center mt-12 slide-in-up" style="transition-delay: 0.6s">
-                <a href="#admissions" class="btn-premium">
-                    <i class="fas fa-info-circle mr-2"></i> Voir les détails des programmes
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="slide-in-left">
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                        Notre <span class="gradient-text">Philosophie</span> d'Excellence
-                    </h2>
-                    <p class="text-xl text-blue-200 mb-8">
-                        L'École Saint Charles Lwanga est fondée sur une triade de principes fondamentaux qui guident 
-                        chaque aspect de l'expérience éducative.
+                    <h3 class="text-2xl font-bold mb-4">Notre Mission</h3>
+                    <p class="text-gray-600 mb-6">
+                        Former des citoyens responsables, respectueux des valeurs chrétiennes et prêts à relever les défis du XXIe siècle. 
+                        Nous nous engageons à offrir une éducation de qualité qui développe les talents de chaque élève.
                     </p>
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-gem text-3xl text-yellow-400 mt-1"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold text-white">Excellence Académique</h3>
-                                <p class="text-blue-300">Des standards élevés, un corps professoral d'élite et des ressources de pointe pour garantir le succès.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-cross text-3xl text-yellow-400 mt-1"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold text-white">Fondation Chrétienne</h3>
-                                <p class="text-blue-300">Un environnement qui nourrit la foi, l'éthique et le respect mutuel.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-seedling text-3xl text-yellow-400 mt-1"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold text-white">Préparation à l'Avenir</h3>
-                                <p class="text-blue-300">Développement des compétences du 21e siècle : esprit critique, collaboration et adaptabilité.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent-gold mt-1 mr-3"></i>
+                            <span>Excellence académique et pédagogie innovante</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent-gold mt-1 mr-3"></i>
+                            <span>Éducation basée sur les valeurs chrétiennes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent-gold mt-1 mr-3"></i>
+                            <span>Développement des compétences sociales et émotionnelles</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="glass p-8 rounded-3xl slide-in-right">
-                    <h3 class="text-3xl font-bold text-white mb-6">Visite Virtuelle</h3>
-                    <div class="aspect-video bg-gray-900 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-video text-6xl text-blue-400"></i>
+                
+                <div class="slide-in-right">
+                    <div class="relative">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-96 flex items-center justify-center">
+                            <i class="fas fa-school text-gray-400 text-6xl"></i>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-blue-600 to-blue-400 p-6 rounded-xl shadow-xl">
+                            <div class="text-3xl font-bold text-white">30+</div>
+                            <div class="text-sm text-white">Années d'Excellence</div>
+                        </div>
                     </div>
-                    <p class="text-blue-200 mb-4">
-                        Découvrez nos installations modernes, nos laboratoires de sciences, notre bibliothèque de luxe 
-                        et nos terrains de sport de classe mondiale.
-                    </p>
-                    <a href="#visite" class="btn-premium w-full text-center">
-                        <i class="fas fa-vr-cardboard mr-2"></i> Lancer la Visite 360°
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="news" class="py-20 bg-neutral-light">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- Programs Section -->
+    <section id="programs" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 slide-in-up">
-                    Ils parlent de <span class="gradient-text">Nous</span>
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto slide-in-up" style="transition-delay: 0.2s">
-                    Des parents et des élèves satisfaits, témoins de notre engagement pour l'excellence.
-                </p>
+                <h2 class="text-4xl font-bold text-primary-dark mb-4">Nos Programmes Éducatifs</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Des cursus complets adaptés aux besoins de chaque niveau d'enseignement</p>
             </div>
-
+            
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="premium-card p-8 slide-in-left">
-                    <i class="fas fa-quote-left text-3xl text-yellow-500 mb-4"></i>
-                    <p class="italic text-gray-700 mb-6">
-                        "L'encadrement est exceptionnel. Mon fils a non seulement excellé scolairement, mais il a 
-                        aussi développé un sens civique et une maturité impressionnante."
-                    </p>
-                    <div class="flex items-center space-x-3">
-                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" 
-                             alt="Photo de Parent 1" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <p class="font-bold text-primary-dark">Mme. Sophie L.</p>
-                            <p class="text-sm text-gray-500">Parent d'élève (Lycée)</p>
+                <div class="premium-card">
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-book text-2xl text-primary-blue"></i>
                         </div>
+                        <h3 class="text-2xl font-bold mb-4">Enseignement Primaire</h3>
+                        <p class="text-gray-600 mb-6">
+                            Un programme équilibré qui développe les fondements académiques, sociaux et émotionnels des jeunes élèves.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Classes de 1ère à 6ème année</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Approche pédagogique active</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Activités artistiques et sportives</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary-blue font-medium flex items-center">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
                     </div>
                 </div>
-
-                <div class="premium-card p-8 slide-in-up" style="transition-delay: 0.2s">
-                    <i class="fas fa-quote-left text-3xl text-yellow-500 mb-4"></i>
-                    <p class="italic text-gray-700 mb-6">
-                        "Les professeurs sont inspirants et les installations (surtout le labo de robotique!) 
-                        sont de loin les meilleures. Je suis fier d'être un étudiant de Saint Charles Lwanga."
-                    </p>
-                    <div class="flex items-center space-x-3">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" 
-                             alt="Photo d'Élève 1" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <p class="font-bold text-primary-dark">Marc D.</p>
-                            <p class="text-sm text-gray-500">Élève (Terminal)</p>
+                
+                <div class="premium-card">
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-book-open text-2xl text-primary-blue"></i>
                         </div>
+                        <h3 class="text-2xl font-bold mb-4">Enseignement Secondaire</h3>
+                        <p class="text-gray-600 mb-6">
+                            Une formation complète qui prépare les élèves aux examens nationaux et aux défis de l'enseignement supérieur.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Humanités et Sciences</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Préparation aux examens</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Orientation professionnelle</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary-blue font-medium flex items-center">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
                     </div>
                 </div>
-
-                <div class="premium-card p-8 slide-in-right">
-                    <i class="fas fa-quote-left text-3xl text-yellow-500 mb-4"></i>
-                    <p class="italic text-gray-700 mb-6">
-                        "La section internationale a permis à ma fille de s'épanouir dans un contexte multiculturel 
-                        tout en conservant un haut niveau académique. Une expérience unique!"
-                    </p>
-                    <div class="flex items-center space-x-3">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&q=80" 
-                             alt="Photo de Parent 2" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <p class="font-bold text-primary-dark">M. Thomas K.</p>
-                            <p class="text-sm text-gray-500">Parent d'élève (Primaire)</p>
+                
+                <div class="premium-card">
+                    <div class="p-8">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-futbol text-2xl text-primary-blue"></i>
                         </div>
+                        <h3 class="text-2xl font-bold mb-4">Activités Extrascolaires</h3>
+                        <p class="text-gray-600 mb-6">
+                            Des activités variées qui développent les talents et favorisent l'épanouissement des élèves.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Sports et loisirs</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Arts et créativité</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-gold mr-2"></i>
+                                <span>Clubs et associations</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary-blue font-medium flex items-center">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Nos Réalisations en Chiffres</h2>
+                <p class="text-xl text-blue-200 max-w-3xl mx-auto">Des résultats qui parlent d'eux-mêmes</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="stat-card">
+                    <div class="text-4xl font-bold gradient-text mb-2">98%</div>
+                    <h3 class="text-xl font-bold">Taux de réussite</h3>
+                    <p class="text-blue-200">Aux examens nationaux</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="text-4xl font-bold gradient-text mb-2">450+</div>
+                    <h3 class="text-xl font-bold">Élèves inscrits</h3>
+                    <p class="text-blue-200">Dans nos classes</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="text-4xl font-bold gradient-text mb-2">45</div>
+                    <h3 class="text-xl font-bold">Membres du personnel</h3>
+                    <p class="text-blue-200">Enseignants qualifiés</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="text-4xl font-bold gradient-text mb-2">30</div>
+                    <h3 class="text-xl font-bold">Années d'existence</h3>
+                    <p class="text-blue-200">D'excellence éducative</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="footer-section">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <i class="fas fa-church text-2xl text-accent-gold"></i>
+                        <h3 class="text-xl font-extrabold">Saint Charles Lwanga</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Une éducation d'excellence basée sur les valeurs chrétiennes et l'accomplissement de chaque élève.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-accent-gold transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent-gold transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent-gold transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent-gold transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liens Rapides</h3>
+                    <div class="space-y-3">
+                        <a href="#" class="block text-gray-400 hover:text-white transition">Accueil</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition">À propos</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition">Programmes</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition">Actualités</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-accent-gold"></i>
+                            <span>123 Avenue de l'Éducation, Quartier Universitaire, Lubumbashi</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-accent-gold"></i>
+                            <span>+243 999 999 999</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent-gold"></i>
+                            <span>info@saintcharleslwanga.cd</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Restez informé de nos actualités</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:border-accent-gold">
+                        <button class="bg-accent-gold text-gray-900 px-4 py-2 rounded-r-lg font-medium">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </div>
                 </div>
             </div>
             
-            <div class="text-center mt-12 slide-in-up" style="transition-delay: 0.4s">
-                <a href="#" class="btn-premium">
-                    <i class="fas fa-comments mr-2"></i> Lire plus de témoignages
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 slide-in-up">
-                    Contactez <span class="gradient-text">Notre Équipe</span>
-                </h2>
-                <p class="text-xl text-blue-200 max-w-3xl mx-auto slide-in-up" style="transition-delay: 0.2s">
-                    Nous sommes là pour répondre à vos questions et vous guider dans le processus d'inscription.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-3 gap-12 text-white">
-                <div class="stat-card slide-in-left">
-                    <i class="fas fa-map-marker-alt text-4xl text-yellow-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Adresse</h3>
-                    <p class="text-blue-200">Avenue de l'Excellence, Quartier Scolaire</p>
-                    <p class="text-blue-200">12345 Ville d'Éducation, Pays</p>
-                </div>
-                
-                <div class="stat-card slide-in-up" style="transition-delay: 0.2s">
-                    <i class="fas fa-phone-alt text-4xl text-yellow-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Téléphone</h3>
-                    <p class="text-blue-200">+123 456 7890 (Administration)</p>
-                    <p class="text-blue-200">+123 987 6543 (Admissions)</p>
-                </div>
-                
-                <div class="stat-card slide-in-right">
-                    <i class="fas fa-envelope text-4xl text-yellow-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Email</h3>
-                    <p class="text-blue-200">admissions@stcharleslwanga.edu</p>
-                    <p class="text-blue-200">info@stcharleslwanga.edu</p>
-                </div>
-            </div>
-
-            <form class="glass p-8 rounded-3xl mt-16 max-w-3xl mx-auto slide-in-up" style="transition-delay: 0.4s">
-                <h3 class="text-3xl font-bold text-white mb-6 text-center">Formulaire de Contact</h3>
-                <div class="grid md:grid-cols-2 gap-6 mb-4">
-                    <input type="text" placeholder="Votre Nom Complet" class="p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:ring-yellow-400 focus:border-yellow-400">
-                    <input type="email" placeholder="Votre Email" class="p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:ring-yellow-400 focus:border-yellow-400">
-                </div>
-                <input type="text" placeholder="Sujet de votre demande" class="p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 w-full mb-4 focus:ring-yellow-400 focus:border-yellow-400">
-                <textarea placeholder="Votre Message Détaillé" rows="5" class="p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 w-full mb-6 focus:ring-yellow-400 focus:border-yellow-400"></textarea>
-                <button type="submit" class="btn-premium w-full">
-                    <i class="fas fa-paper-plane mr-2"></i> Envoyer le Message
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 py-16 text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-4 gap-12 border-b border-gray-800 pb-12 mb-8">
-                <div class="footer-section">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="bg-yellow-400 p-2 rounded-xl">
-                            <i class="fas fa-graduation-cap text-xl text-gray-900"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-0 pb-0 after:hidden">Saint Charles Lwanga</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Éducation d'élite qui forme des leaders ancrés dans les valeurs chrétiennes et l'excellence académique.
-                    </p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h3 class="text-xl font-bold text-white">Liens Rapides</h3>
-                    <div class="footer-links">
-                        <a href="#about"><i class="fas fa-chevron-right"></i> Notre Mission</a>
-                        <a href="#programs"><i class="fas fa-chevron-right"></i> Programmes Académiques</a>
-                        <a href="#admissions"><i class="fas fa-chevron-right"></i> Processus d'Admission</a>
-                        <a href="#team"><i class="fas fa-chevron-right"></i> Carrières (Recrutement)</a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h3 class="text-xl font-bold text-white">Programmes Clés</h3>
-                    <div class="footer-links">
-                        <a href="#maternelle"><i class="fas fa-chevron-right"></i> Maternelle & Primaire</a>
-                        <a href="#college"><i class="fas fa-chevron-right"></i> Collège & Lycée</a>
-                        <a href="#international"><i class="fas fa-chevron-right"></i> Section Internationale</a>
-                        <a href="#extracurricular"><i class="fas fa-chevron-right"></i> Activités Extra-scolaires</a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h3 class="text-xl font-bold text-white">Contact Info</h3>
-                    <div class="footer-links">
-                        <a href="tel:+1234567890"><i class="fas fa-phone-alt"></i> +123 456 7890</a>
-                        <a href="mailto:info@stcharleslwanga.edu"><i class="fas fa-envelope"></i> info@stcharleslwanga.edu</a>
-                        <a href="#contact"><i class="fas fa-map-marker-alt"></i> Localisation Complète</a>
-                        <a href="portal.html"><i class="fas fa-sign-in-alt"></i> Espace Parents</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center text-gray-500 pt-8">
-                <p>&copy; 2025 École Saint Charles Lwanga. Tous droits réservés.</p>
-                <p class="text-xs mt-2">Politique de Confidentialité | Conditions d'Utilisation</p>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 École Saint Charles Lwanga. Tous droits réservés. | Conçu avec <i class="fas fa-heart text-red-500"></i> pour l'éducation</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Initialisation de Tailwind CSS
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-dark': '#0f172a',
-                        'primary-blue': '#1e3a8a',
-                        'accent-gold': '#f59e0b',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                }
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: {
+                            y: target.offsetTop - 80,
+                            autoKill: false
+                        },
+                        ease: "power2.inOut"
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        gsap.utils.toArray('.slide-in-left, .slide-in-right, .slide-in-up').forEach(element => {
+            gsap.from(element, {
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                x: element.classList.contains('slide-in-right') ? 100 : element.classList.contains('slide-in-left') ? -100 : 0,
+                y: element.classList.contains('slide-in-up') ? 50 : 0,
+                opacity: 0,
+                duration: 1,
+                ease: "power2.out"
+            });
+        });
+        
+        // Text Carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-text');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+            currentSlide = index;
         }
         
-        document.addEventListener('DOMContentLoaded', () => {
-            GSAP.registerPlugin(ScrollTrigger, ScrollToPlugin);
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Auto slide every 4 seconds
+        setInterval(nextSlide, 4000);
+        
+        // Indicator click events
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Canvas 3D animation (simplified)
+        const canvas = document.getElementById('hero-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
             
-            // 1. Animation de la barre de progression
-            function updateProgressBar() {
-                const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-                document.getElementById('loading-bar').style.width = scrollPercentage + '%';
-            }
-            window.addEventListener('scroll', updateProgressBar);
-            window.addEventListener('resize', updateProgressBar);
-
-            // 2. Comportement du Header au scroll
-            const header = document.getElementById('main-header');
-            let lastScrollY = 0;
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
+            // Simple animation for background effect
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw some animated shapes
+                for (let i = 0; i < 20; i++) {
+                    const x = (Math.sin(Date.now() / 1000 + i) * canvas.width / 4) + canvas.width / 2;
+                    const y = (Math.cos(Date.now() / 1000 + i) * canvas.height / 4) + canvas.height / 2;
+                    const size = Math.sin(Date.now() / 500 + i) * 10 + 20;
+                    
+                    ctx.beginPath();
+                    ctx.arc(x, y, size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(245, 158, 11, ${0.1 + Math.sin(Date.now() / 1000 + i) * 0.1})`;
+                    ctx.fill();
                 }
                 
-                // Masquer/Afficher au scroll (optionnel)
-                if (window.scrollY > lastScrollY && window.scrollY > 200) {
-                    header.style.transform = 'translateY(-100%)';
-                } else {
-                    header.style.transform = 'translateY(0)';
-                }
-                lastScrollY = window.scrollY;
-            });
-            
-            // 3. Menu Mobile
-            const menuToggle = document.getElementById('menu-toggle');
-            const closeMenu = document.getElementById('close-menu');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.remove('-translate-y-full');
-            });
-            
-            closeMenu.addEventListener('click', () => {
-                mobileMenu.classList.add('-translate-y-full');
-            });
-            
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('-translate-y-full');
-                });
-            });
-
-            // 4. ScrollToPlugin pour les liens d'ancrage
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId !== '#') {
-                        GSAP.to(window, {duration: 1.2, scrollTo: {y: targetId, offsetY: 70}, ease: "power2.inOut"});
-                        
-                        // Gestion de la classe 'active' dans la navigation desktop
-                        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-                        
-                        // Trouver le lien de navigation le plus pertinent (peut être un parent dans un nav-item)
-                        const primaryLink = this.closest('.nav-item') ? this.closest('.nav-item').querySelector('.nav-link') : this;
-                        primaryLink.classList.add('active');
-                    }
-                });
-            });
-            
-            // 5. Back to Top Button
-            const backToTop = document.getElementById('back-to-top');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 500) {
-                    backToTop.classList.add('show');
-                } else {
-                    backToTop.classList.remove('show');
-                }
-            });
-            backToTop.addEventListener('click', () => {
-                GSAP.to(window, {duration: 1.5, scrollTo: 0, ease: "power3.inOut"});
-            });
-            
-            // 6. Carousel de Texte
-            let currentTextIndex = 0;
-            const carouselTexts = document.querySelectorAll('.carousel-text');
-            const indicators = document.querySelectorAll('.indicator');
-            const totalTexts = carouselTexts.length;
-
-            function updateCarousel(index) {
-                // Masquer le texte actuel
-                carouselTexts.forEach(text => text.classList.remove('active'));
-                indicators.forEach(indicator => indicator.classList.remove('active'));
-                
-                // Afficher le nouveau texte
-                carouselTexts[index].classList.add('active');
-                indicators[index].classList.add('active');
-                currentTextIndex = index;
+                requestAnimationFrame(animate);
             }
-
-            function nextText() {
-                let nextIndex = (currentTextIndex + 1) % totalTexts;
-                updateCarousel(nextIndex);
-            }
-
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => updateCarousel(index));
+            
+            animate();
+            
+            // Resize canvas on window resize
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             });
-            
-            // Auto-rotation
-            setInterval(nextText, 5000); 
-            
-            // 7. ScrollReveal pour les sections (GSAP/ScrollTrigger)
-            const sectionsToAnimate = [
-                { selector: '#stats .slide-in-left', x: -100, delay: 0 },
-                { selector: '#stats .slide-in-up:nth-child(2)', y: 50, delay: 0.2 },
-                { selector: '#stats .slide-in-up:nth-child(3)', y: 50, delay: 0.4 },
-                { selector: '#stats .slide-in-right', x: 100, delay: 0.6 },
-                { selector: '#programs .premium-card.slide-in-left', x: -50, delay: 0 },
-                { selector: '#programs .premium-card:nth-child(2)', y: 50, delay: 0.2 },
-                { selector: '#programs .premium-card:nth-child(3)', y: 50, delay: 0.4 },
-                { selector: '#programs .premium-card.slide-in-right', x: 50, delay: 0.6 },
-                { selector: '#about .slide-in-left', x: -50, delay: 0 },
-                { selector: '#about .slide-in-right', x: 50, delay: 0.2 },
-                { selector: '#news .premium-card.slide-in-left', x: -50, delay: 0 },
-                { selector: '#news .premium-card:nth-child(2)', y: 50, delay: 0.2 },
-                { selector: '#news .premium-card.slide-in-right', x: 50, delay: 0.4 },
-                { selector: '#contact .stat-card.slide-in-left', x: -50, delay: 0 },
-                { selector: '#contact .stat-card:nth-child(2)', y: 50, delay: 0.2 },
-                { selector: '#contact .stat-card.slide-in-right', x: 50, delay: 0.4 },
-            ];
-
-            sectionsToAnimate.forEach(item => {
-                GSAP.utils.toArray(item.selector).forEach(element => {
-                    GSAP.from(element, {
-                        x: item.x || 0,
-                        y: item.y || 0,
-                        opacity: 0,
-                        duration: 1,
-                        delay: item.delay,
-                        ease: "power2.out",
-                        scrollTrigger: {
-                            trigger: element,
-                            start: "top 85%",
-                            toggleActions: "play none none none",
-                        }
-                    });
+        }
+        
+        // Button hover effects
+        document.querySelectorAll('.btn-premium, .btn-outline-premium').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                gsap.to(this, {
+                    y: -5,
+                    duration: 0.3,
+                    ease: "power2.out"
                 });
             });
             
-            // Animer le contenu de l'Héro Section (initialement caché par CSS)
-            GSAP.utils.toArray('.hero-content .slide-in-up').forEach((el, i) => {
-                GSAP.to(el, {
+            button.addEventListener('mouseleave', function() {
+                gsap.to(this, {
                     y: 0,
-                    opacity: 1,
-                    duration: 1.2,
-                    ease: "power3.out",
-                    delay: 0.8 + (i * 0.2) // Démarrer après le chargement ou l'animation Three.js (si implémentée)
+                    duration: 0.3,
+                    ease: "power2.out"
                 });
             });
-
-            // 8. Animation Three.js (Simulacre, le code Three.js réel est complexe)
-            // Pour un déploiement réel, le code Three.js devrait être intégré ici pour le canvas.
-            const canvas = document.getElementById('hero-canvas');
-            if (canvas) {
-                // Exemple simple pour éviter une erreur JS, mais nécessite un code Three.js complet pour fonctionner
-                // const scene = new THREE.Scene();
-                // const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                // const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
-                // ... setup scene, render loop, resize handling ...
-                
-                // Placeholder pour l'effet de particules
-                const particlesContainer = document.getElementById('particles');
-                for (let i = 0; i < 50; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    const size = Math.random() * 5 + 2;
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    particle.style.left = `${Math.random() * 100}%`;
-                    particle.style.top = `${Math.random() * 100}%`;
-                    particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                    particle.style.opacity = `${Math.random() * 0.8 + 0.2}`;
-                    particlesContainer.appendChild(particle);
-                }
-            }
+        });
+        
+        // Card hover effects
+        document.querySelectorAll('.premium-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                gsap.to(this, {
+                    y: -15,
+                    scale: 1.03,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                gsap.to(this, {
+                    y: 0,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+            });
         });
     </script>
 </body>
