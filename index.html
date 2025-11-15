@@ -3,1630 +3,757 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saint Charles Lwanga - École d'Excellence</title>
+    <title>École Saint Charles Lwanga</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
+        /* Variables et reset */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7e22ce;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
-
-        :root {
-            --primary: #1a4b8c;
-            --primary-dark: #0d2b5a;
-            --secondary: #e63946;
-            --accent: #2a9d8f;
-            --accent-light: #44c6b6;
-            --gold: #ffd700;
-            --light: #f8f9fa;
-            --light-gray: #e9ecef;
-            --dark: #212529;
-            --text: #333;
-            --text-light: #6c757d;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.15);
-            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        }
-
+        
         body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.7;
-            color: var(--text);
-            overflow-x: hidden;
-            background: #fff;
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
         }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
+        
         .container {
-            width: 90%;
-            max-width: 1300px;
+            width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* Header & Navigation */
+        
+        /* Header */
         header {
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            position: fixed;
-            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
             top: 0;
-            z-index: 1000;
-            transition: var(--transition);
-            border-bottom: 3px solid transparent;
+            z-index: 100;
         }
-
-        header.scrolled {
-            padding: 0;
-            background: rgba(255, 255, 255, 0.98);
-            border-bottom-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .navbar {
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 0;
-            position: relative;
         }
-
+        
         .logo {
             display: flex;
             align-items: center;
-            text-decoration: none;
-            transition: var(--transition);
+            gap: 10px;
         }
-
-        .logo:hover {
-            transform: translateY(-2px);
-        }
-
+        
         .logo-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(26, 75, 140, 0.3);
+            font-size: 2rem;
         }
-
-        .logo-icon::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .logo:hover .logo-icon::before {
-            transform: translateX(100%);
-        }
-
-        .logo-icon i {
-            font-size: 1.8rem;
-            color: white;
-        }
-
+        
         .logo-text {
-            display: flex;
-            flex-direction: column;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
-
-        .logo-main {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: var(--primary);
-            line-height: 1;
+        
+        .logo-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
-
-        .logo-sub {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
+        
+        nav ul {
             display: flex;
             list-style: none;
-            align-items: center;
+            gap: 1.5rem;
         }
-
-        .nav-item {
-            position: relative;
-            margin-left: 1.5rem;
-        }
-
-        .nav-link {
+        
+        nav a {
+            color: white;
             text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
+            font-weight: 500;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
+            padding: 0.5rem 0;
             position: relative;
-            overflow: hidden;
         }
-
-        .nav-link::before {
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
-            height: 3px;
-            background: var(--secondary);
+            height: 2px;
+            background-color: var(--accent);
             transition: var(--transition);
-            border-radius: 3px;
         }
-
-        .nav-link:hover::before,
-        .nav-link.active::before {
+        
+        nav a:hover::after {
             width: 100%;
         }
-
-        .nav-link:hover {
-            color: var(--primary);
-            background: rgba(26, 75, 140, 0.05);
-            transform: translateY(-2px);
-        }
-
-        .nav-link i {
-            margin-left: 8px;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .nav-link:hover i {
-            transform: rotate(180deg);
-        }
-
-        /* Dropdown Menu */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 250px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: var(--shadow-hover);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: var(--transition);
-            z-index: 100;
-            padding: 1rem 0;
-        }
-
-        .nav-item:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(10px);
-        }
-
-        .dropdown-menu::before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: 20px;
-            width: 16px;
-            height: 16px;
-            background: white;
-            transform: rotate(45deg);
-            box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        .dropdown-item {
-            display: block;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            color: var(--text);
-            transition: var(--transition);
-            position: relative;
-            border-left: 3px solid transparent;
-        }
-
-        .dropdown-item:hover {
-            background: rgba(26, 75, 140, 0.05);
-            color: var(--primary);
-            border-left-color: var(--primary);
-            padding-left: 2rem;
-        }
-
-        .dropdown-item i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-            color: var(--primary);
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--primary);
-            transition: var(--transition);
-            padding: 0.5rem;
-            border-radius: 8px;
-        }
-
-        .mobile-menu:hover {
-            background: rgba(26, 75, 140, 0.1);
-            transform: rotate(90deg);
-        }
-
+        
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(26, 75, 140, 0.85) 0%, rgba(13, 43, 90, 0.9) 100%), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background: linear-gradient(rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 800px;
             color: white;
-            position: relative;
-            z-index: 2;
+            padding: 5rem 0;
+            text-align: center;
         }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            animation: pulse 2s infinite;
-        }
-
+        
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
-
+        
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            font-weight: 300;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
         }
-
-        .hero-btns {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
+        
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 35px;
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
             border-radius: 50px;
-            text-decoration: none;
             font-weight: 600;
+            text-decoration: none;
             transition: var(--transition);
-            cursor: pointer;
             border: none;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
+            cursor: pointer;
+            box-shadow: var(--shadow);
         }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
+        
+        .btn:hover {
+            background-color: #e69008;
+            transform: translateY(-2px);
         }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary {
-            background: var(--secondary);
-            color: white;
-            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: #d32f2f;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(230, 57, 70, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-5px);
-            border-color: white;
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Floating Elements */
-        .floating-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-        }
-
-        .floating-element {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 20s infinite linear;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .floating-element:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            top: 20%;
-            left: 10%;
-            animation-duration: 25s;
-        }
-
-        .floating-element:nth-child(2) {
-            width: 70px;
-            height: 70px;
-            top: 60%;
-            left: 80%;
-            animation-duration: 20s;
-            animation-delay: 2s;
-        }
-
-        .floating-element:nth-child(3) {
-            width: 50px;
-            height: 50px;
-            top: 80%;
-            left: 20%;
-            animation-duration: 30s;
-            animation-delay: 1s;
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 0.9rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            opacity: 0.8;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator i {
-            font-size: 1.5rem;
-        }
-
+        
         /* Sections */
         section {
-            padding: 120px 0;
-            position: relative;
+            padding: 4rem 0;
         }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-badge {
-            display: inline-block;
-            background: var(--gradient);
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            box-shadow: 0 5px 15px rgba(26, 75, 140, 0.2);
-        }
-
+        
         .section-title {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 5px;
-            background: var(--secondary);
-            border-radius: 5px;
-        }
-
-        .section-subtitle {
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--text-light);
-            font-size: 1.2rem;
-        }
-
-        /* About Section */
-        .about {
-            background: var(--light);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transform: perspective(1000px) rotateY(-5deg);
-            transition: var(--transition);
-        }
-
-        .about-image:hover {
-            transform: perspective(1000px) rotateY(0);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-box {
             text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-bottom: 4px solid transparent;
+            margin-bottom: 3rem;
+            position: relative;
         }
-
-        .stat-box:hover {
-            transform: translateY(-10px);
-            border-bottom-color: var(--primary);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .stat-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.8rem;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
+        
+        .section-title h2 {
+            font-size: 2.2rem;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
-
-        .stat-text {
-            color: var(--text-light);
-            font-weight: 600;
-        }
-
-        /* Programs Section */
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .program-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            border: 1px solid var(--light-gray);
-        }
-
-        .program-card::before {
+        
+        .section-title::after {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: var(--transition);
-        }
-
-        .program-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .program-card:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .program-header {
-            padding: 2rem 2rem 1rem;
-            text-align: center;
-        }
-
-        .program-icon {
-            width: 90px;
-            height: 90px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: white;
-            font-size: 2.2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .program-icon::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .program-card:hover .program-icon::before {
-            transform: translateX(100%);
-        }
-
-        .program-content {
-            padding: 0 2rem 2rem;
-        }
-
-        .program-content h3 {
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .program-features {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-
-        .program-features li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--light-gray);
-            display: flex;
-            align-items: center;
-        }
-
-        .program-features li:last-child {
-            border-bottom: none;
-        }
-
-        .program-features i {
-            color: var(--accent);
-            margin-right: 10px;
-            font-size: 0.9rem;
-        }
-
-        /* Admissions Section */
-        .admissions {
-            background: linear-gradient(135deg, var(--light) 0%, #fff 100%);
-        }
-
-        .admissions-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .step-card {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .step-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-        }
-
-        .step-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 1.5rem;
-            position: relative;
-        }
-
-        .step-number::after {
-            content: '';
-            position: absolute;
+            display: block;
             width: 80px;
-            height: 80px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            opacity: 0.2;
-            animation: pulse 2s infinite;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            margin: 0.5rem auto;
+            border-radius: 2px;
         }
-
-        /* News Section */
-        .news-grid {
+        
+        /* Cards */
+        .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
-
-        .news-card {
+        
+        .card {
             background: white;
-            border-radius: 20px;
+            border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
-
-        .news-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-
-        .news-image {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
+        
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
         }
-
-        .news-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .card-footer {
+            padding: 1rem 1.5rem;
+            background-color: #f8fafc;
+            text-align: center;
+        }
+        
+        /* Vie Scolaire */
+        .vie-scolaire {
+            background-color: var(--light);
+        }
+        
+        .niveaux {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .niveau {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
             transition: var(--transition);
         }
-
-        .news-card:hover .news-image img {
-            transform: scale(1.1);
+        
+        .niveau:hover {
+            transform: translateY(-3px);
         }
-
-        .news-date {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--secondary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
+        
+        .niveau i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
         }
-
-        .news-content {
-            padding: 2rem;
-        }
-
-        .news-content h3 {
+        
+        .niveau h3 {
             margin-bottom: 1rem;
             color: var(--primary);
         }
-
-        .news-meta {
+        
+        /* Témoignages */
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .testimonials .section-title h2 {
+            color: white;
+        }
+        
+        .testimonials .section-title::after {
+            background: linear-gradient(to right, white, var(--accent));
+        }
+        
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: """;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.3);
+            position: absolute;
+            top: -1.5rem;
+            left: -0.5rem;
+        }
+        
+        .testimonial-author {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-            font-size: 0.9rem;
         }
-
-        .news-meta i {
-            margin-right: 5px;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--light);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent);
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* Contact */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-
-        .contact-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+        
+        .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 1.5rem;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
+        
         .contact-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient);
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
             flex-shrink: 0;
         }
-
-        .contact-details h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+        
+        .map-container {
+            height: 300px;
+            background-color: #e2e8f0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
         }
-
-        .contact-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid var(--light-gray);
-            border-radius: 12px;
-            font-family: 'Open Sans', sans-serif;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(26, 75, 140, 0.1);
-            transform: translateY(-2px);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
+        
         /* Footer */
         footer {
-            background: var(--dark);
+            background: linear-gradient(135deg, var(--dark), #0f172a);
             color: white;
-            padding: 80px 0 20px;
-            position: relative;
+            padding: 4rem 0 2rem;
         }
-
-        .footer-grid {
+        
+        .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
         }
-
-        .footer-col h3 {
-            color: white;
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
             margin-bottom: 1.5rem;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 0.5rem;
         }
-
-        .footer-col h3::after {
+        
+        .footer-column h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 50px;
-            height: 3px;
-            background: var(--secondary);
-            border-radius: 3px;
+            height: 2px;
+            background-color: var(--accent);
         }
-
-        .footer-about p {
-            margin-bottom: 1.5rem;
-            opacity: 0.8;
-        }
-
-        .footer-links {
+        
+        .footer-column ul {
             list-style: none;
         }
-
-        .footer-links li {
+        
+        .footer-column ul li {
             margin-bottom: 0.8rem;
         }
-
-        .footer-links a {
-            color: #bbb;
+        
+        .footer-column a {
+            color: #cbd5e1;
             text-decoration: none;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
         }
-
-        .footer-links a:hover {
-            color: white;
+        
+        .footer-column a:hover {
+            color: var(--accent);
             padding-left: 5px;
         }
-
-        .footer-links a i {
-            margin-right: 8px;
-            font-size: 0.8rem;
-            color: var(--secondary);
-        }
-
+        
         .social-links {
             display: flex;
             gap: 1rem;
             margin-top: 1.5rem;
         }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: #333;
+        
+        .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            transform: scale(0);
-            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
+            transition: var(--transition);
         }
-
-        .social-link:hover::before {
-            transform: scale(1);
-        }
-
-        .social-link i {
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-link:hover {
+        
+        .social-links a:hover {
+            background: var(--accent);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-
-        .copyright {
+        
+        .footer-bottom {
             text-align: center;
-            padding-top: 3rem;
-            border-top: 1px solid #444;
-            color: #bbb;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
+            color: #94a3b8;
         }
-
-        /* Back to Top */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            color: white;
-            border-radius: 50%;
+        
+        .footer-credits {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            z-index: 999;
-            box-shadow: 0 10px 30px rgba(26, 75, 140, 0.3);
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
+        
+        .footer-credits div {
+            display: flex;
+            gap: 1.5rem;
         }
-
-        .back-to-top:hover {
-            background: var(--secondary);
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 15px 40px rgba(230, 57, 70, 0.4);
-        }
-
-        /* Animations */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-5px) translateX(-50%);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
+        
         /* Responsive */
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .about-content,
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 2rem;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 2rem;
-                transition: var(--transition);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-item {
-                margin: 1rem 0;
-                width: 80%;
-            }
-
-            .nav-link {
-                justify-content: center;
-                padding: 1rem 2rem;
-            }
-
-            .dropdown-menu {
-                position: static;
-                width: 100%;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                background: var(--light);
-                margin-top: 1rem;
-                display: none;
-            }
-
-            .dropdown-menu.active {
-                display: block;
-            }
-
-            .dropdown-menu::before {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-        }
-
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero-btns {
+            .header-content {
                 flex-direction: column;
-                align-items: center;
+                gap: 1rem;
             }
             
-            .btn {
-                width: 100%;
+            nav ul {
+                flex-wrap: wrap;
                 justify-content: center;
             }
             
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-        }
-
-        @media (max-width: 576px) {
             .hero h1 {
                 font-size: 2.2rem;
             }
             
-            .programs-grid,
-            .news-grid {
-                grid-template-columns: 1fr;
+            .hero p {
+                font-size: 1rem;
             }
             
-            .contact-form {
-                padding: 2rem;
+            .footer-credits {
+                flex-direction: column;
+                text-align: center;
             }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="logo-text">
-                        <div class="logo-main">Saint Charles Lwanga</div>
-                        <div class="logo-sub">ÉCOLE D'EXCELLENCE</div>
-                    </div>
-                </a>
-                <ul class="nav-links">
-                    <li class="nav-item">
-                        <a href="#home" class="nav-link active">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">À Propos <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item"><i class="fas fa-history"></i> Notre Histoire</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-bullseye"></i> Notre Mission</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-chart-line"></i> Projet Éducatif</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-award"></i> Accréditations</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#programs" class="nav-link">Programmes <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item"><i class="fas fa-child"></i> Maternelle</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-pencil-alt"></i> Primaire</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-book"></i> Collège</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-graduation-cap"></i> Lycée</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-flask"></i> Options Scientifiques</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-language"></i> Sections Internationales</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#admissions" class="nav-link">Admissions <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item"><i class="fas fa-calendar-alt"></i> Calendrier</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-file-alt"></i> Procédure</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-euro-sign"></i> Frais de Scolarité</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-download"></i> Brochures</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#news" class="nav-link">Actualités</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
                 </div>
+                <div>
+                    <div class="logo-text">École Saint Charles Lwanga</div>
+                    <div class="logo-subtitle">Éducation d'excellence depuis 1985</div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#programmes">Programmes</a></li>
+                    <li><a href="#admissions">Admissions</a></li>
+                    <li><a href="#vie-scolaire">Vie Scolaire</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-                <div class="hero-badge">École d'Excellence depuis 1975</div>
-                <h1>Former les Leaders de Demain</h1>
-                <p>À l'École Saint Charles Lwanga, nous cultivons l'excellence académique, l'intégrité morale et l'engagement communautaire pour préparer vos enfants aux défis du monde moderne.</p>
-                <div class="hero-btns">
-                    <a href="#admissions" class="btn btn-primary">
-                        <i class="fas fa-file-signature"></i>
-                        Postuler Maintenant
-                    </a>
-                    <a href="#about" class="btn btn-secondary">
-                        <i class="fas fa-play-circle"></i>
-                        Découvrir Notre École
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll pour découvrir</span>
-            <i class="fas fa-chevron-down"></i>
+    <section class="hero" id="accueil">
+        <div class="container fade-in">
+            <h1>Apprenons aujourd'hui, pour bâtir demain.</h1>
+            <p>Une pédagogie innovante tournée vers l'avenir pour former les citoyens éclairés de demain.</p>
+            <a href="#admissions" class="btn">Découvrir nos admissions</a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
+    <!-- Programmes -->
+    <section id="programmes">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <div class="section-badge">À Propos de Nous</div>
-                <h2 class="section-title">Notre Héritage Éducatif</h2>
-                <p class="section-subtitle">Depuis près de 50 ans, l'École Saint Charles Lwanga s'engage à fournir une éducation de qualité qui forme des citoyens responsables et épanouis.</p>
+            <div class="section-title">
+                <h2>Nos Programmes Éducatifs</h2>
+                <p>Découvrez notre offre pédagogique complète</p>
             </div>
-            <div class="about-content">
-                <div class="about-text" data-aos="fade-right">
-                    <h3>Une Vision Holistique de l'Éducation</h3>
-                    <p>Notre approche pédagogique innovante combine les meilleures pratiques éducatives internationales avec des valeurs chrétiennes pour former des individus complets, prêts à affronter les défis du monde moderne.</p>
-                    <p>Nous croyons en une éducation qui développe non seulement les compétences académiques mais aussi le caractère, la créativité et le sens des responsabilités sociales.</p>
-                    
-                    <div class="about-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Enseignants qualifiés et dévoués</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Infrastructures modernes et sécurisées</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Programmes académiques et parascolaires équilibrés</span>
-                        </div>
-                    </div>
-
-                    <div class="about-stats">
-                        <div class="stat-box" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="stat-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="stat-number" data-count="1250">0</div>
-                            <div class="stat-text">Élèves Inscrits</div>
-                        </div>
-                        <div class="stat-box" data-aos="zoom-in" data-aos-delay="400">
-                            <div class="stat-icon">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                            </div>
-                            <div class="stat-number" data-count="85">0</div>
-                            <div class="stat-text">Enseignants Qualifiés</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image" data-aos="fade-left" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="École Saint Charles Lwanga">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Programs Section -->
-    <section class="programs" id="programs">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <div class="section-badge">Nos Programmes</div>
-                <h2 class="section-title">Un Parcours Éducatif Complet</h2>
-                <p class="section-subtitle">De la maternelle au lycée, découvrez notre offre éducative conçue pour répondre aux besoins de chaque élève.</p>
-            </div>
-            <div class="programs-grid">
-                <div class="program-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="program-header">
-                        <div class="program-icon">
-                            <i class="fas fa-child"></i>
-                        </div>
-                    </div>
-                    <div class="program-content">
+            <div class="cards">
+                <div class="card fade-in">
+                    <div class="card-header">
                         <h3>Maternelle</h3>
-                        <p>Un environnement stimulant et sécurisant pour l'éveil et le développement des tout-petits âgés de 3 à 5 ans.</p>
-                        <ul class="program-features">
-                            <li><i class="fas fa-check"></i> Éveil sensoriel et psychomoteur</li>
-                            <li><i class="fas fa-check"></i> Socialisation et autonomie</li>
-                            <li><i class="fas fa-check"></i> Initiation aux langues</li>
-                            <li><i class="fas fa-check"></i> Activités créatives</li>
-                        </ul>
-                        <a href="#" class="btn btn-outline">Découvrir</a>
+                    </div>
+                    <div class="card-body">
+                        <p>Un univers adapté aux plus jeunes pour développer leur curiosité et leur épanouissement dans un environnement sécurisé et stimulant.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn">Découvrir le programme</a>
                     </div>
                 </div>
-                <div class="program-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="program-header">
-                        <div class="program-icon">
-                            <i class="fas fa-pencil-alt"></i>
-                        </div>
-                    </div>
-                    <div class="program-content">
+                <div class="card fade-in">
+                    <div class="card-header">
                         <h3>Primaire</h3>
-                        <p>Un programme complet qui pose les bases solides en littératie, numératie et compétences sociales.</p>
-                        <ul class="program-features">
-                            <li><i class="fas fa-check"></i> Curriculum national enrichi</li>
-                            <li><i class="fas fa-check"></i> Anglais intensif</li>
-                            <li><i class="fas fa-check"></i> Éducation numérique</li>
-                            <li><i class="fas fa-check"></i> Projets interdisciplinaires</li>
-                        </ul>
-                        <a href="#" class="btn btn-outline">Découvrir</a>
+                    </div>
+                    <div class="card-body">
+                        <p>Une approche éducative équilibrée qui accompagne les enfants dans l'acquisition des savoirs fondamentaux et le développement de leur autonomie.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn">Découvrir le programme</a>
                     </div>
                 </div>
-                <div class="program-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="program-header">
-                        <div class="program-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                    </div>
-                    <div class="program-content">
+                <div class="card fade-in">
+                    <div class="card-header">
                         <h3>Collège</h3>
-                        <p>Un curriculum diversifié qui prépare les élèves aux défis académiques du secondaire tout en développant leur autonomie.</p>
-                        <ul class="program-features">
-                            <li><i class="fas fa-check"></i> Enseignement par compétences</li>
-                            <li><i class="fas fa-check"></i> Options linguistiques</li>
-                            <li><i class="fas fa-check"></i> Parcours personnalisés</li>
-                            <li><i class="fas fa-check"></i> Orientation progressive</li>
+                    </div>
+                    <div class="card-body">
+                        <p>Une pédagogie qui accompagne les adolescents dans leur développement, favorisant l'autonomie, la responsabilité et l'ouverture d'esprit.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn">Découvrir le programme</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions -->
+    <section id="admissions" style="background-color: #f8fafc;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Admissions et Tarifs</h2>
+                <p>Choisissez la formule adaptée à vos besoins</p>
+            </div>
+            <div class="cards">
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h3>Formule Découverte</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="price">450€</div>
+                        <p>Formule adaptée pour une première immersion dans notre établissement. Parfaite pour les enfants de 4 à 5 ans avec un programme spécialisé.</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.2rem;">
+                            <li>Programme adapté aux 4-5 ans</li>
+                            <li>Activités d'éveil variées</li>
+                            <li>Encadrement personnalisé</li>
                         </ul>
-                        <a href="#" class="btn btn-outline">Découvrir</a>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn">Choisir cette formule</a>
+                    </div>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h3>Formule Complète</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="price">650€</div>
+                        <p>Notre formule la plus populaire, offrant un accompagnement éducatif complet avec des activités extrascolaires incluses.</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.2rem;">
+                            <li>Programme éducatif complet</li>
+                            <li>Activités extrascolaires</li>
+                            <li>Suivi personnalisé</li>
+                            <li>Accès à la médiathèque</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn">Choisir cette formule</a>
+                    </div>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h3>Formule Internationale</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="price">850€</div>
+                        <p>Programme d'excellence avec immersion linguistique, échanges culturels et préparation aux certifications internationales.</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.2rem;">
+                            <li>Immersion linguistique</li>
+                            <li>Échanges internationaux</li>
+                            <li>Préparation aux certifications</li>
+                            <li>Encadrement renforcé</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn">Choisir cette formule</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Admissions Section -->
-    <section class="admissions" id="admissions">
+    <!-- Vie Scolaire -->
+    <section id="vie-scolaire" class="vie-scolaire">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <div class="section-badge">Admissions</div>
-                <h2 class="section-title">Rejoignez Notre Communauté</h2>
-                <p class="section-subtitle">Découvrez notre processus d'admission simplifié et prenez la première étape vers l'excellence éducative.</p>
+            <div class="section-title">
+                <h2>Vie Scolaire</h2>
+                <p>Découvrez la vie au sein de notre établissement</p>
             </div>
-            <div class="admissions-steps">
-                <div class="step-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="step-number">1</div>
-                    <h3>Dépôt de Dossier</h3>
-                    <p>Remplissez le formulaire en ligne et téléchargez les documents requis pour initier votre candidature.</p>
+            <div class="niveaux">
+                <div class="niveau fade-in">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Activités Culturelles</h3>
+                    <p>Théâtre, musique, arts plastiques pour développer la créativité et l'expression personnelle.</p>
                 </div>
-                <div class="step-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="step-number">2</div>
-                    <h3>Entretien & Tests</h3>
-                    <p>Rencontrez notre équipe pédagogique et passez les évaluations nécessaires pour votre niveau.</p>
+                <div class="niveau fade-in">
+                    <i class="fas fa-futbol"></i>
+                    <h3>Sports et Compétitions</h3>
+                    <p>Une large gamme d'activités sportives pour promouvoir la santé et l'esprit d'équipe.</p>
                 </div>
-                <div class="step-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="step-number">3</div>
-                    <h3>Décision & Inscription</h3>
-                    <p>Recevez notre réponse sous 15 jours et finalisez l'inscription de votre enfant.</p>
+                <div class="niveau fade-in">
+                    <i class="fas fa-users"></i>
+                    <h3>Vie en Communauté</h3>
+                    <p>Projets collaboratifs et actions solidaires pour développer le sens des responsabilités.</p>
                 </div>
-            </div>
-            <div class="text-center" data-aos="fade-up" data-aos-delay="400" style="margin-top: 3rem;">
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-calendar-check"></i>
-                    Planifier une Visite
-                </a>
+                <div class="niveau fade-in">
+                    <i class="fas fa-globe"></i>
+                    <h3>Ouverture Internationale</h3>
+                    <p>Échanges linguistiques et projets internationaux pour une ouverture sur le monde.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- News Section -->
-    <section class="news" id="news">
+    <!-- Témoignages -->
+    <section class="testimonials">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <div class="section-badge">Actualités</div>
-                <h2 class="section-title">Dernières Nouvelles</h2>
-                <p class="section-subtitle">Restez informé des derniers événements et réalisations de notre communauté éducative.</p>
+            <div class="section-title">
+                <h2>Témoignages</h2>
+                <p>Ce que disent les parents et élèves de notre école</p>
             </div>
-            <div class="news-grid">
-                <div class="news-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Compétition scientifique">
-                        <div class="news-date">15 Mars 2024</div>
+            <div class="testimonial-cards">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-text">
+                        L'École Saint Charles Lwanga a offert à notre fils un environnement d'apprentissage exceptionnel. Les enseignants sont dévoués et la pédagogie innovante a vraiment fait la différence dans son développement.
                     </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span><i class="far fa-user"></i> Par le Directeur</span>
-                            <span><i class="far fa-clock"></i> 5 min read</span>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MD</div>
+                        <div>
+                            <h4>Marie Dubois</h4>
+                            <p>Mère d'élève en primaire</p>
                         </div>
-                        <h3>Victoire aux Olympiades de Sciences Nationales</h3>
-                        <p>Félicitations à nos élèves qui ont remporté la première place aux Olympiades Nationales de Sciences 2024.</p>
-                        <a href="#" class="btn-link">Lire la suite <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="news-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Journée portes ouvertes">
-                        <div class="news-date">28 Février 2024</div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-text">
+                        En tant qu'ancien élève, je peux affirmer que l'éducation reçue à Saint Charles Lwanga m'a parfaitement préparé pour mes études supérieures et ma vie professionnelle. Je recommande vivement cette école.
                     </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span><i class="far fa-user"></i> Communication</span>
-                            <span><i class="far fa-clock"></i> 3 min read</span>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TM</div>
+                        <div>
+                            <h4>Thomas Martin</h4>
+                            <p>Ancien élève, maintenant ingénieur</p>
                         </div>
-                        <h3>Journée Portes Ouvertes 2024</h3>
-                        <p>Venez découvrir notre école et rencontrer notre équipe pédagogique lors de notre journée portes ouvertes.</p>
-                        <a href="#" class="btn-link">Lire la suite <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="news-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Projet environnemental">
-                        <div class="news-date">10 Février 2024</div>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span><i class="far fa-user"></i> Éco-École</span>
-                            <span><i class="far fa-clock"></i> 4 min read</span>
-                        </div>
-                        <h3>Lancement du Projet "École Verte"</h3>
-                        <p>Notre école s'engage pour l'environnement avec un nouveau projet de développement durable.</p>
-                        <a href="#" class="btn-link">Lire la suite <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <!-- Contact -->
+    <section id="contact">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <div class="section-badge">Contact</div>
-                <h2 class="section-title">Prenez Contact Avec Nous</h2>
-                <p class="section-subtitle">Nous sommes à votre écoute pour répondre à toutes vos questions et vous accompagner dans votre projet éducatif.</p>
+            <div class="section-title">
+                <h2>Contact & Localisation</h2>
+                <p>Nous sommes à votre écoute</p>
             </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-card" data-aos="fade-right" data-aos-delay="100">
+            <div class="contact-info">
+                <div>
+                    <h3>Coordonnées</h3>
+                    <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>Notre Adresse</h3>
-                            <p>Rue de l'Éducation, Plateau<br>Abidjan, Côte d'Ivoire</p>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>23 Avenue de l'Éducation, 75005 Paris</p>
                         </div>
                     </div>
-                    <div class="contact-card" data-aos="fade-right" data-aos-delay="200">
+                    <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>Téléphone</h3>
-                            <p>+225 20 30 40 50<br>+225 20 30 40 51</p>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>01 45 67 89 10</p>
                         </div>
                     </div>
-                    <div class="contact-card" data-aos="fade-right" data-aos-delay="300">
+                    <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>info@saintcharleslwanga.ci<br>admissions@saintcharleslwanga.ci</p>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contact@saintcharleslwanga.fr</p>
                         </div>
                     </div>
-                    <div class="contact-card" data-aos="fade-right" data-aos-delay="400">
+                    <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-clock"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>Heures d'Ouverture</h3>
-                            <p>Lundi - Vendredi: 7h30 - 17h30<br>Samedi: 8h00 - 12h00</p>
+                        <div>
+                            <h4>Horaires</h4>
+                            <p>Lun - Ven: 8h00 - 18h00<br>Sam: 9h00 - 12h00</p>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form" data-aos="fade-left" data-aos-delay="500">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Nom Complet</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Adresse Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Téléphone</label>
-                            <input type="tel" id="phone" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject" class="form-label">Sujet</label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i>
-                            Envoyer le Message
-                        </button>
-                    </form>
+                <div>
+                    <h3>Plan d'accès</h3>
+                    <div class="map-container">
+                        <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-right: 1rem;"></i>
+                        <div>Carte interactive de localisation</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1635,280 +762,108 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Saint Charles Lwanga</h3>
-                    <div class="footer-about">
-                        <p>Former les leaders de demain à travers l'excellence académique, l'intégrité morale et l'engagement communautaire.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        </div>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>École Saint Charles Lwanga</h3>
+                    <p>Une pédagogie tournée vers l'avenir pour former les citoyens de demain. Établissement d'enseignement fondé en 1985.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <div class="footer-col">
+                <div class="footer-column">
                     <h3>Liens Rapides</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Accueil</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> À Propos</a></li>
-                        <li><a href="#programs"><i class="fas fa-chevron-right"></i> Programmes</a></li>
-                        <li><a href="#admissions"><i class="fas fa-chevron-right"></i> Admissions</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#programmes">Programmes</a></li>
+                        <li><a href="#admissions">Admissions</a></li>
+                        <li><a href="#vie-scolaire">Vie Scolaire</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3>Programmes</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Maternelle</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Primaire</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Collège</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Lycée</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Parascolaires</a></li>
+                <div class="footer-column">
+                    <h3>Niveaux d'Enseignement</h3>
+                    <ul>
+                        <li><a href="#">Maternelle</a></li>
+                        <li><a href="#">Primaire</a></li>
+                        <li><a href="#">Collège</a></li>
+                        <li><a href="#">Lycée</a></li>
+                        <li><a href="#">Programmes Internationaux</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3>Newsletter</h3>
-                    <p>Abonnez-vous à notre newsletter pour recevoir les dernières actualités.</p>
-                    <form class="newsletter-form">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Votre email" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i>
-                            S'abonner
-                        </button>
-                    </form>
+                <div class="footer-column">
+                    <h3>Informations</h3>
+                    <ul>
+                        <li><a href="#">Calendrier Scolaire</a></li>
+                        <li><a href="#">Résultats aux Examens</a></li>
+                        <li><a href="#">Règlement Intérieur</a></li>
+                        <li><a href="#">Cantine et Transport</a></li>
+                        <li><a href="#">Nous Rejoindre</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2024 École Saint Charles Lwanga. Tous droits réservés. | Conçu avec <i class="fas fa-heart" style="color: var(--secondary);"></i> pour l'éducation</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 École Saint Charles Lwanga - Tous droits réservés</p>
+                <div class="footer-credits">
+                    <div>
+                        <a href="#">Mentions légales</a>
+                        <a href="#">Politique de confidentialité</a>
+                        <a href="#">Cookies</a>
+                    </div>
+                    <div>Site réalisé avec <i class="fas fa-heart" style="color: #ef4444;"></i> par l'équipe de Saint Charles Lwanga</div>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top -->
-    <a href="#" class="back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </a>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        const dropdowns = document.querySelectorAll('.dropdown-menu');
-
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = mobileMenu.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Mobile dropdown handling
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                if (window.innerWidth <= 992) {
-                    const dropdown = link.nextElementSibling;
-                    if (dropdown && dropdown.classList.contains('dropdown-menu')) {
-                        e.preventDefault();
-                        dropdown.classList.toggle('active');
-                    }
-                }
-            });
-        });
-
-        // Header Scroll Effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Back to Top Button
-        const backToTop = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // Animation au défilement
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
                     
-                    // Close mobile menu
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        mobileMenu.querySelector('i').classList.add('fa-bars');
-                        mobileMenu.querySelector('i').classList.remove('fa-times');
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
                     }
-                }
+                });
+            };
+            
+            // Initial state
+            fadeElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             });
-        });
-
-        // Animate Stats Counter
-        function animateStats() {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            statNumbers.forEach(stat => {
-                const target = parseInt(stat.getAttribute('data-count'));
-                let count = 0;
-                const duration = 2000;
-                const increment = target / (duration / 16);
-
-                const updateCount = () => {
-                    count += increment;
-                    if (count < target) {
-                        stat.textContent = Math.floor(count);
-                        setTimeout(updateCount, 16);
-                    } else {
-                        stat.textContent = target;
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Check on load
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
                     }
-                };
-
-                updateCount();
+                });
             });
-        }
-
-        // Intersection Observer for Stats
-        const statsSection = document.querySelector('.about');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateStats();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        observer.observe(statsSection);
-
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Simulate form submission
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-            submitBtn.disabled = true;
-
-            setTimeout(() => {
-                alert('Merci pour votre message! Nous vous contacterons bientôt.');
-                contactForm.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
         });
-
-        // Newsletter Form
-        const newsletterForm = document.querySelector('.newsletter-form');
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Merci de vous être abonné à notre newsletter!');
-            newsletterForm.reset();
-        });
-
-        // Add some CSS for additional elements
-        const style = document.createElement('style');
-        style.textContent = `
-            .about-features {
-                margin: 2rem 0;
-            }
-            .feature-item {
-                display: flex;
-                align-items: center;
-                margin-bottom: 1rem;
-                padding: 0.8rem;
-                background: rgba(26, 75, 140, 0.05);
-                border-radius: 10px;
-                transition: var(--transition);
-            }
-            .feature-item:hover {
-                background: rgba(26, 75, 140, 0.1);
-                transform: translateX(10px);
-            }
-            .feature-item i {
-                color: var(--accent);
-                margin-right: 15px;
-                font-size: 1.1rem;
-            }
-            .btn-link {
-                color: var(--primary);
-                text-decoration: none;
-                font-weight: 600;
-                display: inline-flex;
-                align-items: center;
-                margin-top: 1rem;
-                transition: var(--transition);
-            }
-            .btn-link:hover {
-                color: var(--secondary);
-            }
-            .btn-link i {
-                margin-left: 8px;
-                transition: var(--transition);
-            }
-            .btn-link:hover i {
-                transform: translateX(5px);
-            }
-            .text-center {
-                text-align: center;
-            }
-            .newsletter-form .form-group {
-                margin-bottom: 1rem;
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Particle effect for hero section
-        function createParticles() {
-            const hero = document.querySelector('.hero');
-            for (let i = 0; i < 15; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'floating-element';
-                particle.style.width = Math.random() * 30 + 20 + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDuration = (Math.random() * 20 + 15) + 's';
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                hero.querySelector('.floating-elements').appendChild(particle);
-            }
-        }
-
-        createParticles();
     </script>
 </body>
 </html>
