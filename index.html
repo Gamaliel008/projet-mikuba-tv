@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>École Saint Charles Lwanga</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Variables et reset */
         :root {
@@ -15,6 +16,7 @@
             --light: #f8fafc;
             --dark: #1e293b;
             --gray: #64748b;
+            --success: #10b981;
             --border-radius: 12px;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --transition: all 0.3s ease;
@@ -24,13 +26,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         body {
             background-color: #f1f5f9;
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -48,7 +51,7 @@
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
         
         .header-content {
@@ -64,23 +67,37 @@
         }
         
         .logo-icon {
-            font-size: 2rem;
+            font-size: 2.2rem;
+            background: var(--accent);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .logo-text {
             font-size: 1.5rem;
             font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .logo-subtitle {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.9;
         }
         
+        /* Navigation avec sous-menus */
         nav ul {
             display: flex;
             list-style: none;
             gap: 1.5rem;
+            position: relative;
+        }
+        
+        nav > ul > li {
+            position: relative;
         }
         
         nav a {
@@ -90,6 +107,13 @@
             transition: var(--transition);
             padding: 0.5rem 0;
             position: relative;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        nav a i {
+            font-size: 0.9rem;
         }
         
         nav a:hover {
@@ -111,34 +135,109 @@
             width: 100%;
         }
         
+        /* Sous-menus */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+        
+        .submenu li {
+            width: 100%;
+        }
+        
+        .submenu a {
+            color: var(--dark);
+            padding: 0.8rem 1.2rem;
+            display: block;
+            border-bottom: 1px solid #f1f5f9;
+            transition: var(--transition);
+        }
+        
+        .submenu a:hover {
+            background-color: #f8fafc;
+            color: var(--primary);
+            padding-left: 1.5rem;
+        }
+        
+        .submenu a::after {
+            display: none;
+        }
+        
+        nav > ul > li:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Menu mobile */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background: linear-gradient(rgba(30, 41, 59, 0.85), rgba(30, 41, 59, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             color: white;
-            padding: 5rem 0;
+            padding: 6rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.05"><polygon points="0,0 1000,50 1000,100 0,100"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
             font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
             opacity: 0.9;
         }
         
         .btn {
             display: inline-block;
-            background-color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), #e69008);
             color: white;
-            padding: 0.8rem 1.8rem;
+            padding: 0.9rem 2.2rem;
             border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
@@ -146,28 +245,64 @@
             border: none;
             cursor: pointer;
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
         }
         
         .btn:hover {
-            background-color: #e69008;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
         }
         
         /* Sections */
         section {
-            padding: 4rem 0;
+            padding: 5rem 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
             position: relative;
         }
         
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .section-title::after {
@@ -176,7 +311,7 @@
             width: 80px;
             height: 4px;
             background: linear-gradient(to right, var(--primary), var(--accent));
-            margin: 0.5rem auto;
+            margin: 1rem auto;
             border-radius: 2px;
         }
         
@@ -193,34 +328,71 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
         }
         
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover::before {
+            opacity: 0.05;
         }
         
         .card-header {
             background: var(--primary);
             color: white;
-            padding: 1.5rem;
+            padding: 1.8rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
         }
         
         .card-body {
-            padding: 1.5rem;
+            padding: 2rem;
         }
         
         .price {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--primary);
             margin: 1rem 0;
             text-align: center;
         }
         
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: normal;
+        }
+        
         .card-footer {
-            padding: 1rem 1.5rem;
+            padding: 1.5rem 2rem;
             background-color: #f8fafc;
             text-align: center;
         }
@@ -228,42 +400,95 @@
         /* Vie Scolaire */
         .vie-scolaire {
             background-color: var(--light);
+            position: relative;
+        }
+        
+        .vie-scolaire::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%232563eb" opacity="0.02"><polygon points="0,0 1000,0 1000,100 0,100"/></svg>');
+            background-size: cover;
         }
         
         .niveaux {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
         }
         
         .niveau {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             text-align: center;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .niveau::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            transition: var(--transition);
         }
         
         .niveau:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .niveau:hover::before {
+            width: 100%;
+            opacity: 0.05;
         }
         
         .niveau i {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .niveau:hover i {
+            color: var(--accent);
+            transform: scale(1.1);
         }
         
         .niveau h3 {
             margin-bottom: 1rem;
             color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
         }
         
         /* Témoignages */
         .testimonials {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.03"><polygon points="0,0 1000,50 1000,100 0,100"/></svg>');
+            background-size: cover;
         }
         
         .testimonials .section-title h2 {
@@ -277,30 +502,41 @@
         .testimonial-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
         }
         
         .testimonial-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: var(--border-radius);
-            padding: 2rem;
+            padding: 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
         }
         
         .testimonial-text {
             font-style: italic;
             margin-bottom: 1.5rem;
             position: relative;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
         
         .testimonial-text::before {
             content: """;
-            font-size: 4rem;
+            font-size: 5rem;
             color: rgba(255, 255, 255, 0.3);
             position: absolute;
-            top: -1.5rem;
-            left: -0.5rem;
+            top: -2.5rem;
+            left: -1rem;
+            font-family: Georgia, serif;
         }
         
         .testimonial-author {
@@ -310,45 +546,59 @@
         }
         
         .author-avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background-color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), #e69008);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            font-size: 1.5rem;
+            flex-shrink: 0;
         }
         
         /* Contact */
         .contact-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
         }
         
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
         }
         
         .contact-icon {
             background: var(--primary);
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover .contact-icon {
+            background: var(--accent);
+            transform: scale(1.1);
         }
         
         .map-container {
-            height: 300px;
-            background-color: #e2e8f0;
+            height: 350px;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
             border-radius: var(--border-radius);
             overflow: hidden;
             margin-top: 2rem;
@@ -356,13 +606,50 @@
             align-items: center;
             justify-content: center;
             color: var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%2364748b" opacity="0.1"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100"/></svg>');
+            background-size: 20px 20px;
+        }
+        
+        .map-placeholder {
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .map-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
         }
         
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--dark), #0f172a);
             color: white;
-            padding: 4rem 0 2rem;
+            padding: 5rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23f59e0b" opacity="0.03"><polygon points="0,100 1000,0 1000,100"/></svg>');
+            background-size: cover;
         }
         
         .footer-content {
@@ -370,13 +657,16 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
         }
         
         .footer-column h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 1.5rem;
             position: relative;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .footer-column h3::after {
@@ -385,8 +675,9 @@
             bottom: 0;
             left: 0;
             width: 50px;
-            height: 2px;
+            height: 3px;
             background-color: var(--accent);
+            border-radius: 2px;
         }
         
         .footer-column ul {
@@ -401,6 +692,14 @@
             color: #cbd5e1;
             text-decoration: none;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-column a i {
+            font-size: 0.9rem;
+            width: 20px;
         }
         
         .footer-column a:hover {
@@ -418,31 +717,34 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             transition: var(--transition);
+            color: white;
         }
         
         .social-links a:hover {
             background: var(--accent);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 2.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #94a3b8;
+            position: relative;
+            z-index: 1;
         }
         
         .footer-credits {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
             gap: 1rem;
         }
@@ -452,24 +754,109 @@
             gap: 1.5rem;
         }
         
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .float {
+            animation: float 5s ease-in-out infinite;
+        }
+        
         /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 gap: 1rem;
             }
             
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            nav {
+                width: 100%;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
             nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            nav > ul > li {
+                width: 100%;
+            }
+            
+            .submenu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(255,255,255,0.1);
+                display: none;
+            }
+            
+            nav > ul > li:hover .submenu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 4rem 0;
             }
             
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
             }
             
             .footer-credits {
@@ -478,14 +865,36 @@
             }
         }
         
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         
-        .fade-in {
-            animation: fadeIn 1s ease forwards;
+        .scroll-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-to-top:hover {
+            background: #e69008;
+            transform: translateY(-3px);
         }
     </style>
 </head>
@@ -502,12 +911,50 @@
                     <div class="logo-subtitle">Éducation d'excellence depuis 1985</div>
                 </div>
             </div>
-            <nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
                 <ul>
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#programmes">Programmes</a></li>
-                    <li><a href="#admissions">Admissions</a></li>
-                    <li><a href="#vie-scolaire">Vie Scolaire</a></li>
+                    <li>
+                        <a href="#accueil">Accueil <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#presentation"><i class="fas fa-school"></i> Présentation</a></li>
+                            <li><a href="#histoire"><i class="fas fa-history"></i> Notre Histoire</a></li>
+                            <li><a href="#equipe"><i class="fas fa-users"></i> Notre Équipe</a></li>
+                            <li><a href="#valeurs"><i class="fas fa-heart"></i> Nos Valeurs</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#programmes">Programmes <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#maternelle"><i class="fas fa-child"></i> Maternelle</a></li>
+                            <li><a href="#primaire"><i class="fas fa-pencil-alt"></i> Primaire</a></li>
+                            <li><a href="#college"><i class="fas fa-book"></i> Collège</a></li>
+                            <li><a href="#lycee"><i class="fas fa-graduation-cap"></i> Lycée</a></li>
+                            <li><a href="#international"><i class="fas fa-globe"></i> Programme International</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#admissions">Admissions <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#inscriptions"><i class="fas fa-edit"></i> Inscriptions</a></li>
+                            <li><a href="#tarifs"><i class="fas fa-euro-sign"></i> Tarifs</a></li>
+                            <li><a href="#bourses"><i class="fas fa-hand-holding-usd"></i> Bourses</a></li>
+                            <li><a href="#calendrier"><i class="fas fa-calendar-alt"></i> Calendrier</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#vie-scolaire">Vie Scolaire <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#activites"><i class="fas fa-paint-brush"></i> Activités</a></li>
+                            <li><a href="#sports"><i class="fas fa-futbol"></i> Sports</a></li>
+                            <li><a href="#sorties"><i class="fas fa-bus"></i> Sorties</a></li>
+                            <li><a href="#cantines"><i class="fas fa-utensils"></i> Cantines</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -516,10 +963,13 @@
 
     <!-- Hero Section -->
     <section class="hero" id="accueil">
-        <div class="container fade-in">
-            <h1>Apprenons aujourd'hui, pour bâtir demain.</h1>
-            <p>Une pédagogie innovante tournée vers l'avenir pour former les citoyens éclairés de demain.</p>
-            <a href="#admissions" class="btn">Découvrir nos admissions</a>
+        <div class="container hero-content">
+            <h1 class="fade-in">Apprenons aujourd'hui, pour bâtir demain.</h1>
+            <p class="fade-in">Une pédagogie innovante tournée vers l'avenir pour former les citoyens éclairés de demain.</p>
+            <div class="btn-container fade-in">
+                <a href="#admissions" class="btn">Découvrir nos admissions</a>
+                <a href="#programmes" class="btn btn-outline">Nos programmes</a>
+            </div>
         </div>
     </section>
 
@@ -528,15 +978,20 @@
         <div class="container">
             <div class="section-title">
                 <h2>Nos Programmes Éducatifs</h2>
-                <p>Découvrez notre offre pédagogique complète</p>
+                <p>Découvrez notre offre pédagogique complète et innovante</p>
             </div>
             <div class="cards">
                 <div class="card fade-in">
                     <div class="card-header">
-                        <h3>Maternelle</h3>
+                        <h3><i class="fas fa-child"></i> Maternelle</h3>
                     </div>
                     <div class="card-body">
                         <p>Un univers adapté aux plus jeunes pour développer leur curiosité et leur épanouissement dans un environnement sécurisé et stimulant.</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.2rem;">
+                            <li>Développement sensoriel et moteur</li>
+                            <li>Socialisation et autonomie</li>
+                            <li>Éveil linguistique et artistique</li>
+                        </ul>
                     </div>
                     <div class="card-footer">
                         <a href="#" class="btn">Découvrir le programme</a>
@@ -544,10 +999,15 @@
                 </div>
                 <div class="card fade-in">
                     <div class="card-header">
-                        <h3>Primaire</h3>
+                        <h3><i class="fas fa-pencil-alt"></i> Primaire</h3>
                     </div>
                     <div class="card-body">
                         <p>Une approche éducative équilibrée qui accompagne les enfants dans l'acquisition des savoirs fondamentaux et le développement de leur autonomie.</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.2rem;">
+                            <li>Acquisition des fondamentaux</li>
+                            <li>Développement de l'autonomie</li>
+                            <li>Initiation aux langues étrangères</li>
+                        </ul>
                     </div>
                     <div class="card-footer">
                         <a href="#" class="btn">Découvrir le programme</a>
@@ -555,10 +1015,15 @@
                 </div>
                 <div class="card fade-in">
                     <div class="card-header">
-                        <h3>Collège</h3>
+                        <h3><i class="fas fa-book"></i> Collège</h3>
                     </div>
                     <div class="card-body">
                         <p>Une pédagogie qui accompagne les adolescents dans leur développement, favorisant l'autonomie, la responsabilité et l'ouverture d'esprit.</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.2rem;">
+                            <li>Approfondissement des disciplines</li>
+                            <li>Orientation personnalisée</li>
+                            <li>Projets interdisciplinaires</li>
+                        </ul>
                     </div>
                     <div class="card-footer">
                         <a href="#" class="btn">Découvrir le programme</a>
@@ -573,7 +1038,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Admissions et Tarifs</h2>
-                <p>Choisissez la formule adaptée à vos besoins</p>
+                <p>Choisissez la formule adaptée à vos besoins éducatifs</p>
             </div>
             <div class="cards">
                 <div class="card fade-in">
@@ -581,12 +1046,13 @@
                         <h3>Formule Découverte</h3>
                     </div>
                     <div class="card-body">
-                        <div class="price">450€</div>
+                        <div class="price">450€ <span>/ mois</span></div>
                         <p>Formule adaptée pour une première immersion dans notre établissement. Parfaite pour les enfants de 4 à 5 ans avec un programme spécialisé.</p>
                         <ul style="margin-top: 1rem; padding-left: 1.2rem;">
-                            <li>Programme adapté aux 4-5 ans</li>
-                            <li>Activités d'éveil variées</li>
-                            <li>Encadrement personnalisé</li>
+                            <li><i class="fas fa-check" style="color: var(--success);"></i> Programme adapté aux 4-5 ans</li>
+                            <li><i class="fas fa-check" style="color: var(--success);"></i> Activités d'éveil variées</li>
+                            <li><i class="fas fa-check" style="color: var(--success);"></i> Encadrement personnalisé</li>
+                            <li><i class="fas fa-times" style="color: #ef4444;"></i> Activités extrascolaires</li>
                         </ul>
                     </div>
                     <div class="card-footer">
@@ -598,13 +1064,13 @@
                         <h3>Formule Complète</h3>
                     </div>
                     <div class="card-body">
-                        <div class="price">650€</div>
+                        <div class="price">650€ <span>/ mois</span></div>
                         <p>Notre formule la plus populaire, offrant un accompagnement éducatif complet avec des activités extrascolaires incluses.</p>
                         <ul style="margin-top: 1rem; padding-left: 1.2rem;">
-                            <li>Programme éducatif complet</li>
-                            <li>Activités extrascolaires</li>
-                            <li>Suivi personnalisé</li>
-                            <li>Accès à la médiathèque</li>
+                            <li><i class="fas fa-check" style="color: var(--success);"></i> Programme éducatif complet</li>
+                            <li><i class="fas fa-check" style="color: var(--success);"></i> Activités extrascolaires</li>
+                            <li><i class="fas fa-check" style="color: var(--success);"></i> Suivi personnalisé</li>
+                            <li><i class="fas fa-check" style="color: var(--success);"></i> Accès à la médiathèque</li>
                         </ul>
                     </div>
                     <div class="card-footer">
@@ -616,13 +1082,13 @@
                         <h3>Formule Internationale</h3>
                     </div>
                     <div class="card-body">
-                        <div class="price">850€</div>
+                        <div class="price">850€ <span>/ mois</span></div>
                         <p>Programme d'excellence avec immersion linguistique, échanges culturels et préparation aux certifications internationales.</p>
                         <ul style="margin-top: 1rem; padding-left: 1.2rem;">
-                            <li>Immersion linguistique</li>
-                            <li>Échanges internationaux</li>
-                            <li>Préparation aux certifications</li>
-                            <li>Encadrement renforcé</li>
+                            <li><i class="fas fa-check" style="color: var(--success);"></i> Immersion linguistique</li>
+                            <li><i class="fas fa-check" style="color: var(--success);"></i> Échanges internationaux</li>
+                            <li><i class="fas fa-check" style="color: var(--success);"></i> Préparation aux certifications</li>
+                            <li><i class="fas fa-check" style="color: var(--success);"></i> Encadrement renforcé</li>
                         </ul>
                     </div>
                     <div class="card-footer">
@@ -638,28 +1104,32 @@
         <div class="container">
             <div class="section-title">
                 <h2>Vie Scolaire</h2>
-                <p>Découvrez la vie au sein de notre établissement</p>
+                <p>Découvrez la vie riche et épanouissante au sein de notre établissement</p>
             </div>
             <div class="niveaux">
                 <div class="niveau fade-in">
-                    <i class="fas fa-paint-brush"></i>
+                    <i class="fas fa-paint-brush float"></i>
                     <h3>Activités Culturelles</h3>
-                    <p>Théâtre, musique, arts plastiques pour développer la créativité et l'expression personnelle.</p>
+                    <p>Théâtre, musique, arts plastiques pour développer la créativité et l'expression personnelle dans un cadre stimulant.</p>
+                    <a href="#" style="margin-top: 1rem; display: inline-block; color: var(--primary); font-weight: 500;">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="niveau fade-in">
-                    <i class="fas fa-futbol"></i>
+                    <i class="fas fa-futbol float"></i>
                     <h3>Sports et Compétitions</h3>
-                    <p>Une large gamme d'activités sportives pour promouvoir la santé et l'esprit d'équipe.</p>
+                    <p>Une large gamme d'activités sportives pour promouvoir la santé, l'esprit d'équipe et le dépassement de soi.</p>
+                    <a href="#" style="margin-top: 1rem; display: inline-block; color: var(--primary); font-weight: 500;">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="niveau fade-in">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-users float"></i>
                     <h3>Vie en Communauté</h3>
-                    <p>Projets collaboratifs et actions solidaires pour développer le sens des responsabilités.</p>
+                    <p>Projets collaboratifs et actions solidaires pour développer le sens des responsabilités et l'engagement citoyen.</p>
+                    <a href="#" style="margin-top: 1rem; display: inline-block; color: var(--primary); font-weight: 500;">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="niveau fade-in">
-                    <i class="fas fa-globe"></i>
+                    <i class="fas fa-globe float"></i>
                     <h3>Ouverture Internationale</h3>
-                    <p>Échanges linguistiques et projets internationaux pour une ouverture sur le monde.</p>
+                    <p>Échanges linguistiques et projets internationaux pour une ouverture sur le monde et le développement interculturel.</p>
+                    <a href="#" style="margin-top: 1rem; display: inline-block; color: var(--primary); font-weight: 500;">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -670,7 +1140,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Témoignages</h2>
-                <p>Ce que disent les parents et élèves de notre école</p>
+                <p>Ce que disent les parents, élèves et anciens élèves de notre école</p>
             </div>
             <div class="testimonial-cards">
                 <div class="testimonial-card fade-in">
@@ -697,6 +1167,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-text">
+                        Le programme international a permis à notre fille de devenir parfaitement bilingue et de développer une ouverture d'esprit remarquable. Un investissement précieux pour son avenir.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
+                        <div>
+                            <h4>Sophie Johnson</h4>
+                            <p>Mère d'élève en section internationale</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -706,7 +1188,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Contact & Localisation</h2>
-                <p>Nous sommes à votre écoute</p>
+                <p>Nous sommes à votre écoute pour répondre à toutes vos questions</p>
             </div>
             <div class="contact-info">
                 <div>
@@ -751,8 +1233,11 @@
                 <div>
                     <h3>Plan d'accès</h3>
                     <div class="map-container">
-                        <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-right: 1rem;"></i>
-                        <div>Carte interactive de localisation</div>
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <p>Carte interactive de localisation</p>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Notre établissement est situé au cœur de Paris, facilement accessible en transports en commun.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -777,31 +1262,31 @@
                 <div class="footer-column">
                     <h3>Liens Rapides</h3>
                     <ul>
-                        <li><a href="#accueil">Accueil</a></li>
-                        <li><a href="#programmes">Programmes</a></li>
-                        <li><a href="#admissions">Admissions</a></li>
-                        <li><a href="#vie-scolaire">Vie Scolaire</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#accueil"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="#programmes"><i class="fas fa-book-open"></i> Programmes</a></li>
+                        <li><a href="#admissions"><i class="fas fa-file-signature"></i> Admissions</a></li>
+                        <li><a href="#vie-scolaire"><i class="fas fa-running"></i> Vie Scolaire</a></li>
+                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Niveaux d'Enseignement</h3>
                     <ul>
-                        <li><a href="#">Maternelle</a></li>
-                        <li><a href="#">Primaire</a></li>
-                        <li><a href="#">Collège</a></li>
-                        <li><a href="#">Lycée</a></li>
-                        <li><a href="#">Programmes Internationaux</a></li>
+                        <li><a href="#maternelle"><i class="fas fa-child"></i> Maternelle</a></li>
+                        <li><a href="#primaire"><i class="fas fa-pencil-alt"></i> Primaire</a></li>
+                        <li><a href="#college"><i class="fas fa-book"></i> Collège</a></li>
+                        <li><a href="#lycee"><i class="fas fa-graduation-cap"></i> Lycée</a></li>
+                        <li><a href="#international"><i class="fas fa-globe"></i> Programmes Internationaux</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Informations</h3>
                     <ul>
-                        <li><a href="#">Calendrier Scolaire</a></li>
-                        <li><a href="#">Résultats aux Examens</a></li>
-                        <li><a href="#">Règlement Intérieur</a></li>
-                        <li><a href="#">Cantine et Transport</a></li>
-                        <li><a href="#">Nous Rejoindre</a></li>
+                        <li><a href="#calendrier"><i class="fas fa-calendar-alt"></i> Calendrier Scolaire</a></li>
+                        <li><a href="#resultats"><i class="fas fa-chart-line"></i> Résultats aux Examens</a></li>
+                        <li><a href="#reglement"><i class="fas fa-file-contract"></i> Règlement Intérieur</a></li>
+                        <li><a href="#cantine"><i class="fas fa-utensils"></i> Cantine et Transport</a></li>
+                        <li><a href="#emplois"><i class="fas fa-briefcase"></i> Nous Rejoindre</a></li>
                     </ul>
                 </div>
             </div>
@@ -819,9 +1304,24 @@
         </div>
     </footer>
 
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <script>
-        // Animation au défilement
+        // Menu mobile
         document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Animation au défilement
             const fadeElements = document.querySelectorAll('.fade-in');
             
             const fadeInOnScroll = function() {
@@ -830,21 +1330,31 @@
                     const elementVisible = 150;
                     
                     if (elementTop < window.innerHeight - elementVisible) {
-                        element.style.opacity = 1;
-                        element.style.transform = 'translateY(0)';
+                        element.classList.add('visible');
                     }
                 });
             };
             
-            // Initial state
-            fadeElements.forEach(element => {
-                element.style.opacity = 0;
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            });
-            
             window.addEventListener('scroll', fadeInOnScroll);
             fadeInOnScroll(); // Check on load
+            
+            // Scroll to top button
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('active');
+                } else {
+                    scrollToTopBtn.classList.remove('active');
+                }
+            });
+            
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
             
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -860,7 +1370,34 @@
                             top: targetElement.offsetTop - 80,
                             behavior: 'smooth'
                         });
+                        
+                        // Close mobile menu after clicking a link
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
                     }
+                });
+            });
+            
+            // Animation des icônes
+            const floatElements = document.querySelectorAll('.float');
+            
+            // Stagger the float animation
+            floatElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.5}s`;
+            });
+            
+            // Add hover effect to cards
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
                 });
             });
         });
