@@ -9,16 +9,18 @@
     <style>
         /* Variables et reset */
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
+            --primary: #1a56db;
+            --primary-dark: #1e429f;
             --secondary: #7e22ce;
             --accent: #f59e0b;
+            --accent-light: #fbbf24;
             --light: #f8fafc;
             --dark: #1e293b;
             --gray: #64748b;
             --success: #10b981;
             --border-radius: 12px;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --transition: all 0.3s ease;
         }
         
@@ -135,20 +137,21 @@
             width: 100%;
         }
         
-        /* Sous-menus */
+        /* Sous-menus déroulants */
         .submenu {
             position: absolute;
             top: 100%;
             left: 0;
             background: white;
-            min-width: 220px;
+            min-width: 240px;
             border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-lg);
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: var(--transition);
             z-index: 100;
+            padding: 0.5rem 0;
         }
         
         .submenu li {
@@ -158,9 +161,17 @@
         .submenu a {
             color: var(--dark);
             padding: 0.8rem 1.2rem;
-            display: block;
+            display: flex;
+            align-items: center;
             border-bottom: 1px solid #f1f5f9;
             transition: var(--transition);
+            gap: 10px;
+        }
+        
+        .submenu a i {
+            width: 20px;
+            text-align: center;
+            color: var(--primary);
         }
         
         .submenu a:hover {
@@ -235,7 +246,7 @@
         
         .btn {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent), #e69008);
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
             color: white;
             padding: 0.9rem 2.2rem;
             border-radius: 50px;
@@ -347,7 +358,7 @@
         
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-lg);
         }
         
         .card:hover::before {
@@ -397,13 +408,13 @@
             text-align: center;
         }
         
-        /* Vie Scolaire */
-        .vie-scolaire {
+        /* Filières */
+        .filieres {
             background-color: var(--light);
             position: relative;
         }
         
-        .vie-scolaire::before {
+        .filieres::before {
             content: '';
             position: absolute;
             top: 0;
@@ -414,15 +425,81 @@
             background-size: cover;
         }
         
-        .niveaux {
+        .filiere-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2.5rem;
             position: relative;
             z-index: 1;
         }
         
-        .niveau {
+        .filiere-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filiere-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .filiere-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .filiere-header i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .filiere-body {
+            padding: 2rem;
+            flex-grow: 1;
+        }
+        
+        .filiere-body ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .filiere-body li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filiere-body li i {
+            color: var(--success);
+        }
+        
+        .filiere-footer {
+            padding: 1.5rem 2rem;
+            background-color: #f8fafc;
+            text-align: center;
+        }
+        
+        /* Vie Scolaire */
+        .vie-scolaire {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+        }
+        
+        .activites {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .activite {
             background: white;
             padding: 2.5rem 2rem;
             border-radius: var(--border-radius);
@@ -433,7 +510,7 @@
             overflow: hidden;
         }
         
-        .niveau::before {
+        .activite::before {
             content: '';
             position: absolute;
             top: 0;
@@ -444,29 +521,29 @@
             transition: var(--transition);
         }
         
-        .niveau:hover {
+        .activite:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-lg);
         }
         
-        .niveau:hover::before {
+        .activite:hover::before {
             width: 100%;
             opacity: 0.05;
         }
         
-        .niveau i {
+        .activite i {
             font-size: 3rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
             transition: var(--transition);
         }
         
-        .niveau:hover i {
+        .activite:hover i {
             color: var(--accent);
             transform: scale(1.1);
         }
         
-        .niveau h3 {
+        .activite h3 {
             margin-bottom: 1rem;
             color: var(--primary);
             font-family: 'Montserrat', sans-serif;
@@ -549,7 +626,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), #e69008);
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -617,7 +694,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%2364748b" opacity="0.1"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org2000/svg" viewBox="0 0 100 100" fill="%2364748b" opacity="0.1"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100"/></svg>');
             background-size: 20px 20px;
         }
         
@@ -790,6 +867,10 @@
             nav ul {
                 gap: 1rem;
             }
+            
+            .filiere-cards {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 768px) {
@@ -893,7 +974,7 @@
         }
         
         .scroll-to-top:hover {
-            background: #e69008;
+            background: var(--accent-light);
             transform: translateY(-3px);
         }
     </style>
@@ -928,13 +1009,10 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#programmes">Programmes <i class="fas fa-chevron-down"></i></a>
+                        <a href="#filieres">Filières <i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
-                            <li><a href="#maternelle"><i class="fas fa-child"></i> Maternelle</a></li>
-                            <li><a href="#primaire"><i class="fas fa-pencil-alt"></i> Primaire</a></li>
-                            <li><a href="#college"><i class="fas fa-book"></i> Collège</a></li>
-                            <li><a href="#lycee"><i class="fas fa-graduation-cap"></i> Lycée</a></li>
-                            <li><a href="#international"><i class="fas fa-globe"></i> Programme International</a></li>
+                            <li><a href="#humanites"><i class="fas fa-book-open"></i> Humanités</a></li>
+                            <li><a href="#secondaire"><i class="fas fa-graduation-cap"></i> École Secondaire</a></li>
                         </ul>
                     </li>
                     <li>
@@ -968,65 +1046,55 @@
             <p class="fade-in">Une pédagogie innovante tournée vers l'avenir pour former les citoyens éclairés de demain.</p>
             <div class="btn-container fade-in">
                 <a href="#admissions" class="btn">Découvrir nos admissions</a>
-                <a href="#programmes" class="btn btn-outline">Nos programmes</a>
+                <a href="#filieres" class="btn btn-outline">Nos filières</a>
             </div>
         </div>
     </section>
 
-    <!-- Programmes -->
-    <section id="programmes">
+    <!-- Filières -->
+    <section id="filieres" class="filieres">
         <div class="container">
             <div class="section-title">
-                <h2>Nos Programmes Éducatifs</h2>
-                <p>Découvrez notre offre pédagogique complète et innovante</p>
+                <h2>Nos Filières d'Excellence</h2>
+                <p>Découvrez nos deux parcours éducatifs d'exception</p>
             </div>
-            <div class="cards">
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <h3><i class="fas fa-child"></i> Maternelle</h3>
+            <div class="filiere-cards">
+                <div class="filiere-card fade-in">
+                    <div class="filiere-header">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Humanités</h3>
                     </div>
-                    <div class="card-body">
-                        <p>Un univers adapté aux plus jeunes pour développer leur curiosité et leur épanouissement dans un environnement sécurisé et stimulant.</p>
-                        <ul style="margin-top: 1rem; padding-left: 1.2rem;">
-                            <li>Développement sensoriel et moteur</li>
-                            <li>Socialisation et autonomie</li>
-                            <li>Éveil linguistique et artistique</li>
+                    <div class="filiere-body">
+                        <p>Une formation complète centrée sur les lettres, les arts, la philosophie et les sciences humaines pour développer l'esprit critique et la culture générale.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Littérature française et mondiale</li>
+                            <li><i class="fas fa-check"></i> Philosophie et éthique</li>
+                            <li><i class="fas fa-check"></i> Histoire et géographie approfondies</li>
+                            <li><i class="fas fa-check"></i> Langues anciennes et modernes</li>
+                            <li><i class="fas fa-check"></i> Arts et culture</li>
                         </ul>
                     </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn">Découvrir le programme</a>
+                    <div class="filiere-footer">
+                        <a href="#" class="btn">En savoir plus</a>
                     </div>
                 </div>
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <h3><i class="fas fa-pencil-alt"></i> Primaire</h3>
+                <div class="filiere-card fade-in">
+                    <div class="filiere-header">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>École Secondaire</h3>
                     </div>
-                    <div class="card-body">
-                        <p>Une approche éducative équilibrée qui accompagne les enfants dans l'acquisition des savoirs fondamentaux et le développement de leur autonomie.</p>
-                        <ul style="margin-top: 1rem; padding-left: 1.2rem;">
-                            <li>Acquisition des fondamentaux</li>
-                            <li>Développement de l'autonomie</li>
-                            <li>Initiation aux langues étrangères</li>
+                    <div class="filiere-body">
+                        <p>Un parcours complet du collège au lycée avec une approche équilibrée entre sciences, humanités et développement personnel.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Enseignement scientifique solide</li>
+                            <li><i class="fas fa-check"></i> Préparation aux examens nationaux</li>
+                            <li><i class="fas fa-check"></i> Orientation personnalisée</li>
+                            <li><i class="fas fa-check"></i> Projets interdisciplinaires</li>
+                            <li><i class="fas fa-check"></i> Développement des compétences du 21e siècle</li>
                         </ul>
                     </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn">Découvrir le programme</a>
-                    </div>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <h3><i class="fas fa-book"></i> Collège</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Une pédagogie qui accompagne les adolescents dans leur développement, favorisant l'autonomie, la responsabilité et l'ouverture d'esprit.</p>
-                        <ul style="margin-top: 1rem; padding-left: 1.2rem;">
-                            <li>Approfondissement des disciplines</li>
-                            <li>Orientation personnalisée</li>
-                            <li>Projets interdisciplinaires</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn">Découvrir le programme</a>
+                    <div class="filiere-footer">
+                        <a href="#" class="btn">En savoir plus</a>
                     </div>
                 </div>
             </div>
@@ -1106,26 +1174,26 @@
                 <h2>Vie Scolaire</h2>
                 <p>Découvrez la vie riche et épanouissante au sein de notre établissement</p>
             </div>
-            <div class="niveaux">
-                <div class="niveau fade-in">
+            <div class="activites">
+                <div class="activite fade-in">
                     <i class="fas fa-paint-brush float"></i>
                     <h3>Activités Culturelles</h3>
                     <p>Théâtre, musique, arts plastiques pour développer la créativité et l'expression personnelle dans un cadre stimulant.</p>
                     <a href="#" style="margin-top: 1rem; display: inline-block; color: var(--primary); font-weight: 500;">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="niveau fade-in">
+                <div class="activite fade-in">
                     <i class="fas fa-futbol float"></i>
                     <h3>Sports et Compétitions</h3>
                     <p>Une large gamme d'activités sportives pour promouvoir la santé, l'esprit d'équipe et le dépassement de soi.</p>
                     <a href="#" style="margin-top: 1rem; display: inline-block; color: var(--primary); font-weight: 500;">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="niveau fade-in">
+                <div class="activite fade-in">
                     <i class="fas fa-users float"></i>
                     <h3>Vie en Communauté</h3>
                     <p>Projets collaboratifs et actions solidaires pour développer le sens des responsabilités et l'engagement citoyen.</p>
                     <a href="#" style="margin-top: 1rem; display: inline-block; color: var(--primary); font-weight: 500;">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="niveau fade-in">
+                <div class="activite fade-in">
                     <i class="fas fa-globe float"></i>
                     <h3>Ouverture Internationale</h3>
                     <p>Échanges linguistiques et projets internationaux pour une ouverture sur le monde et le développement interculturel.</p>
@@ -1263,20 +1331,17 @@
                     <h3>Liens Rapides</h3>
                     <ul>
                         <li><a href="#accueil"><i class="fas fa-home"></i> Accueil</a></li>
-                        <li><a href="#programmes"><i class="fas fa-book-open"></i> Programmes</a></li>
+                        <li><a href="#filieres"><i class="fas fa-book-open"></i> Filières</a></li>
                         <li><a href="#admissions"><i class="fas fa-file-signature"></i> Admissions</a></li>
                         <li><a href="#vie-scolaire"><i class="fas fa-running"></i> Vie Scolaire</a></li>
                         <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Niveaux d'Enseignement</h3>
+                    <h3>Filières</h3>
                     <ul>
-                        <li><a href="#maternelle"><i class="fas fa-child"></i> Maternelle</a></li>
-                        <li><a href="#primaire"><i class="fas fa-pencil-alt"></i> Primaire</a></li>
-                        <li><a href="#college"><i class="fas fa-book"></i> Collège</a></li>
-                        <li><a href="#lycee"><i class="fas fa-graduation-cap"></i> Lycée</a></li>
-                        <li><a href="#international"><i class="fas fa-globe"></i> Programmes Internationaux</a></li>
+                        <li><a href="#humanites"><i class="fas fa-book-open"></i> Humanités</a></li>
+                        <li><a href="#secondaire"><i class="fas fa-graduation-cap"></i> École Secondaire</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
